@@ -1,0 +1,87 @@
+
+@import "../../styles/variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.header {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+
+  display: flex;
+  flex-flow: column;
+
+  width: 100%;
+  background: #222823;
+  /*   background: linear-gradient(
+    0deg,
+    rgba(34, 40, 35, 1) 0%,
+    rgba(194, 194, 194, 1) 15% 50%,
+    rgba(34, 40, 35, 1) 100%
+  ); */
+
+  &__top {
+    display: flex;
+    gap: $normalizeSize;
+    justify-content: center;
+    margin: $normalizeSize * 0.3;
+
+    .redesItem {
+      text-decoration: none;
+      color: $defultFontColor;
+    }
+  }
+  &__bottom {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 $normalizeSize * 2;
+
+    height: $normalizeSize * 4;
+    /*     background: rgb(167, 167, 167); */
+
+    background: linear-gradient(
+      0deg,
+      /* Esto con el background del contenedor termino formando el #6161e1 - 97, 97, 225 :o*/
+        rgba(97, 97, 225, 0.15) 0%,
+      rgba(97, 97, 225, 0.5) 5%,
+      rgba(97, 97, 225, 0.8) 10%,
+      rgba(97, 97, 225, 0.9) 15%,
+      rgba(97, 97, 225, 1) 50%,
+      rgba(97, 97, 225, 0.9) 85%,
+      rgba(97, 97, 225, 0.8) 90%,
+      rgba(97, 97, 225, 0.5) 95%,
+      rgba(97, 97, 225, 0.15) 100%
+    );
+  }
+}
+
+.logoSection {
+  .Mania_ {
+    display: flex;
+    align-items: center;
+    column-gap: $normalizeSize;
+
+    font-family: $logoFontFamily;
+    font-size: $normalizeSize * 2;
+    color: $headerColor;
+    .LOGO {
+      width: $normalizeSize * 2.5;
+    }
+  }
+
+  .Mania_:hover {
+    // por alguna razon no funciona en active o hover, por lo que lo subi al estado normal
+    animation: $rainbow;
+  }
+}

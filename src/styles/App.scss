@@ -1,0 +1,10 @@
+@import "./variables.scss";
+
+body {
+  background: burlywood;
+  background: linear-gradient(
+    to bottom,
+    rgba($bkgDefault, 1) 0%,
+    rgba($bkgDefault, 0.05) 100%
+  );
+}

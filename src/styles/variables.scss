@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Ubuntu:wght@300&display=swap");
+
+// BUTTON VALUES
+$bkgDefault: hsl(0, 0%, 60%);
+$bkgDefaultInvert: hsl(0, 0%, 35%);
+
+$defaultFontSize: 1rem;
+$defaultShadow: $defaultFontSize * 0.25;
+
+$defaultBkgBlue: hsl(240, 68%, 63%);
+$defaultBkgGray: hsl(130, 8%, 15%);
+
+$bkgRed: hsl(0, 100%, 40%);
+$bkgRedInvert: hsl(0, 100%, 65%);
+
+$bkgYellow: hsl(60, 100%, 35%);
+$bkgYellowInvert: hsl(60, 100%, 60%);
+
+$bkgGreen: hsl(120, 100%, 50%);
+$bkgGreenInvert: hsl(120, 100%, 25%);
+
+// NAV VALUES`
+$normalizeSize: 1.5rem;
+$defultFontColor: #f4f7f5;
+$headerColor: #fa9f42;
+$logoFontFamily: "Major Mono Display", monospace;
+$navFontFamily: "Ubuntu", sans-serif;
+
+// ANIMATIONS
+$rainbow: rainbow 3s infinite;
+
+@keyframes rainbow {
+  0% {
+    color: rgb(255, 0, 0);
+  }
+  8% {
+    color: rgb(255, 127, 0);
+  }
+  16% {
+    color: rgb(255, 255, 0);
+  }
+  25% {
+    color: rgb(127, 255, 0);
+  }
+  33% {
+    color: rgb(0, 255, 0);
+  }
+  41% {
+    color: rgb(0, 255, 127);
+  }
+  50% {
+    color: rgb(0, 255, 255);
+  }
+  58% {
+    color: rgb(0, 127, 255);
+  }
+  66% {
+    color: rgb(0, 0, 255);
+  }
+  75% {
+    color: rgb(127, 0, 255);
+  }
+  83% {
+    color: rgb(255, 0, 255);
+  }
+  91% {
+    color: rgb(255, 50, 50);
+  }
+  100% {
+    color: rgb(255, 0, 127);
+  }
+}
