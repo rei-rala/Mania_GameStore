@@ -12,13 +12,13 @@ const ItemList = ({ id, name, description, image, stock, price }) => {
 
   return (
     <>
-      <div className="product card">
+      <div className="product card" draggable>
         <span className={stock ? 'itemStock' : 'itemStock noStock'}>{stock ? `Stock ${stock}` : 'Sin stock'}</span>
         <div className="productInfo">
-          <img src={image} alt={name} />
+          <img src={image} alt={name} draggable='false' />
           <span>{name} <br /> $ {price}</span>
         </div>
-        <button className='yellowBtn' onClick={viewProductInfo}>Informacion</button>
+        <button className='yellowBtn' onClick={stock ? viewProductInfo : null}>{stock ? 'Comprar' : 'Reingresando'}</button>
       </div >
 
       {viewInfo ? <Item id={id} name={name} image={image} description={description} stock={stock} price={price} /> : null}

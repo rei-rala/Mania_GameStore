@@ -1,4 +1,4 @@
-Mania_ Store  
+Mania_ Store  (ReactJS)
 
 06-07-2021:  
 -Definidos header con Navbar, redes sociales, buscador y carrito  

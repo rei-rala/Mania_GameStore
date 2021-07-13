@@ -13,10 +13,10 @@ function App() {
     <>
       <Header />
 
-      <TEST >Clickeame!</TEST>
-
-      <ItemListContainer />
       <Carousel />
+      <ItemListContainer />
+
+      <TEST >Clickeame!</TEST>
     </>
   );
 }
