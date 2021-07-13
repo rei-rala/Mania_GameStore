@@ -1,0 +1,28 @@
+.questionBlock, .questionBlockUsed {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+
+  cursor: pointer;
+  width: 5rem;
+  height: 5rem;
+
+  box-shadow: 5px 5px 5px black;
+  z-index: 999;
+}
+
+.questionBlock:active {
+  animation: 0.1s hitted 1;
+}
+
+@keyframes hitted {
+  0% {
+    transform: translateY(-0);
+  }
+  40% {
+    transform: translateY(-15%);
+  }
+  100% {
+    transform: translateY(-0);
+  }
+}

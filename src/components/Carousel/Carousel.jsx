@@ -26,14 +26,14 @@ function Car(e) {
     Estos 2 condicionales responden a cuando nos excedemos por encima y por debajo
     de los valores iterables del carousel (respectivamente)
     */
-    if (carouselActual+pressed === elementosCarousel-1) {
+    if (carouselActual + pressed === elementosCarousel - 1) {
         newValue = 1;
     }
-    else if (carouselActual+pressed === 0) {
-        newValue = elementosCarousel-2;
+    else if (carouselActual + pressed === 0) {
+        newValue = elementosCarousel - 2;
     }
     else {
-        newValue = carouselActual+pressed
+        newValue = carouselActual + pressed
     }
     carousel.children[newValue].classList.add('active')
 
@@ -48,12 +48,12 @@ const Carousel = () => {
     return (
         <section className='carousel' data-active='1'>
             <button className='carBtn cbBack' data-carvalue='-1' onClick={Car} title='Anterior'>&lt;</button>
-                
-                <CarouselItem className='active'>  <img src='https://picsum.photos/1920/1080' alt='Producto X'/> </CarouselItem>
-                <CarouselItem>  <img src='https://picsum.photos/1921/1080' alt='Producto X'/> </CarouselItem>
-                <CarouselItem>  <img src='https://picsum.photos/1922/1080' alt='Producto X'/> </CarouselItem>
-                <CarouselItem>  <img src='https://picsum.photos/1923/1080' alt='Producto X'/> </CarouselItem>
-                <CarouselItem>  <img src='https://picsum.photos/1924/1080' alt='Producto X'/> </CarouselItem>
+
+            <CarouselItem className='active'>  <img src='https://picsum.photos/1920/1080' alt='Producto X' /> </CarouselItem>
+            <CarouselItem>  <img src='https://picsum.photos/801/600' alt='Producto X' /> </CarouselItem>
+            <CarouselItem>  <img src='https://picsum.photos/802/600' alt='Producto X' /> </CarouselItem>
+            <CarouselItem>  <img src='https://picsum.photos/803/600' alt='Producto X' /> </CarouselItem>
+            <CarouselItem>  <img src='https://picsum.photos/804/600' alt='Producto X' /> </CarouselItem>
 
             <button className='carBtn cbNext' data-carvalue='1' onClick={Car} title='Siguiente'>&gt;</button>
         </section>

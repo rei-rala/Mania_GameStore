@@ -1,8 +1,9 @@
-
 .itemListContainer {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
+
+  font-family: "Ubuntu", sans-serif;
 
   padding: 1rem;
   gap: 1.5rem;

@@ -1,0 +1,145 @@
+.product {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #222823;
+  border: 3px outset #5e5ed9;;
+  width: 14rem;
+  border-radius: 20px;
+
+  overflow: hidden;
+  padding: 0.5rem;
+
+  .itemStock {
+    position: relative;
+    transform: rotate(-40deg) translate(-30.5%, -135%);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    background-color: #fa9f42;
+    width: 100%;
+    border: 1px solid #222823;
+    box-shadow: 3px 3px 5px #222823;
+    z-index: 1;
+  }
+  .noStock {
+    background-color: #222823;
+    border-color: #fa9f42;
+    color: #fa9f42;
+  }
+
+  .productInfo {
+    color: gainsboro ;
+    text-align: center;
+    transform: translateY(-1rem);
+
+    img {
+      border: 3px inset #5e5ed9;
+      width: 12rem;
+      height: 12rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.productInformation {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: space-around;
+
+  padding: 1rem;
+  background-color: #fa9f42;
+  border: 2px solid #5e5ed9;
+  border-radius: 1rem;
+  row-gap: 1rem;
+
+  opacity: 0.97;
+  z-index: 10;
+
+  &Body {
+    display: inherit;
+    flex-flow: inherit;
+    align-items: inherit;
+    row-gap: 0.5rem;
+
+    p {
+      text-align:center;
+      width: 20rem;
+    }
+    p:first-of-type {
+      font-size: 0.75rem;
+    }
+    
+    
+    img {
+      border: 1px solid #5e5ed9;
+      width: 15rem;
+      -webkit-box-reflect: below 0 linear-gradient( transparent 90%, white 100%);
+    }
+  }
+
+.productInformationFooter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+    h3, h4 {
+      margin-bottom:1rem;
+      text-align: center;
+    }
+}
+
+.itemCountContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.5rem;
+
+    .editQuantity, .toppedQuantity {
+      cursor: pointer;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      background: #5e5ed9;
+      color: #fa9f42;
+      border-color: #fa9f42;
+    }
+
+    .toppedQuantity {
+      border: 1px outset #fa9f42;
+      cursor: not-allowed;
+      filter: grayscale(1);
+    }
+
+    .prodQuantity {
+      height: 3rem;
+      color: #5e5ed9;
+      width: 40%;
+      border-radius: 5px;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width:768px) {
+  .productInformation {
+    width: 80%;
+
+    &Body, p {
+      width:100%;
+      img {
+        max-width: 60%;
+      }
+    }
+    h3 {
+      text-align: center;
+    }
+  }
+}

@@ -45,7 +45,7 @@
       .shoppingCart {
         width: $normalizeSize;
         height: $normalizeSize;
-        filter: opacity(0.1) drop-shadow(0.1px 0.1px 0.1px $headerColor * 1.1)
+        filter: opacity(0.1) drop-shadow(0.1px 0.1px 0.1px $headerColor)
           brightness(3);
       }
 

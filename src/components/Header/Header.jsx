@@ -1,25 +1,10 @@
 import React from 'react'
 
-import Nav from './Nav/Nav';
 import RedesItem from './RedesItem/RedesItem';
-
-import logo from './joystick.png';
+import Nav from './Nav/Nav';
+import BrandLogo from './BrandLogo/BrandLogo';
 
 import './header.scss';
-
-
-const BrandLogo = () => {
-    return (
-        <div className='logoSection'>
-            <a className='Mania_' href='../../index.js#'>
-                <img className='LOGO' src={logo} alt='Mania_ Logo' />
-                <span>mAn&iacute;A_</span>
-            </a>
-        </div>
-    )
-}
-
-
 
 const Header = () => {
     return (
