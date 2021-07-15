@@ -1,80 +1,102 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Loading from "../Loading/Loading";
 import ItemList from './ItemList/ItemList'
-import './itemListContainer.scss'
+import { ItemListContainerStyle } from "./ItemListContainerStyle";
 
 
 const ItemListContainer = () => {
 
-  const [productsDisplay, setProductsDisplay] = useState(null);
+  const [displayProducts, setDisplayProducts] = useState(null);
 
-  const products = [
-    {
-      id: 1,
-      name: 'Teclado',
-      description: 'Esta es la descripcion del producto UNO y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
-      image: null,
-      price: 10_000,
-      stock: 5,
-    },
-    {
-      id: 2,
-      name: 'Mouse',
-      description: 'Esta es la descripcion del producto DOS y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
-      image: null,
-      price: 4_000,
-      stock: 3,
-    },
-    {
-      id: 3,
-      name: 'Monitor',
-      description: 'Esta es la descripcion del producto TRES y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
-      image: null,
-      price: 30_000,
-      stock: 0,
-    },
-    {
-      id: 4,
-      name: 'Gabinete',
-      description: 'Esta es la descripcion del producto CUATRO y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
-      image: null,
-      price: 20_000,
-      stock: 2,
-    },
-    {
-      id: 5,
-      name: 'Notebook',
-      description: 'Esta es la descripcion del producto CINCO y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
-      image: null,
-      price: 120_000,
-      stock: 0,
-    }
-  ];
-
-  function mappingProducts(db) {
-    function cardComponentCreate(prod) {
-      return <ItemList key={prod.id} id={prod.id} name={prod.name} description={prod.description} stock={prod.stock} image="https://picsum.photos/200/200" price={prod.price} />
-    }
-    return db.map(prod => cardComponentCreate(prod))
-  }
+  const handleDisplay = setDisplayProducts;
 
 
-  // dejo la variable por si la utilizo luego
-  const productItems = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(products)
-    }, 2000);
-  })
-    .then(resp => {
-      setProductsDisplay(mappingProducts(resp))
-    })
+  useEffect(
+    () => {
+
+      // De cierta forma, este dato importa solo porque realizaremos el fetch, de paso evito que se cree la variable con cada render
+      const products = [
+        {
+          id: 1,
+          name: 'Teclado',
+          description: 'Esta es la descripcion del producto UNO y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
+          image: '/img/joystick.png',
+          price: 10_000,
+          stock: 5,
+        },
+        {
+          id: 2,
+          name: 'Mouse',
+          description: 'Esta es la descripcion del producto DOS y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
+          image: '/img/joystick.png',
+          price: 4_000,
+          stock: 9999,
+        },
+        {
+          id: 3,
+          name: 'Monitor',
+          description: 'Esta es la descripcion del producto TRES y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
+          image: '/img/joystick.png',
+          price: 30_000,
+          stock: 0,
+        },
+        {
+          id: 4,
+          name: 'Gabinete',
+          description: 'Esta es la descripcion del producto CUATRO y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
+          image: '/img/joystick.png',
+          price: 20_000,
+          stock: 2,
+        },
+        {
+          id: 5,
+          name: 'Notebook HP i3',
+          description: 'Esta es la descripcion del producto CINCO y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
+          image: '/img/joystick.png',
+          price: 90_000,
+          stock: 0,
+        },
+        {
+          id: 6,
+          name: 'Notebook Asus i7',
+          description: 'Esta es la descripcion del producto SEIS y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
+          image: '/img/joystick.png',
+          price: 160_000,
+          stock: 1,
+        },
+      ];
+
+      const mappingProducts = db => {
+        return db.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={process.env.PUBLIC_URL + prod.image} price={prod.price} />)
+      }
+
+
+      // Si no se resuelve en 10 segundos se rechaza
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(products)
+        }, 1000);
+        setTimeout(() => {
+          reject('Timed out')
+        }, 10000);
+      })
+        .then(mappingProducts)
+        .then(handleDisplay)
+        .catch(err => {
+          handleDisplay(`Error:\n${err}`)
+          console.error(`Error:\n${err}`)
+        })
+
+
+    }, [handleDisplay])
+
 
 
   return (
-    <div className="itemListContainer">
-      {productsDisplay ? productsDisplay : <Loading seccion='productos' />}
-    </div>
+    <ItemListContainerStyle>
+      {displayProducts ? displayProducts : <Loading sectionName='productos' />}
+    </ItemListContainerStyle>
   )
 }
 

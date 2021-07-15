@@ -4,10 +4,11 @@ import React from 'react'
 
 import './loading.scss'
 
-const Loading = ({ seccion }) => {
+
+const Loading = ({ sectionName }) => {
   return (
-    <div className='loadingContainer' draggable>
-      <h6 className="loadingTitle">Cargando {seccion}</h6>
+    <div className="loadingContainer" draggable>
+      <h6 className="loadingTitle">Cargando {sectionName}</h6>
       <div className='pacman'>
         <div> </div>
         <div> </div>
@@ -15,7 +16,7 @@ const Loading = ({ seccion }) => {
         <div> </div>
         <div> </div>
       </div>
-    </div>
+    </ div>
   )
 }
 

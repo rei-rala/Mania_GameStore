@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 
-import Item from '../Item/Item'
-import './itemList.scss'
+import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer'
+import { ItemListStyle } from './ItemListStyle'
+import './ItemListMediaQ.scss'
+
 import '../../_General/button.scss'
 
-const ItemList = ({ id, name, description, image, stock, price }) => {
+const ItemList = ({ id, name, image, stock, price }) => {
   stock = parseInt(stock);
   const [viewInfo, setViewInfo] = useState(false)
 
@@ -12,16 +14,16 @@ const ItemList = ({ id, name, description, image, stock, price }) => {
 
   return (
     <>
-      <div className="product card" draggable>
+      <ItemListStyle className='productCard' draggable>
         <span className={stock ? 'itemStock' : 'itemStock noStock'}>{stock ? `Stock ${stock}` : 'Sin stock'}</span>
         <div className="productInfo">
           <img src={image} alt={name} draggable='false' />
           <span>{name} <br /> $ {price}</span>
         </div>
-        <button className='yellowBtn' onClick={stock ? viewProductInfo : null}>{stock ? 'Comprar' : 'Reingresando'}</button>
-      </div >
+        <button className='yellowBtn' onClick={viewProductInfo}>Comprar</button>
+      </ItemListStyle>
 
-      {viewInfo ? <Item id={id} name={name} image={image} description={description} stock={stock} price={price} /> : null}
+      {viewInfo ? <ItemDetailContainer id={id} /> : null}
     </>)
 }
 

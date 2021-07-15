@@ -8,8 +8,8 @@ import shoppingCart from './shoppingCart.png'
 import './nav.scss'
 import './NavCategories/navCategories.scss';
 
-const NavItem = ({ children }) => {
 
+const NavItem = ({ children }) => {
 	return (
 		<li className='nav__ul--item menuItem'>
 			{children}
@@ -17,7 +17,9 @@ const NavItem = ({ children }) => {
 	);
 }
 
+
 const Nav = () => {
+
 	return (
 		<nav className='nav'>
 			<ul className='nav__ul'>

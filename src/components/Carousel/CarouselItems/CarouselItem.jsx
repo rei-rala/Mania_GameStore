@@ -1,19 +1,13 @@
 import React from 'react'
-import "./carouselItem.scss";
+import { CarouselItemStyled } from './CarouselItemStyle';
 
-const CarouselItem = ({className, children}) =>  {
+const CarouselItem = ({ className, children }) => {
+    className = className || '';
 
-    const checkMoreClasses = ()=> {
-        let itemClasses = 'carItem '
-        if (className !== undefined) {
-            itemClasses += className
-        } 
-        return itemClasses
-    }
     return (
-        <div className={checkMoreClasses()} >
+        <CarouselItemStyled className={className += ' carItem'}>
             {children}
-        </div>
+        </CarouselItemStyled>
     )
 }
 

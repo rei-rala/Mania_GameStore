@@ -1,0 +1,25 @@
+@media (max-width:576px) {
+  .productCard {
+    flex-direction: row;
+    background: red;
+    min-width: 80%;
+
+    .itemStock {
+      top: -2vh;
+      left: -6.5vw;
+    }
+
+    .productInfo {
+      display: flex;
+      flex-direction: column;
+
+      img {
+        width: 60vw !important;
+        height: 60vw !important;
+
+        max-width: 15rem !important;
+        max-height: 15rem !important;
+      }
+    }
+  }
+}

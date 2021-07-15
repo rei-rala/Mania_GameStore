@@ -1,29 +1,29 @@
-// Credits: https://codepen.io/timothyguo/pen/KdzJrY
-/* To modify the animation, change either $primaryClr or $ballSize for a different color and a different size. */
-
-/* LESS Vars */
-$primaryClr: #fa9f42; // Adjust this value to change the color
-$ballSize: 15px; // Adjust this value to change the size
-
-$pacmanSize: $ballSize * 2.5;
-
-
 /*Scaffolding*/
 .loadingContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-  margin-top: 2rem;
-  transform: translateX(-15%);
-}
+    // Credits: https://codepen.io/timothyguo/pen/KdzJrY
+  /* To modify the animation, change either $primaryClr or $ballSize for a different color and a different size. */
+
+  $primaryClr: #fa9f42; // Adjust this value to change the color
+  $ballSize: 15px; // Adjust this value to change the size
+
+  $pacmanSize: $ballSize * 2.5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 2rem;
+    transform: translateX(-15%);
 
 
-.loadingTitle {
-  position: relative;
-  top: -75%;
-  left: 35%;
-}
+
+  .loadingTitle {
+    position: relative;
+    bottom: -75%;
+    left: 35%;
+    z-index: 99;
+  }
 
 
 /*The Pacman*/
@@ -94,4 +94,6 @@ $pacmanSize: $ballSize * 2.5;
   100% {
     transform: translateX(-$pacmanSize * 2.5);
   }
+}
+
 }

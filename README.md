@@ -14,3 +14,6 @@ Mania_ Store  (ReactJS)
 -Cards de productos ahora provienen de objetos js  
 -Implementacion de componente de carga  
 -Simulacion de carga lenta para prueba de componente de carga  
+  
+15-07-2021:  
+-Primera version de vista previa de producto que muestra informacion acerca de un producto seleccionado, esta incluye el componente para seleccionar la cantidad y eventualmente añadir al carrito
