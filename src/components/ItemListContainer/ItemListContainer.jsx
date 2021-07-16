@@ -18,6 +18,14 @@ const ItemListContainer = () => {
       // De cierta forma, este dato importa solo porque realizaremos el fetch, de paso evito que se cree la variable con cada render
       const products = [
         {
+          id: 0,
+          name: 'Dummy(?',
+          description: 'Esta es la descripcion del producto CERO y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
+          image: '/img/joystick.png',
+          price: 1_000_000_000,
+          stock: 1,
+        },
+        {
           id: 1,
           name: 'Teclado',
           description: 'Esta es la descripcion del producto UNO y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
@@ -76,7 +84,7 @@ const ItemListContainer = () => {
       new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve(products)
-        }, 1000);
+        }, 500);
         setTimeout(() => {
           reject('Timed out')
         }, 10000);

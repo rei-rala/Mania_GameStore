@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/App.scss";
 
 import Header from "./components/Header/Header";
-import Carousel from "./components/Carousel/Carousel";
+//import Carousel from "./components/Carousel/Carousel";
 
 import TEST from "./components/QuestionBlock/TEST";
 
@@ -14,9 +14,9 @@ function App() {
     <>
       <Header />
 
-      <Carousel />
+      {/* <Carousel /> */}
 
-      <ItemDetailContainer id={5} /> *
+      <ItemDetailContainer id={5} />
       <ItemListContainer />
 
       <TEST >Clickeame!</TEST>

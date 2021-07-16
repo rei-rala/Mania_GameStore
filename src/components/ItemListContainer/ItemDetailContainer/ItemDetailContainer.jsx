@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 
 import { ItemDetailContainerStyled } from "./ItemDetailContainerStyled";
 import './itemDetailContainerMediaQ.scss'
-import '../../_General/button.scss'
 
 import ItemCountContainer from "./ItemCountContainer/ItemCountContainer";
 import Loading from "../../Loading/Loading";
@@ -18,11 +17,19 @@ const ItemDetailContainer = props => {
     setViewItemName(item.name);
   }
 
-  useState(() => {
-    console.info('asd')
 
-    // De cierta forma, este dato importa solo porque realizaremos el fetch, de paso evito que se cree la variable con cada render
+  useEffect(() => {
+    console.info('Informacion de producto renderizada')
+
     const products = [
+      {
+        id: 0,
+        name: 'Dummy(?',
+        description: 'Esta es la descripcion del producto CERO y tiene varias caracteristicas, de entre ellas Lorem Ipsum',
+        image: '/img/joystick.png',
+        price: 1_000_000_000,
+        stock: 1,
+      },
       {
         id: 1,
         name: 'Teclado',
@@ -73,6 +80,7 @@ const ItemDetailContainer = props => {
       },
     ];
 
+
     const itemDetailerGen = (item) => {
       return (
         <>
@@ -84,13 +92,14 @@ const ItemDetailContainer = props => {
           </div>
 
           <div className='productInformationFooter'>
-            <h3>
+            <h1> </h1>
+            <h4>
               {
                 item.stock
                   ? `Seleccione cantidad - Max: ${item.stock}`
                   : 'Estamos reingresando el producto, disculpe las molestias'
               }
-            </h3>
+            </h4>
             <h4>Precio por unidad  <i>${item.price}</i></h4>
             <ItemCountContainer stock={item.stock} />
             <div className="commands">
@@ -100,7 +109,6 @@ const ItemDetailContainer = props => {
         </>
       )
     }
-
 
     // Si no se resuelve en 10 segundos se rechaza
     new Promise((resolve, reject) => {
@@ -122,16 +130,14 @@ const ItemDetailContainer = props => {
       })
 
 
-  }, [viewItemNo])
+  }, [props.id])
 
 
 
   return (
-    <>
-      <ItemDetailContainerStyled className="productInformation">
-        {!viewItemNo ? <Loading className='loadScreen' sectionName={viewItemName} /> : viewItemNo}
-      </ItemDetailContainerStyled>
-    </>
+    <ItemDetailContainerStyled className="productInformation">
+      {!viewItemNo ? <Loading className='loadScreen' sectionName={viewItemName} /> : viewItemNo}
+    </ItemDetailContainerStyled>
   );
 }
 

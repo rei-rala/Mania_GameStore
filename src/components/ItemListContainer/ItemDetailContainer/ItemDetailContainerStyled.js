@@ -28,6 +28,7 @@ export const ItemDetailContainerStyled = styled.div`
   }
   img {
     width: 15rem;
+    height: 15rem;
     -webkit-box-reflect: below 0 linear-gradient( transparent 90%, white 100%);
   }
 
@@ -37,10 +38,6 @@ export const ItemDetailContainerStyled = styled.div`
     align-items: inherit;
     row-gap: 1rem;
     text-align:center;
-
-
-
-
   }
 
   .ProductInformationFooter {

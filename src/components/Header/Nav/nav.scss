@@ -32,7 +32,7 @@
         padding: 0.3rem;
         margin-left: 0.5rem;
         background-color: $defultFontColor;
-        color: #a7a2a9;
+        color: hsl(283, 4%, 25%);
         border: 3px solid rgba(128, 128, 128, 0.35);
         font-size: 1.15rem;
       }
@@ -121,6 +121,6 @@
 
   .shoppingCart {
     width: 30px !important;
-    height: 30px;
+    height: 30px !important;
   }
 }

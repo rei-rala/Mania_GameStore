@@ -28,13 +28,11 @@ button {
   border-radius: 10px;
   box-shadow: $defaultShadow $defaultShadow $defaultShadow hsla(0, 0%, 0%, 0.75);
 
-  color: hsla(0, 0%, 0%, 0.5);
+  color: hsla(0, 0%, 0%, 0.75);
   transition: 0.5s;
 }
 
 button:hover {
-  background: $bkgDefault;
-  border-color: $bkgDefaultInvert;
   transform: scale(1.075, 1.09);
 }
 
@@ -49,39 +47,19 @@ button:active {
 .lightBtn {
   border-color: $bkgDefaultInvert;
   background: $bkgDefault;
-
-  &:hover {
-    border-color: $bkgDefault;
-    background: $bkgDefaultInvert;
-  }
 }
 
 .greenBtn {
   border-color: $bkgGreen;
   background: $bkgGreenInvert;
-
-  &:hover {
-    border-color: $bkgGreenInvert;
-    background: $bkgGreen;
-  }
 }
 
 .yellowBtn {
   background: $bkgYellow;
   border-color: $bkgYellowInvert;
-
-  &:hover {
-    background: $bkgYellowInvert;
-    border-color: $bkgYellow;
-  }
 }
 
 .redBtn {
   background: $bkgRed;
   border-color: $bkgRedInvert;
-
-  &:hover {
-    background: $bkgRedInvert;
-    border-color: $bkgRed;
-  }
 }

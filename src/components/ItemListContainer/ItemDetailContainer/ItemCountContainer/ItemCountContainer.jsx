@@ -24,7 +24,7 @@ const ItemCountContainer = ({ stock }) => {
   return (
     <ItemCountContainerStyle actual={count} top={stock}>
       <button className='editQuantity' onClick={manageQuantity}>-</button>
-      <input type="text" className='prodQuantity' value={count} readOnly />
+      <span className='prodQuantity'> {count}</span>
       <button className='editQuantity' onClick={manageQuantity}>+</button>
     </ItemCountContainerStyle>
   )

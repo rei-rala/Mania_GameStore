@@ -16,4 +16,8 @@ Mania_ Store  (ReactJS)
 -Simulacion de carga lenta para prueba de componente de carga  
   
 15-07-2021:  
--Primera version de vista previa de producto que muestra informacion acerca de un producto seleccionado, esta incluye el componente para seleccionar la cantidad y eventualmente añadir al carrito
+-Primera version de vista previa de producto que muestra informacion acerca de un producto seleccionado, esta incluye el componente para seleccionar la cantidad y eventualmente añadir al carrito  
+  
+16-07-2021:  
+-Implementacion de useEffect en componentes para evitar sobre renderizar  
+-Styled components

@@ -19,8 +19,9 @@ export const ItemCountContainerStyle = styled.div`
   }
 
   .prodQuantity {
-    height: 3rem;
+    line-height: 3rem;
     color: #5e5ed9;
+    background-color: #f3f6f4;
     width: 40%;
     border-radius: 5px;
     text-align: center;

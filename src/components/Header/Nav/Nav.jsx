@@ -36,7 +36,7 @@ const Nav = () => {
 						Buscar
 					</label>
 					<input id='searchInput' className="seachDesktop" type="text" placeholder='Categorias, Articulos ... ' />
-					<input id='searchInput' className="seachMobile" type="text" placeholder='Buscar...' />
+					<input id='searchInputMobile' className="seachMobile" type="text" placeholder='Buscar...' />
 				</NavItem>
 				<NavItem>
 					<img className='shoppingCart' src={shoppingCart} alt="Carrito" />
