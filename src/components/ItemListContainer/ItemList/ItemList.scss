@@ -1,14 +1,12 @@
-import styled from "styled-components";
-
-export const ItemListStyle = styled.div`
-  
+.productCard {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
   justify-content: space-between;
 
   background-color: #222823;
-  border: 3px outset #5e5ed9;;
+  color: #222823;
+  border: 3px outset #5e5ed9;
   width: 14rem;
   border-radius: 20px;
 
@@ -18,7 +16,7 @@ export const ItemListStyle = styled.div`
   .itemStock {
     position: relative;
     transform: rotate(-40deg) translate(-30.5%, -135%);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     text-align: center;
     background-color: #fa9f42;
     width: 100%;
@@ -33,7 +31,7 @@ export const ItemListStyle = styled.div`
   }
 
   .productInfo {
-    color: gainsboro ;
+    color: gainsboro;
     text-align: center;
     transform: translateY(-1rem);
 
@@ -44,4 +42,29 @@ export const ItemListStyle = styled.div`
       margin-bottom: 0.5rem;
     }
   }
-`;
+}
+
+@media (max-width: 576px) {
+  .productCard {
+    background: #222823;
+    min-width: 80%;
+
+    .itemStock {
+      top: -2vh;
+      left: -6.5vw;
+    }
+
+    .productInfo {
+      display: flex;
+      flex-direction: column;
+
+      img {
+        width: 60vw !important;
+        height: 60vw !important;
+
+        max-width: 15rem !important;
+        max-height: 15rem !important;
+      }
+    }
+  }
+}

@@ -1,13 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+
 import logo from './joystick.png';
 
 const BrandLogo = () => {
   return (
     <div className='logoSection' draggable>
-      <a className='Mania_' href='../../index.js#'>
+      <Link to='/' className='Mania_'>
         <img className='LOGO' src={logo} alt='Mania_ Logo' />
         <span>mAn&iacute;A_</span>
-      </a>
+      </Link>
     </div>
   )
 }

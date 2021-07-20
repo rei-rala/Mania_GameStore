@@ -1,0 +1,19 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  z-index: 9;
+
+  text-align: center;
+  height: 0.5rem;
+
+  background: #222823;
+  background: linear-gradient(
+    to left,
+    #5f5fdb 0%,
+    #222823 10% 90%,
+    #5f5fdb 100%
+  );
+  color: white;
+}

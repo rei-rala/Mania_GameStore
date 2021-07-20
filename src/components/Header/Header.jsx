@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import RedesItem from './RedesItem/RedesItem';
 import Nav from './Nav/Nav';
@@ -14,7 +14,9 @@ const Header = () => {
                 <RedesItem />
             </div>
             <div className='header__bottom'>
+
                 <BrandLogo />
+
                 <Nav />
             </div>
         </header>

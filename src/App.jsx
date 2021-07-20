@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./styles/App.scss";
 
 import Header from "./components/Header/Header";
@@ -8,19 +9,29 @@ import TEST from "./components/QuestionBlock/TEST";
 
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemListContainer/ItemDetailContainer/ItemDetailContainer";
+import Footer from './components/Footer/Footer'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
 
-      {/* <Carousel /> */}
+      {/* <Carousel />*/}
 
-      <ItemDetailContainer id={5} />
-      <ItemListContainer />
 
-      <TEST >Clickeame!</TEST>
-    </>
+      <Switch>
+        <Route exact path='/'>
+          <ItemListContainer />
+          <TEST >Clickeame!</TEST>
+        </Route>
+
+        <Route path='/productos/:id'>
+          <ItemDetailContainer />
+        </Route>
+      </Switch>
+
+      <Footer />
+    </BrowserRouter>
   );
 }
 

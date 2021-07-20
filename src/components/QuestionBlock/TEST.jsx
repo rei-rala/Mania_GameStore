@@ -7,7 +7,7 @@ const TEST = ({children}) => {
 
   return (
     <>
-      <button onClick={manageDisplay}> {children} </button>
+      <button className='qBtn' onClick={manageDisplay}> {children} </button>
       {display ? <QuestionBlock/>: null}
     </>
   )

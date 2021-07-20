@@ -1,0 +1,60 @@
+{
+  "products" : [
+    {
+      "id": 0,
+      "name": "Dummy",
+      "description": "Esta es la descripcion del producto CERO y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
+      "image": "/img/joystick.png",
+      "price": 1000000000,
+      "stock": 1
+    },
+    {
+      "id": 1,
+      "name": "Teclado",
+      "description": "Esta es la descripcion del producto UNO y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
+      "image": "/img/joystick.png",
+      "price": 10000,
+      "stock": 5
+    },
+    {
+      "id": 2,
+      "name": "Mouse",
+      "description": "Esta es la descripcion del producto DOS y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
+      "image": "/img/joystick.png",
+      "price": 4000,
+      "stock": 9999
+    },
+    {
+      "id": 3,
+      "name": "Monitor",
+      "description": "Esta es la descripcion del producto TRES y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
+      "image": "/img/joystick.png",
+      "price": 30000,
+      "stock": 0
+    },
+    {
+      "id": 4,
+      "name": "Gabinete",
+      "description": "Esta es la descripcion del producto CUATRO y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
+      "image": "/img/joystick.png",
+      "price": 20000,
+      "stock": 2
+    },
+    {
+      "id": 5,
+      "name": "Notebook HP i3",
+      "description": "Esta es la descripcion del producto CINCO y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
+      "image": "/img/joystick.png",
+      "price": 90000,
+      "stock": 0
+    },
+    {
+      "id": 6,
+      "name": "Notebook Asus i7",
+      "description": "Esta es la descripcion del producto SEIS y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
+      "image": "/img/joystick.png",
+      "price": 160000,
+      "stock": 1
+    }
+  ]
+}
