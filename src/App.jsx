@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+
 import "./styles/App.scss";
 
 import Header from "./components/Header/Header";
@@ -21,13 +22,16 @@ function App() {
 
       <Switch>
         <Route exact path='/'>
-          <ItemListContainer />
+          <Redirect to='/Mania_' />
         </Route>
-
         <Route exact path='/Mania_'>
           <ItemListContainer />
           <TEST >Clickeame!</TEST>
         </Route>
+        <Route path='/categorias/:category'>
+          <ItemListContainer />
+        </Route>
+
 
 
         <Route path='/productos/:id'>

@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
 
   const [viewItemNo, setViewItemNo] = useState(null);
   const [viewItemName, setViewItemName] = useState(null);
-  const id = useParams();
+  const { id } = useParams();
 
   const manageItem = item => {
     setViewItemNo(item);
@@ -59,7 +59,7 @@ const ItemDetailContainer = () => {
 
     // Si no se resuelve en 10 segundos se rechaza
     new Promise((resolve, reject) => {
-      const selectedItem = products[id.id]
+      const selectedItem = products[id]
       setViewItemName(`${selectedItem.name} - id 000${selectedItem.id}`)
 
       setTimeout(() => {

@@ -25,8 +25,11 @@ Mania\_ Store (ReactJS)
 20-07-2021:  
 Removidos styled components no necesarios  
 Añadidos react routing para home y productos especificos  
-Modificados estilos de detalles de productos  
+Modificados estilos de detalles de productos
 
-  
 21-07-2021:  
-*Routing
+\*Routing
+
+22-07-2021:  
+Creacion de atributo categorias en cada producto  
+Routing a seccion productos: notebooks y perifericos
