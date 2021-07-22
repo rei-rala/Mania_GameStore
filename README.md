@@ -25,4 +25,8 @@ Mania\_ Store (ReactJS)
 20-07-2021:  
 Removidos styled components no necesarios  
 Añadidos react routing para home y productos especificos  
-Modificados estilos de detalles de productos
+Modificados estilos de detalles de productos  
+
+  
+21-07-2021:  
+*Routing

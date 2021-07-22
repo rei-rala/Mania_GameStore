@@ -22,8 +22,13 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <ItemListContainer />
+        </Route>
+
+        <Route exact path='/Mania_'>
+          <ItemListContainer />
           <TEST >Clickeame!</TEST>
         </Route>
+
 
         <Route path='/productos/:id'>
           <ItemDetailContainer />
