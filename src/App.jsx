@@ -19,24 +19,28 @@ function App() {
 
       {/* <Carousel />*/}
 
+      <TEST >Clickeame!</TEST>
 
       <Switch>
         <Route exact path='/'>
-          <Redirect to='/Mania_' />
-        </Route>
-        <Route exact path='/Mania_'>
-          <ItemListContainer />
-          <TEST >Clickeame!</TEST>
-        </Route>
-        <Route path='/categorias/:category'>
           <ItemListContainer />
         </Route>
+        <Route path='/Mania_'>
+          <Redirect to='/' />
+        </Route>
 
 
-
+        <Route exact path='/productos/'>
+          <ItemListContainer />
+        </Route>
         <Route path='/productos/:id'>
           <ItemDetailContainer />
         </Route>
+
+        <Route path='/:category'>
+          <ItemListContainer />
+        </Route>
+
       </Switch>
 
       <Footer />

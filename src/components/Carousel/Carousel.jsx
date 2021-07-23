@@ -49,7 +49,7 @@ const Carousel = () => {
         <section className='carousel' data-active='1'>
             <button className='carBtn cbBack' data-carvalue='-1' onClick={Car} title='Anterior'>&lt;</button>
 
-            <CarouselItem className='active'>  <img src='https://picsum.photos/1920/1080' alt='Producto X' /> </CarouselItem>
+            <CarouselItem className='active'>  <img src='https://picsum.photos/800/600' alt='Producto X' /> </CarouselItem>
             <CarouselItem>  <img src='https://picsum.photos/801/600' alt='Producto X' /> </CarouselItem>
             <CarouselItem>  <img src='https://picsum.photos/802/600' alt='Producto X' /> </CarouselItem>
             <CarouselItem>  <img src='https://picsum.photos/803/600' alt='Producto X' /> </CarouselItem>

@@ -10,41 +10,63 @@ import './itemDetailContainer.scss'
 
 const ItemDetailContainer = () => {
 
-  const [viewItemNo, setViewItemNo] = useState(null);
-  const [viewItemName, setViewItemName] = useState(null);
+  const [viewItemNo, setViewItemNo] = useState();
+  const [viewItemName, setViewItemName] = useState();
   const { id } = useParams();
 
-  const manageItem = item => {
-    setViewItemNo(item);
-    setViewItemName(item.name);
-  }
+  const manageItem = item => setViewItemNo(item);
+
 
 
   useEffect(() => {
     console.info('Informacion de producto renderizada')
 
-    const itemDetailerGen = (item) => {
+    // Si no se resuelve en 10 segundos se rechaza
+    new Promise((resolve, reject) => {
+      const selectedItem = products[id]
+      setViewItemName(`${selectedItem.name} - id 000${selectedItem.id}`)
 
-      return (
-        <>
+      setTimeout(() => {
+        resolve(selectedItem)
+      }, 1000);
+      setTimeout(() => {
+        reject('Timed out')
+      }, 10000);
+    })
+      .then(manageItem)
+      .catch(err => {
+        setViewItemNo(`Error:\n${err}`)
+        console.error(`Error:\n${err}`)
+      })
+  })
+
+
+
+  return (
+
+    <div className="productInformation">
+
+      {!viewItemNo
+        ? <Loading className='loadScreen' sectionName={viewItemName} />
+        : <>
           <div className='productInformationBody'>
-            <h1>{item.name}</h1>
-            <p>Codigo Producto 000{item.id}</p>
-            <img src={process.env.PUBLIC_URL + item.image} alt={item.name} />
-            <p>{item.description}</p>
+            <h1>{viewItemNo.name}</h1>
+            <p>Codigo Producto 000{viewItemNo.id}</p>
+            <img src={process.env.PUBLIC_URL + viewItemNo.image} alt={viewItemNo.name} />
+            <p>{viewItemNo.description}</p>
           </div>
 
           <div className='productInformationFooter'>
             <h1> </h1>
             <h4>
               {
-                item.stock
-                  ? `Seleccione cantidad - Max: ${item.stock}`
+                viewItemNo.stock
+                  ? `Seleccione cantidad - Max: ${viewItemNo.stock}`
                   : 'Estamos reingresando el producto, disculpe las molestias'
               }
             </h4>
-            <h4>Precio por unidad  <i>${item.price}</i></h4>
-            <ItemCountContainer stock={item.stock} />
+            <h4>Precio por unidad  <i>${viewItemNo.price}</i></h4>
+            <ItemCountContainer stock={viewItemNo.stock} />
             <div className="commands">
               <button>Agregar al carrito</button>
 
@@ -54,36 +76,10 @@ const ItemDetailContainer = () => {
             </div>
           </div>
         </>
-      )
-    }
+      }
 
-    // Si no se resuelve en 10 segundos se rechaza
-    new Promise((resolve, reject) => {
-      const selectedItem = products[id]
-      setViewItemName(`${selectedItem.name} - id 000${selectedItem.id}`)
-
-      setTimeout(() => {
-        resolve(itemDetailerGen(selectedItem))
-      }, 1000);
-      setTimeout(() => {
-        reject('Timed out')
-      }, 10000);
-    })
-      .then(itemGenerated => manageItem(itemGenerated))
-      .catch(err => {
-        setViewItemNo(`Error:\n${err}`)
-        console.error(`Error:\n${err}`)
-      })
-
-
-  }, [id])
-
-
-
-  return (
-    <div className="productInformation">
-      {!viewItemNo ? <Loading className='loadScreen' sectionName={viewItemName} /> : viewItemNo}
     </div>
+
   );
 }
 

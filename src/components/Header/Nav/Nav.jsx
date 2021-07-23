@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import NavCategories from './NavCategories/NavCategories';
 import NavCart from './NavCart/NavCart'
@@ -25,9 +26,11 @@ const Nav = () => {
 			<ul className='nav__ul'>
 
 				<NavItem>
-					<label htmlFor='navCategories' className='showCatNav' /* onMouseEnter={dropdown} */>
-						Categor&iacute;as
-					</label>
+					<Link to='/productos'>
+						<label htmlFor='navCategories' className='showCatNav' /* onMouseEnter={dropdown} */>
+							Categor&iacute;as
+						</label>
+					</Link>
 					<NavCategories className='catNav' />
 				</NavItem>
 
