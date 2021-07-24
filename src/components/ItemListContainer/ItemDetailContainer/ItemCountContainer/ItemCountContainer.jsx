@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ItemCountContainerStyle } from './ItemCountContainerStyle';
 
-const ItemCountContainer = ({ stock }) => {
+const ItemCountContainer = ({ count, stock, setCount }) => {
 
-  const [count, setCount] = useState(0);
 
   const manageQuantity = (e) => {
     if (e.target.innerText === '+') {
@@ -18,10 +17,11 @@ const ItemCountContainer = ({ stock }) => {
     };
   }
 
-  console.info('Cantidad de producto renderizada')
+  console.log('Renderizado: ItemCountContainer')
 
 
   return (
+    /* actual es una propiedad para determinar el estado del button  */
     <ItemCountContainerStyle actual={count} top={stock}>
       <button className='editQuantity' onClick={manageQuantity}>-</button>
       <span className='prodQuantity'> {count}</span>

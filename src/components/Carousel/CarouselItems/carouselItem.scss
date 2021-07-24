@@ -1,0 +1,19 @@
+.carItem {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+
+  overflow: hidden;
+
+  &:not(.active) {
+    display: none;
+  }
+  img {
+    object-fit: contain;
+  }
+}

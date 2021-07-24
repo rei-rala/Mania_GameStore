@@ -1,6 +1,6 @@
 Mania\_ Store (ReactJS)
 
-![](https://i.imgur.com/21kU9ek.gif)
+![](https://i.imgur.com/xZDDUKw.gif)
 
 Mania\_ es un e-commerce de articulos de computacion y videojuegos, el nombre surge de un pequeño local 'de la infancia' que alquilaba cartuchos de consolas como Sega y NES.
 
@@ -48,3 +48,7 @@ Routing a seccion productos: notebooks y perifericos
 
 23-07-2021:  
 Alguna mejora en el README
+
+24-07-2021:  
+Handling de ingreso de direccion a id incorrecto de producto  
+Componente ItemCountConfirm: Confirmacion de cantidad de producto seleccionado

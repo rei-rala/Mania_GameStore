@@ -23,27 +23,32 @@ const ItemListContainer = () => {
     // Si no se resuelve en 10 segundos se rechaza, al resolverse se crean las cards de los productos mediante la funcion mappingProducts
     new Promise((resolve, reject) => {
       handleDisplay(null)
+
       setTimeout(() => {
-        console.log('hola')
         resolve(products)
       }, 1000);
       setTimeout(() => {
-        reject('Timed out')
-      }, 2000);
+        reject('Error al cargar los resultados')
+      }, 10000);
     })
       .then(selectCategory)
       .catch(err => {
-        handleDisplay(`Error: \n${err}`)
+        handleDisplay(err)
         console.error(`Error: \n${err}`)
       })
+      .finally(console.log('Renderizado: ItemListContainer'))
   }, [category])
 
 
 
   return (
-    <div className="ItemListContainer">
-      {displayProducts ? displayProducts : <Loading sectionName={category || 'productos'} />}
-    </div>
+    <>
+      <h2 className='categoryTitle'>{category ? category.toUpperCase() : 'Todos los productos'}</h2>
+      <hr />
+      <div className="ItemListContainer">
+        {displayProducts ? displayProducts : <Loading sectionName={category || 'productos'} />}
+      </div>
+    </>
   )
 }
 

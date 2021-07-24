@@ -7,38 +7,59 @@ import ItemCountContainer from "./ItemCountContainer/ItemCountContainer";
 import Loading from "../../Loading/Loading";
 
 import './itemDetailContainer.scss'
+import ItemCountConfirm from "./ItemCountConfirm/ItemCountConfirm";
 
 const ItemDetailContainer = () => {
 
-  const [viewItemNo, setViewItemNo] = useState();
-  const [viewItemName, setViewItemName] = useState();
+  const [count, setCount] = useState(0);
+  const [buyState, setBuyState] = useState(false);
+
+  // viewItemNo refiere al objeto que se recibira
+  const [viewItemNo, setViewItemNo] = useState({});
+  const [viewItemName, setViewItemName] = useState('');
   const { id } = useParams();
 
   const manageItem = item => setViewItemNo(item);
-
+  const manageItemName = item => setViewItemName(item);
+  const handleBuyState = () => setBuyState(!buyState);
 
 
   useEffect(() => {
-    console.info('Informacion de producto renderizada')
+    try {
+      const selectedItem = products.find(p => p.id === parseInt(id));
 
-    // Si no se resuelve en 10 segundos se rechaza
-    new Promise((resolve, reject) => {
-      const selectedItem = products[id]
-      setViewItemName(`${selectedItem.name} - id 000${selectedItem.id}`)
+      const getProducts = new Promise((resolve, reject) => {
+        setViewItemNo(null)
 
-      setTimeout(() => {
-        resolve(selectedItem)
-      }, 1000);
-      setTimeout(() => {
-        reject('Timed out')
-      }, 10000);
-    })
-      .then(manageItem)
-      .catch(err => {
-        setViewItemNo(`Error:\n${err}`)
-        console.error(`Error:\n${err}`)
+        if (!selectedItem) {
+          setTimeout(() => {
+            reject('Producto no encontrado')
+          }, 499)
+        } else {
+          setTimeout(() => {
+            resolve(selectedItem)
+          }, 500)
+          setTimeout(() => {
+            reject('Timed out')
+          }, 10000)
+        }
       })
-  })
+
+
+      getProducts
+        .then(manageItem)
+        .catch(err => {
+          manageItemName('Error')
+          manageItem(`Error: ${err}`)
+        })
+        .finally(console.log('Renderizado: ItemDetailContainer'))
+    }
+    catch (error) {
+      manageItemName('Error')
+      manageItem(`Error: ${error}`)
+    }
+    return function cleanup() { }
+  }, [id])
 
 
 
@@ -48,37 +69,51 @@ const ItemDetailContainer = () => {
 
       {!viewItemNo
         ? <Loading className='loadScreen' sectionName={viewItemName} />
-        : <>
-          <div className='productInformationBody'>
-            <h1>{viewItemNo.name}</h1>
-            <p>Codigo Producto 000{viewItemNo.id}</p>
-            <img src={process.env.PUBLIC_URL + viewItemNo.image} alt={viewItemNo.name} />
-            <p>{viewItemNo.description}</p>
-          </div>
+        : viewItemName === 'Error'
+          ? <> {viewItemNo} <Link to='/' className="commands"> <button>Volver a home</button> </Link></>
+          : <>
+            <div className='productInformationBody'>
+              <h1>{viewItemNo.name}</h1>
+              <p>Codigo Producto 000{viewItemNo.id}</p>
+              <img src={process.env.PUBLIC_URL + viewItemNo.image} alt={viewItemNo.name} />
+              <p>{viewItemNo.description}</p>
+            </div>
 
-          <div className='productInformationFooter'>
-            <h1> </h1>
-            <h4>
+            <div className='productInformationFooter'>
+              <h1> </h1>
+              <h4>
+                {
+                  viewItemNo.stock
+                    ? `Seleccione cantidad - Max: ${viewItemNo.stock}`
+                    : 'Estamos reingresando el producto, disculpe las molestias'
+                }
+              </h4>
+              <h4>Precio por unidad  <i>${viewItemNo.price}</i></h4>
               {
                 viewItemNo.stock
-                  ? `Seleccione cantidad - Max: ${viewItemNo.stock}`
-                  : 'Estamos reingresando el producto, disculpe las molestias'
-              }
-            </h4>
-            <h4>Precio por unidad  <i>${viewItemNo.price}</i></h4>
-            <ItemCountContainer stock={viewItemNo.stock} />
-            <div className="commands">
-              <button>Agregar al carrito</button>
+                  ? buyState
+                    ? <>
+                      <ItemCountConfirm count={count} price={viewItemNo.price} />
+                      <button> Confirmar </button>
+                      <button onClick={handleBuyState}> Cancelar </button>
+                    </>
+                    : <>
+                      <ItemCountContainer count={count} setCount={setCount} stock={viewItemNo.stock} />
+                      <button onClick={handleBuyState} disabled={count ? false : true}>Agregar al carrito</button>
+                      <Link to='/' className="commands"> <button>Volver</button> </Link>
+                    </>
 
-              <Link to='/'>
-                <button>Volver</button>
-              </Link>
+                  : <>
+                    <p className='noStockMessage'>Por favor, consulte en otro momento</p>
+                    <Link to='/' className="commands"> <button >Volver</button> </Link>
+                  </>
+              }
+
             </div>
-          </div>
-        </>
+          </>
       }
 
-    </div>
+    </div >
 
   );
 }

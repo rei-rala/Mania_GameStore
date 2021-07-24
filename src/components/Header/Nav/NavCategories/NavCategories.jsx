@@ -26,9 +26,9 @@ const NavCategories = () => {
                 ? <>
                     <div className="container">
 
-                        <Link className="cat1 categoriaMenu" to='/notebooks'> Notebooks </Link>
-                        <Link className="cat2 categoriaMenu" to='/perifericos'> Perifericos </Link>
-                        <Link className="cat3 categoriaMenu" to='./misc'>Misc</Link>
+                        <Link className="cat1 categoriaMenu" to='/categorias/notebooks'> Notebooks </Link>
+                        <Link className="cat2 categoriaMenu" to='/categorias/perifericos'> Perifericos </Link>
+                        <Link className="cat3 categoriaMenu" to='/categorias/misc'>Misc</Link>
 
                         {/*
                         <div className="opc1 categoriaOpcion">

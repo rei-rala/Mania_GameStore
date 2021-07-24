@@ -1,13 +1,12 @@
 import React from 'react'
-import { CarouselItemStyled } from './CarouselItemStyle';
-
+import './carouselItem.scss'
 const CarouselItem = ({ className, children }) => {
     className = className || '';
 
     return (
-        <CarouselItemStyled className={className += ' carItem'}>
+        <div className={className += ' carItem'}>
             {children}
-        </CarouselItemStyled>
+        </div>
     )
 }
 

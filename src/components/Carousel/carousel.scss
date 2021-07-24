@@ -48,9 +48,6 @@
 }
 
 .carousel {
-  .carItem:not(.active) {
-    display: none;
-  }
   .active {
     animation: 0.5s carouselAparece ease-in 1;
   }

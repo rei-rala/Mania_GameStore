@@ -30,14 +30,14 @@ function App() {
         </Route>
 
 
-        <Route exact path='/productos/'>
+        <Route exact path='/productos'>
           <ItemListContainer />
         </Route>
         <Route path='/productos/:id'>
           <ItemDetailContainer />
         </Route>
 
-        <Route path='/:category'>
+        <Route path='/categorias/:category'>
           <ItemListContainer />
         </Route>
 
