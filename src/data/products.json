@@ -7,7 +7,8 @@
       "description": "Esta es la descripcion del producto CERO y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
       "image": "/img/joystick.png",
       "price": 1000000000,
-      "stock": 1
+      "stock": 1,
+      "promoted": false
     },
     {
       "id": 1,
@@ -16,7 +17,8 @@
       "description": "Esta es la descripcion del producto UNO y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
       "image": "/img/joystick.png",
       "price": 10000,
-      "stock": 5
+      "stock": 5,
+      "promoted": false
     },
     {
       "id": 2,
@@ -25,7 +27,8 @@
       "description": "Esta es la descripcion del producto DOS y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
       "image": "/img/joystick.png",
       "price": 4000,
-      "stock": 9999
+      "stock": 9999,
+      "promoted": false
     },
     {
       "id": 3,
@@ -34,7 +37,8 @@
       "description": "Esta es la descripcion del producto TRES y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
       "image": "/img/joystick.png",
       "price": 30000,
-      "stock": 0
+      "stock": 0,
+      "promoted": false
     },
     {
       "id": 4,
@@ -43,7 +47,8 @@
       "description": "Esta es la descripcion del producto CUATRO y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
       "image": "/img/joystick.png",
       "price": 20000,
-      "stock": 2
+      "stock": 2,
+      "promoted": true
     },
     {
       "id": 5,
@@ -52,7 +57,8 @@
       "description": "Esta es la descripcion del producto CINCO y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
       "image": "/img/joystick.png",
       "price": 90000,
-      "stock": 0
+      "stock": 0,
+      "promoted": false
     },
     {
       "id": 6,
@@ -61,7 +67,8 @@
       "description": "Esta es la descripcion del producto SEIS y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
       "image": "/img/joystick.png",
       "price": 160000,
-      "stock": 1
+      "stock": 1,
+      "promoted": false
     }
   ]
 }

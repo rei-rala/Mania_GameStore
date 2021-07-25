@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
-import { products } from '../../../test.json'
+import { products } from '../../../data/products.json'
 import ItemCountContainer from "./ItemCountContainer/ItemCountContainer";
 import Loading from "../../Loading/Loading";
 
@@ -88,14 +88,22 @@ const ItemDetailContainer = () => {
                     : 'Estamos reingresando el producto, disculpe las molestias'
                 }
               </h4>
-              <h4>Precio por unidad  <i>${viewItemNo.price}</i></h4>
+              <h4>Precio por unidad  ${
+                viewItemNo.promoted === true
+                  ? <> {viewItemNo.price * 0.85} <i className='discount'> 15% OFF!</i> </>
+                  : viewItemNo.price}
+              </h4>
               {
                 viewItemNo.stock
                   ? buyState
                     ? <>
-                      <ItemCountConfirm count={count} price={viewItemNo.price} />
-                      <button> Confirmar </button>
-                      <button onClick={handleBuyState}> Cancelar </button>
+                      <ItemCountConfirm count={count} price={
+                        viewItemNo.promoted === true
+                          ? (viewItemNo.price * 0.85)
+                          : viewItemNo.price
+                      } />
+                      <Link to='/cart'> <button> Confirmar </button></Link>
+                      <button onClick={handleBuyState}> Modificar </button>
                     </>
                     : <>
                       <ItemCountContainer count={count} setCount={setCount} stock={viewItemNo.stock} />

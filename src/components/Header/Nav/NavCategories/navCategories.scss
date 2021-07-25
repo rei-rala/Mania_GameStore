@@ -3,10 +3,9 @@
 .catNav {
   position: absolute;
   top: 6rem;
-  right: 0;
 
   margin: 0 0.5rem;
-  padding: $defaultFontSize;
+  padding: $defaultFontSize 0;
   max-width: 60%;
 
   background-color: $headerColor;
@@ -29,6 +28,14 @@
 
   .categoriaMenu {
     border-color: $defaultBkgBlue;
+  }
+  .categoriaMenu:last-child {
+    border: none;
+  }
+
+  a:hover {
+    color: #5e5ed9;
+    text-decoration: none;
   }
 }
 
@@ -64,52 +71,14 @@
   }
 }
 
-.container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 2fr 5fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 1rem 1rem;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "cat1 opc1"
-    "cat2 opc2"
-    "cat3 opc3";
-}
-
-.cat1 {
-  grid-area: cat1;
-}
-
-.cat2 {
-  grid-area: cat2;
-}
-
-.cat3 {
-  grid-area: cat3;
-}
-
 .categoriaMenu {
   border-right: $defaultFontSize * 0.3 outset $defaultBkgGray;
   padding-right: $defaultFontSize;
-  margin-right: $defaultFontSize;
 }
 
 .categoriaMenu,
 .categoriaOpcion {
   padding: $defaultFontSize * 1;
-}
-
-.opc1 {
-  grid-area: opc1;
-}
-
-.opc2 {
-  grid-area: opc2;
-}
-
-.opc3 {
-  grid-area: opc3;
 }
 
 .categoriaOpcion {

@@ -1,53 +1,35 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import './navCategories.scss';
 
-import { products } from '../../../../test.json'
+import { categories } from '../../../../data/categories.json'
 
 
 const NavCategories = () => {
 
-    const [productList, setProductList] = useState({})
+	const [categoriesList, setCategoriesList] = useState()
+	const manageCategoriesList = categories => setCategoriesList(categories.map(cat => <NavLink key={cat.id} className="categoriaMenu" to={`/categorias/${cat.category}`} activeClassName="currentPage"> {cat.category} </NavLink>))
 
-    useEffect(() => {
-        new Promise((resolve, reject) => {
-            resolve(products)
-        })
-            .then(setProductList)
-    }, [setProductList])
+	useEffect(() => {
+		console.info('Fetch de categorias')
+		new Promise((resolve, reject) => {
+			resolve(categories)
+		})
+			.then(manageCategoriesList)
+	}, [])
 
 
 
-    return (
-        <div id='navCategories' className='catNav'>
-
-            {productList
-                ? <>
-                    <div className="container">
-
-                        <Link className="cat1 categoriaMenu" to='/categorias/notebooks'> Notebooks </Link>
-                        <Link className="cat2 categoriaMenu" to='/categorias/perifericos'> Perifericos </Link>
-                        <Link className="cat3 categoriaMenu" to='/categorias/misc'>Misc</Link>
-
-                        {/*
-                        <div className="opc1 categoriaOpcion">
-                                <p>Note 1</p>
-                            </div>
-                            <div className="opc2 categoriaOpcion">
-                                <p>periferico 1</p>
-
-                            </div>
-                            <div className="opc3 categoriaOpcion">
-                                <p>marca 1</p>
-                            </div>
-                        */}
-                    </div>
-                </>
-                : {}}
-
-        </div >
-    );
+	return (
+		<div id='navCategories' className='catNav'>
+			{
+				categoriesList
+					? <div className="container"> {categoriesList} </div>
+					: 'Aguarde un momento'
+			}
+		</div >
+	);
 };
 
 

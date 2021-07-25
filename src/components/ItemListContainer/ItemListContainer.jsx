@@ -5,10 +5,11 @@ import Loading from "../Loading/Loading";
 import ItemList from './ItemList/ItemList'
 import "./itemListContainer.scss";
 
-import { products } from '../../test.json'
+import { products } from '../../data/products.json'
+import { categories } from '../../data/categories.json'
 
 const ItemListContainer = () => {
-  const { category } = useParams();
+  const { categoryName } = useParams();
   const [displayProducts, setDisplayProducts] = useState(null);
 
 
@@ -16,13 +17,15 @@ const ItemListContainer = () => {
 
     const handleDisplay = setDisplayProducts;
 
-    const selectCategory = db => category ? mappingProducts(db.filter(prods => prods.category === category)) : mappingProducts(db);
-    const mappingProducts = db => handleDisplay(db.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={process.env.PUBLIC_URL + prod.image} price={prod.price} />));
+    const selectCategory = db => categoryName ? mappingProducts(db.filter(prods => prods.category === categoryName)) : mappingProducts(db);
+    const mappingProducts = prodList => handleDisplay(prodList.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={process.env.PUBLIC_URL + prod.image} price={prod.price} promoted={prod.promoted} />));
 
 
     // Si no se resuelve en 10 segundos se rechaza, al resolverse se crean las cards de los productos mediante la funcion mappingProducts
     new Promise((resolve, reject) => {
       handleDisplay(null)
+
+      if (!(categories.map(c => c.category)).includes(categoryName) && categoryName) { reject('Categoria no encontrada') };
 
       setTimeout(() => {
         resolve(products)
@@ -37,16 +40,16 @@ const ItemListContainer = () => {
         console.error(`Error: \n${err}`)
       })
       .finally(console.log('Renderizado: ItemListContainer'))
-  }, [category])
+  }, [categoryName])
 
 
 
   return (
     <>
-      <h2 className='categoryTitle'>{category ? category.toUpperCase() : 'Todos los productos'}</h2>
+      <h2 className='categoryTitle'>{categoryName ? categoryName.toUpperCase() : 'Todos los productos'}</h2>
       <hr />
       <div className="ItemListContainer">
-        {displayProducts ? displayProducts : <Loading sectionName={category || 'productos'} />}
+        {displayProducts ? displayProducts : <Loading sectionName={categoryName || 'productos'} />}
       </div>
     </>
   )

@@ -1,8 +1,10 @@
 @import "./variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Ubuntu:wght@300&display=swap");
 
 body {
   min-height: 100vh;
   height: 100%;
+  min-width: 100%;
   width: 100%;
 
   background: $bkgDefault 100%;

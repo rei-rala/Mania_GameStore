@@ -1,0 +1,16 @@
+{
+  "categories" : [
+    {
+      "id": 0,
+      "category": "notebooks"
+    },
+    {
+      "id": 1,
+      "category": "perifericos"
+    },
+    {
+      "id": 2,
+      "category": "misc"
+    }
+  ]
+}

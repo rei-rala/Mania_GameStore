@@ -1,0 +1,18 @@
+.menuBtnContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
+
+  width: 1rem;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.menuBtnContainer > div {
+  background-color: black;
+  border-radius: 1rem;
+
+  padding: 0.1rem 0.75rem;
+}

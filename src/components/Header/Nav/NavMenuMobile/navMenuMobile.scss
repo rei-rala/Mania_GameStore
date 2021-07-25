@@ -1,0 +1,46 @@
+.mobileMenuActive {
+  position: fixed;
+  top: 4.75rem;
+  left: 0;
+
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+
+  padding: 1rem;
+  /* height: 80vh; */
+  width: 100%;
+
+  color: #5e5ed9;
+  background-color: hsl(30, 95%, 62%);
+  border-bottom: 0.25rem inset #5e5ed9;
+
+  cursor: default;
+
+  & hr {
+    margin: 0.5rem 0;
+    width: 100%;
+    border-color: #5e5ed9;
+  }
+
+  & .catContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    margin: 1rem;
+  }
+
+  .menuSubTitle,
+  .menuTitle {
+    margin: 0.5rem;
+  }
+
+  .mainLink {
+    font-size: 1.1rem;
+    margin: 0.25rem;
+  }
+}

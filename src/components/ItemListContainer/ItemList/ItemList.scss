@@ -44,6 +44,16 @@
       margin-bottom: 0.5rem;
     }
   }
+
+  .lastPrice {
+    text-decoration: line-through;
+    text-decoration-color: red;
+    text-decoration-thickness: 3px;
+    font-size: 0.75rem;
+  }
+  .promoPrice {
+    color: #fa9f42;
+  }
 }
 
 .productCard:hover {

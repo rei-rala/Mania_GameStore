@@ -10,11 +10,13 @@ Dependencias del proyecto:
 *styled-components: Formato 'condicional' a componentes especificos que lo requieran
 *node-sass: Compilacion y archivos css con fuente en SCSS
 
+---
+
 Changelog:
 
 06-07-2021:  
 -Definidos header con Navbar, redes sociales, buscador y carrito  
--Primera implementacion de carousel (oculto, hecho en js vanilla)  
+-Primera implementacion de carousel  
 -Primer modelo de botones  
 -Primer modelo de cards de productos
 
@@ -52,3 +54,10 @@ Alguna mejora en el README
 24-07-2021:  
 Handling de ingreso de direccion a id incorrecto de producto  
 Componente ItemCountConfirm: Confirmacion de cantidad de producto seleccionado
+
+25-07-2021:  
+Mejorado NavBar para 'mobile' (width<864px): Iconos, busqueda, menu  
+Mejorado NavBar desktop: menu categorias  
+NavBars con redirects a categorias mapeadas  
+Carousel en home (/Mania\_)
+Componente de item para articulo/s en promocion (actualmente: Gabinete, "15% off"), disponible en home
