@@ -1,6 +1,11 @@
 Mania\_ Store (ReactJS)
 
-![](https://i.imgur.com/xZDDUKw.gif)
+Preview ultima version:  
+Desktop:  
+![](https://imgur.com/iCc0y0e.gif)
+
+"Mobile":  
+![](https://imgur.com/44JzVeZ.gif)
 
 Mania\_ es un e-commerce de articulos de computacion y videojuegos, el nombre surge de un pequeño local 'de la infancia' que alquilaba cartuchos de consolas como Sega y NES.
 
@@ -51,6 +56,8 @@ Routing a seccion productos: notebooks y perifericos
 23-07-2021:  
 Alguna mejora en el README
 
+![](https://i.imgur.com/xZDDUKw.gif)
+
 24-07-2021:  
 Handling de ingreso de direccion a id incorrecto de producto  
 Componente ItemCountConfirm: Confirmacion de cantidad de producto seleccionado
@@ -60,4 +67,7 @@ Mejorado NavBar para 'mobile' (width<864px): Iconos, busqueda, menu
 Mejorado NavBar desktop: menu categorias  
 NavBars con redirects a categorias mapeadas  
 Carousel en home (/Mania\_)
-Componente de item para articulo/s en promocion (actualmente: Gabinete, "15% off"), disponible en home
+Componente de item para articulo/s en promocion (actualmente: Gabinete, "15% off"), disponible en home  
+  
+26-07-2021:  
+Previews en README.md
