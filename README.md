@@ -2,10 +2,10 @@ Mania\_ Store (ReactJS)
 
 Preview ultima version:  
 Desktop:  
-![](https://imgur.com/iCc0y0e.gif)
+![Giphy](https://media.giphy.com/media/35YgWly2BJWACycj7G/giphy.gif)
 
 "Mobile":  
-![](https://imgur.com/44JzVeZ.gif)
+![Giphy](https://media.giphy.com/media/fWYOtZmN67YHghkVF1/giphy.gif)
 
 Mania\_ es un e-commerce de articulos de computacion y videojuegos, el nombre surge de un pequeño local 'de la infancia' que alquilaba cartuchos de consolas como Sega y NES.
 
