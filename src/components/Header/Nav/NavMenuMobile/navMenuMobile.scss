@@ -13,25 +13,32 @@
   /* height: 80vh; */
   width: 100%;
 
-  color: #5e5ed9;
+  color: hsl(240, 62%, 61%);
   background-color: hsl(30, 95%, 62%);
-  border-bottom: 0.25rem inset #5e5ed9;
+  border-bottom: 0.25rem inset hsl(240, 62%, 61%);
 
   cursor: default;
+  scroll-behavior: auto;
 
   & hr {
     margin: 0.5rem 0;
     width: 100%;
-    border-color: #5e5ed9;
+    border-color: hsl(240, 62%, 61%);
   }
 
   & .catContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
 
+    width: 100%;
     margin: 1rem;
+
+    & a {
+      width: fit-content;
+    }
   }
 
   .menuSubTitle,
@@ -42,5 +49,21 @@
   .mainLink {
     font-size: 1.1rem;
     margin: 0.25rem;
+  }
+
+  .promoNavMobile {
+    animation: 2s agrandar infinite;
+  }
+}
+
+@keyframes agrandar {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }

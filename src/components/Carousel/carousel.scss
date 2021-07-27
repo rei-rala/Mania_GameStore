@@ -12,6 +12,10 @@
 
 @import "../../styles/variables.scss";
 
+.carouselHint {
+  text-align: center;
+}
+
 .carousel {
   display: flex;
   align-items: center;

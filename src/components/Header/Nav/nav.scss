@@ -74,6 +74,7 @@
           brightness(3);
       }
 
+      .cartActive > .shoppingCart,
       .menuBtnContainerActive,
       .menuMobile:hover,
       .shoppingCart:hover,
@@ -162,5 +163,44 @@
     min-height: 1.5rem;
     width: 1.5rem !important;
     height: 1.5rem !important;
+  }
+}
+
+.cartWithOrder {
+  animation: 1.5s bounce infinite ease-in;
+  -webkit-animation: 1.5s bounce infinite ease-in;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes bounce {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(7deg);
+  }
+  50% {
+    transform: rotate(-7deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+    transform: rotate(0deg);
+  }
+  35% {
+    transform: rotate(35deg);
+  }
+  70% {
+    transform: rotate(-35deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }

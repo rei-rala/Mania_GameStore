@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+
+import { Context } from "../../../context/Context";
 
 import { products } from '../../../data/products.json'
 import ItemCountContainer from "./ItemCountContainer/ItemCountContainer";
@@ -10,6 +12,7 @@ import './itemDetailContainer.scss'
 import ItemCountConfirm from "./ItemCountConfirm/ItemCountConfirm";
 
 const ItemDetailContainer = () => {
+  const { addToCart } = useContext(Context)
 
   const [count, setCount] = useState(0);
   const [buyState, setBuyState] = useState(false);
@@ -102,7 +105,7 @@ const ItemDetailContainer = () => {
                           ? (viewItemNo.price * 0.85)
                           : viewItemNo.price
                       } />
-                      <Link to='/cart'> <button> Confirmar </button></Link>
+                      <button onClick={() => { addToCart(viewItemNo, count) }}> Confirmar </button>
                       <button onClick={handleBuyState}> Modificar </button>
                     </>
                     : <>

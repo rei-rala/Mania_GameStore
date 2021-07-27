@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 import NavCategories from './NavCategories/NavCategories';
 import NavMenuMobile from './NavMenuMobile/NavMenuMobile';
@@ -11,6 +11,7 @@ import searchImg from './search.png'
 
 import './nav.scss'
 import './NavCategories/navCategories.scss';
+import { Context } from '../../../context/Context';
 
 
 const NavItem = ({ children }) => {
@@ -23,6 +24,8 @@ const NavItem = ({ children }) => {
 
 
 const Nav = () => {
+
+	const { cart } = useContext(Context)
 
 	const [mobileMenu, setMobileMenu] = useState(false);
 	const [mobileSearch, setMobileSearch] = useState(false);
@@ -62,9 +65,9 @@ const Nav = () => {
 					</label>
 				</NavItem>
 				<NavItem>
-					<Link to='/cart'>
-						<img className='shoppingCart' src={shoppingCart} alt="Carrito" />
-					</Link>
+					<NavLink to='/cart' activeClassName='cartActive'>
+						<img className={cart.length === 0 ? 'shoppingCart' : 'shoppingCart cartWithOrder'} src={shoppingCart} alt="Carrito" />
+					</NavLink>
 				</NavItem>
 				<NavItem>
 					<div onClick={manageMobileMenu}>

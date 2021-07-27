@@ -1,43 +1,45 @@
 .promotedSection {
   display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
-}
 
-.itemPromotedOffer {
-  margin: 1rem;
-  text-align: center;
-  width: fit-content;
-  padding: 1rem;
+  margin: 1rem 0;
 
-  border: 0.3rem solid black;
-  border-radius: 1rem;
-  animation: 2s promotedCard infinite ease-in-out;
+  .itemPromotedOffer {
+    margin: 1rem;
+    text-align: center;
+    width: fit-content;
+    padding: 1rem;
 
-  & > .boxItemPromoted {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    color: #5e5ed9;
+    border: 0.3rem solid black;
+    border-radius: 1rem;
+
+    & > .boxItemPromoted {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      color: #5e5ed9;
+
+      .lastPrice {
+        text-decoration-color: red;
+        text-decoration-thickness: 2px;
+      }
+    }
+
+    .imgItemPromoted {
+      width: 12rem;
+      height: 12rem;
+    }
 
     .lastPrice {
-      text-decoration-color: red;
-      text-decoration-thickness: 2px;
+      text-decoration: line-through;
+      font-size: 0.75rem;
     }
-  }
 
-  .imgItemPromoted {
-    width: 12rem;
-    height: 12rem;
-  }
-
-  .lastPrice {
-    text-decoration: line-through;
-    font-size: 0.75rem;
-  }
-
-  a {
-    font-weight: bold;
+    a {
+      font-weight: bold;
+    }
   }
 }
 

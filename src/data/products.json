@@ -38,7 +38,7 @@
       "image": "/img/joystick.png",
       "price": 30000,
       "stock": 0,
-      "promoted": false
+      "promoted": true
     },
     {
       "id": 4,
@@ -69,6 +69,16 @@
       "price": 160000,
       "stock": 1,
       "promoted": false
+    },
+    {
+      "id": 7,
+      "name": "MacBook i7",
+      "category": "notebooks",
+      "description": "Esta es la descripcion del producto SIETE y tiene varias caracteristicas, de entre ellas Lorem Ipsum",
+      "image": "/img/joystick.png",
+      "price": 220000,
+      "stock": 1,
+      "promoted": true
     }
   ]
 }

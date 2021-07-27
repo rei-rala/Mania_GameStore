@@ -12,7 +12,10 @@ const NavMenuMobile = ({ manageMobileMenu }) => {
   console.info('Renderizado: NavMenuMobile')
 
   useEffect(() => {
-    const mapCategories = list => setCatItems(list.map(c => <NavLink key={c.id} to={'/categorias/' + c.category} onClick={manageMobileMenu} activeClassName="currentPage"> {c.category} </ NavLink>))
+    const mapCategories = list => setCatItems(<>
+      <NavLink to='/promociones' onClick={manageMobileMenu} className='promoNavMobile'> 🔥 Promos 🔥</NavLink>
+      {list.map(c => <NavLink key={c.id} to={'/categorias/' + c.category} onClick={manageMobileMenu} activeClassName="currentPage"> {c.category} </ NavLink>)}
+    </>)
     console.info('Cargado: Categorias en NavMenuMobile')
     new Promise((resolve, reject) => {
       resolve(categories)

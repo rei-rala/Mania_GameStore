@@ -67,7 +67,12 @@ Mejorado NavBar para 'mobile' (width<864px): Iconos, busqueda, menu
 Mejorado NavBar desktop: menu categorias  
 NavBars con redirects a categorias mapeadas  
 Carousel en home (/Mania\_)
-Componente de item para articulo/s en promocion (actualmente: Gabinete, "15% off"), disponible en home  
-  
+Componente de item para articulo/s en promocion (actualmente: Gabinete, "15% off"), disponible en home
+
 26-07-2021:  
-Previews en README.md
+Previews en README.md (ya desactualizadas)  
+Home muestra un producto en descuento al azar  
+Productos en descuento (home, promociones) tienen marco con animacion, no activa en caso de estar el producto agotado  
+Seccion de productos en descuento (promociones): todo producto con esta condicion aparecera alli  
+Seccion Cart: tiene mensaje para redireccionar a una posible compra en caso de estar vacio, muestra los productos en caso de tener añadidos y la posibilidad de quitarlos del mismo  
+NavBar: Cart animado, estilo para cart activo, secciones activas con estilo especifico, mejorado menu mobile, reducido box de categorias en desktop

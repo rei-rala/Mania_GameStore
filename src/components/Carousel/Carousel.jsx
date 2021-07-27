@@ -45,7 +45,10 @@ function Car(e) {
 
 const Carousel = () => {
     /* EL PRIMER ITEM DEL CAROUSEL DEBE LLEVAR LA CLASE ACTIVE */
-    return (
+    return (<>
+        <div className="carouselHint">
+            <i >Por ahora, el carousel tiene imagenes stock</i>
+        </div>
         <section className='carousel' data-active='1'>
             <button className='carBtn cbBack' data-carvalue='-1' onClick={Car} title='Anterior'>&lt;</button>
 
@@ -57,6 +60,7 @@ const Carousel = () => {
 
             <button className='carBtn cbNext' data-carvalue='1' onClick={Car} title='Siguiente'>&gt;</button>
         </section>
+    </>
     )
 }
 
