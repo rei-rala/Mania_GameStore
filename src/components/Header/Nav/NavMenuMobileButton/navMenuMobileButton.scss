@@ -8,11 +8,11 @@
   height: 100%;
 
   overflow: hidden;
-}
 
-.menuBtnContainer > div {
-  background-color: black;
-  border-radius: 1rem;
+  & > div {
+    background-color: black;
+    border-radius: 1rem;
 
-  padding: 0.1rem 0.75rem;
+    padding: 0.1rem 0.75rem;
+  }
 }

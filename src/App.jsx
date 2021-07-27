@@ -7,7 +7,7 @@ import "./styles/App.scss";
 import Header from "./components/Header/Header";
 import Carousel from "./components/Carousel/Carousel";
 
-//import TEST from "./components/QuestionBlock/TEST";
+import TEST from "./components/QuestionBlock/TEST";
 
 import Cart from "./components/Cart/Cart";
 import ItemPromotedPage from "./components/ItemPromotedPage/ItemPromotedPage";
@@ -22,6 +22,8 @@ function App() {
     <BrowserRouter>
       <CartContext>
         <Header />
+
+        <TEST />
 
 
         <Switch>

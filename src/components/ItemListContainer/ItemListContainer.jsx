@@ -14,12 +14,10 @@ const ItemListContainer = () => {
 
 
   useEffect(() => {
+    console.info('Renderizado: Productos segun seccion')
 
     const handleDisplay = setDisplayProducts;
-
-    const selectCategory = db => categoryName ? mappingProducts(db.filter(prods => prods.category === categoryName)) : mappingProducts(db);
-    const mappingProducts = prodList => handleDisplay(prodList.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={process.env.PUBLIC_URL + prod.image} price={prod.price} promoted={prod.promoted} />));
-
+    const selectCategory = db => categoryName ? handleDisplay(db.filter(prods => prods.category === categoryName)) : handleDisplay(db);
 
     // Si no se resuelve en 10 segundos se rechaza, al resolverse se crean las cards de los productos mediante la funcion mappingProducts
     new Promise((resolve, reject) => {
@@ -49,8 +47,12 @@ const ItemListContainer = () => {
       <h2 className='categoryTitle'>{categoryName ? categoryName.toUpperCase() : 'Todos los productos'}</h2>
       <hr />
       <div className="ItemListContainer">
-        {displayProducts ? displayProducts : <Loading sectionName={categoryName || 'productos'} />}
-      </div>
+        {displayProducts
+          ? <>
+            {displayProducts.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={process.env.PUBLIC_URL + prod.image} price={prod.price} promoted={prod.promoted} />)}
+          </>
+          : <Loading sectionName={categoryName || 'productos'} />}
+      </div >
     </>
   )
 }

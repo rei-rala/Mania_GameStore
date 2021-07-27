@@ -30,14 +30,22 @@ const Nav = () => {
 	const [mobileMenu, setMobileMenu] = useState(false);
 	const [mobileSearch, setMobileSearch] = useState(false);
 
-	const manageMobileMenu = () => {
-		setMobileMenu(!mobileMenu);
-		setMobileSearch(false);
+	const manageMobileMenu = (bool) => setMobileMenu(bool);
+	const manageMobileSearch = (bool) => setMobileSearch(bool);
+
+	const toggleMobileMenu = () => {
+		manageMobileMenu(!mobileMenu);
+		manageMobileSearch(false);
 	}
 
-	const manageMobileSearch = () => {
-		setMobileSearch(!mobileSearch);
-		setMobileMenu(false);
+	const toggleMobileSearch = () => {
+		manageMobileMenu(false);
+		manageMobileSearch(!mobileSearch);
+	}
+
+	const closeAny = () => {
+		manageMobileMenu(false);
+		manageMobileSearch(false);
 	}
 
 	return (
@@ -60,23 +68,23 @@ const Nav = () => {
 					<input id='searchInput' className="seachDesktop" type="text" placeholder='Categorias, Articulos ... ' />
 				</NavItem>
 				<NavItem>
-					<label className={mobileSearch ? 'searchImg mobileSearchActive' : 'searchImg'} htmlFor="searchInputMobile" onClick={manageMobileSearch}>
+					<label className={mobileSearch ? 'searchImg mobileSearchActive' : 'searchImg'} htmlFor="searchInputMobile" onClick={toggleMobileSearch}>
 						<img src={searchImg} alt="Busqueda" />
 					</label>
 				</NavItem>
 				<NavItem>
 					<NavLink to='/cart' activeClassName='cartActive'>
-						<img className={cart.length === 0 ? 'shoppingCart' : 'shoppingCart cartWithOrder'} src={shoppingCart} alt="Carrito" />
+						<img className={cart.length === 0 ? 'shoppingCart' : 'shoppingCart cartWithOrder'} src={shoppingCart} onClick={closeAny} alt="Carrito" />
 					</NavLink>
 				</NavItem>
 				<NavItem>
-					<div onClick={manageMobileMenu}>
+					<div onClick={toggleMobileMenu}>
 						<NavMenuMobileButton className={mobileMenu ? 'menuMobile menuBtnContainerActive' : 'menuMobile'} />
 					</div>
 				</NavItem>
 
 				{mobileSearch ? <NavSearch /> : null}
-				{mobileMenu ? <NavMenuMobile manageMobileMenu={manageMobileMenu} /> : null}
+				{mobileMenu ? <NavMenuMobile manageMobileMenu={toggleMobileMenu} /> : null}
 
 			</ul>
 		</nav>

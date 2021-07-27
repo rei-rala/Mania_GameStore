@@ -1,5 +1,7 @@
 import React from 'react'
 import './carouselItem.scss'
+
+
 const CarouselItem = ({ className, children }) => {
     className = className || '';
 

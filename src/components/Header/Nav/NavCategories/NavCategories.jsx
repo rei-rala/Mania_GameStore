@@ -9,10 +9,7 @@ import { categories } from '../../../../data/categories.json'
 const NavCategories = () => {
 
 	const [categoriesList, setCategoriesList] = useState()
-	const manageCategoriesList = categories => setCategoriesList(<>
-		<NavLink to='/promociones' className="categoriaMenu" activeClassName="currentPage"> Promos </NavLink>
-		{categories.map(cat => <NavLink key={cat.id} className="categoriaMenu" to={`/categorias/${cat.category}`} activeClassName="currentPage"> {cat.category} </NavLink>)}
-	</>);
+	const manageCategoriesList = categories => setCategoriesList(categories);
 
 	useEffect(() => {
 		console.info('Fetch de categorias')
@@ -23,7 +20,7 @@ const NavCategories = () => {
 		})
 			.then(manageCategoriesList)
 			.catch(console.error)
-	}, [])
+	}, [categoriesList])
 
 
 
@@ -31,7 +28,12 @@ const NavCategories = () => {
 		<div id='navCategories' className='catNav'>
 			{
 				categoriesList
-					? <div className="container"> {categoriesList} </div>
+					? <div className="container"> {
+						<>
+							<NavLink to='/promociones' className="categoriaMenu" activeClassName="currentPage"> Promos </NavLink>
+							{categoriesList.map(cat => <NavLink key={cat.id} className="categoriaMenu" to={`/categorias/${cat.category}`} activeClassName="currentPage"> {cat.category} </NavLink>)}
+						</>
+					} </div>
 					: 'Aguarde un momento'
 			}
 		</div >

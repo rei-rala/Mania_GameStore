@@ -10,7 +10,7 @@ export const CartContext = ({ children }) => {
 
   const addToCart = (item, count) => {
 
-    console.info(`Esta en carrito? ${isInCart(item['id'])}`)
+    console.warn(`Esta en carrito? ${isInCart(item['id'])}`)
 
     if (isInCart(item['id'])) {
       alert(`${item.name} ya se encuentra en el carrito!`)

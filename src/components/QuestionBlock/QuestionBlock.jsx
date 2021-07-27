@@ -5,18 +5,19 @@ import './questionBlock.scss'
 
 const QuestionBlock = () => {
   const [hits, setHits] = useState(0);
+  const [used, setUsed] = useState(false);
 
+  const manageUsed = (bool) => setUsed(bool)
 
-  /*   const [display, setDisplay] = useState(false);
-    const handleDisplay = () => setDisplay(!display) */
+  const addHit = () => {
+    setHits(hits + 1)
+    if (hits >= 5) { manageUsed(true) }
+  }
 
   return (
-    <img
-      className={hits <= 5 ? 'questionBlock' : 'questionBlockUsed'}
-      onClick={() => { setHits(hits + 1) }}
-      src={hits <= 5 ? questionBlock : questionBlockUsed}
-      alt="Bloque sorpresa"
-    />
+    used
+      ? <img className='questionBlockUsed' src={questionBlockUsed} alt="Bloque sorpresa" />
+      : <img className='questionBlock' src={questionBlock} alt="Bloque sorpresa" onClick={addHit} />
   )
 }
 
