@@ -56,7 +56,7 @@ Routing a seccion productos: notebooks y perifericos
 23-07-2021:  
 Alguna mejora en el README
 
-![](https://i.imgur.com/xZDDUKw.gif)
+[Imgur](https://i.imgur.com/xZDDUKw.gif)
 
 24-07-2021:  
 Handling de ingreso de direccion a id incorrecto de producto  
@@ -71,6 +71,8 @@ Componente de item para articulo/s en promocion (actualmente: Gabinete, "15% off
 
 26-07-2021:  
 Previews en README.md (ya desactualizadas)  
+  
+27-07-2021:
 Home muestra un producto en descuento al azar  
 Productos en descuento (home, promociones) tienen marco con animacion, no activa en caso de estar el producto agotado  
 Seccion de productos en descuento (promociones): todo producto con esta condicion aparecera alli  
