@@ -1,19 +1,17 @@
 Mania\_ Store (ReactJS)
 
 Preview ultima version:  
-Desktop:  
-![Giphy](https://media.giphy.com/media/35YgWly2BJWACycj7G/giphy.gif)
-
-"Mobile":  
-![Giphy](https://media.giphy.com/media/fWYOtZmN67YHghkVF1/giphy.gif)
+Mobile:  
+![Giphy](https://media.giphy.com/media/zVQy7yn06jcmHMTRy0/giphy.gif)
 
 Mania\_ es un e-commerce de articulos de computacion y videojuegos, el nombre surge de un pequeño local 'de la infancia' que alquilaba cartuchos de consolas como Sega y NES.
 
 Dependencias del proyecto:  
 *React  
 *React-router  
-*styled-components: Formato 'condicional' a componentes especificos que lo requieran
-*node-sass: Compilacion y archivos css con fuente en SCSS
+*styled-components: Formato 'condicional' a componentes especificos que lo requieran  
+*node-sass: Compilacion y archivos css con fuente en SCSS  
+\*Firebase para almacentar algunos produtos y categorias en Firestore
 
 ---
 
@@ -71,11 +69,23 @@ Componente de item para articulo/s en promocion (actualmente: Gabinete, "15% off
 
 26-07-2021:  
 Previews en README.md (ya desactualizadas)
+Desktop:  
+[Giphy](https://media.giphy.com/media/35YgWly2BJWACycj7G/giphy.gif)
+"Mobile":  
+[Giphy](https://media.giphy.com/media/fWYOtZmN67YHghkVF1/giphy.gif)
 
 27-07-2021:
 Home muestra un producto en descuento al azar  
 Productos en descuento (home, promociones) tienen marco con animacion, no activa en caso de estar el producto agotado  
 Seccion de productos en descuento (promociones): todo producto con esta condicion aparecera alli  
 Seccion Cart: tiene mensaje para redireccionar a una posible compra en caso de estar vacio, muestra los productos en caso de tener añadidos y la posibilidad de quitarlos del mismo  
-NavBar: Cart animado, estilo para cart activo, secciones activas con estilo especifico, mejorado menu mobile, reducido box de categorias en desktop
-+Refactorizado codigo en componentes varios.
+NavBar: Cart animado, estilo para cart activo, secciones activas con estilo especifico, mejorado menu mobile, reducido box de categorias en desktop  
++Refactorizado codigo en componentes varios.  
+  
+28-07-2021:  
+Algunos componentes fueron refactorizados  
+Se reemplazaron JSON de productos y categorias por Firestore  
+CartWidget: Componente para mostrar la cantidad de items en el carrito (suma de todas las cantidades de producto)  
+Cart ahora muestra los productos en carritos 'ordenadamente', tiene ademas una card que totaliza el valor de la compra y tiene las opciones para finalizar o seguir adquiriendo productos  
+CartContext (Context) lleva la administracion de productos en carrito(agrega, quita, vacia), asi como su sumatoria de unidades y precios.  
+El Cart(carrito) es persitente en memoria del navegador!

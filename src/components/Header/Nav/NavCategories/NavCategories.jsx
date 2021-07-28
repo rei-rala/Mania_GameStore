@@ -3,39 +3,41 @@ import { NavLink } from 'react-router-dom';
 
 import './navCategories.scss';
 
-import { categories } from '../../../../data/categories.json'
-
+import { database } from '../../../../firebase/firebase';
 
 const NavCategories = () => {
 
-	const [categoriesList, setCategoriesList] = useState()
+
+	const [categoriesList, setCategoriesList] = useState([])
 	const manageCategoriesList = categories => setCategoriesList(categories);
 
 	useEffect(() => {
 		console.info('Fetch de categorias')
-		new Promise((resolve, reject) => {
-			resolve(categories)
+		const categoriesF = database.collection('categories');
 
-			setTimeout(() => reject('Timed out'), 10000)
-		})
-			.then(manageCategoriesList)
+		categoriesF.get().then(query =>
+			query.docs.map(doc => {
+				return { ...doc.data(), id: doc.id }
+			}))
+			.then(r => manageCategoriesList([...r]))
 			.catch(console.error)
-	}, [categoriesList])
+	}, [])
 
 
 
 	return (
 		<div id='navCategories' className='catNav'>
-			{
-				categoriesList
-					? <div className="container"> {
-						<>
+			<div className="container">
+				{
+					categoriesList.length
+						? <>
 							<NavLink to='/promociones' className="categoriaMenu" activeClassName="currentPage"> Promos </NavLink>
 							{categoriesList.map(cat => <NavLink key={cat.id} className="categoriaMenu" to={`/categorias/${cat.category}`} activeClassName="currentPage"> {cat.category} </NavLink>)}
 						</>
-					} </div>
-					: 'Aguarde un momento'
-			}
+
+						: <p className="categoriaMenu">	Aguarde un momento</p>
+				}
+			</div>
 		</div >
 	);
 };

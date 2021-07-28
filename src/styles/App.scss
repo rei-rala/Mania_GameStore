@@ -7,11 +7,11 @@ body {
   min-width: 100%;
   width: 100%;
 
-  background: $bkgDefault 100%;
+  background: $bkgDefault;
   background: linear-gradient(
       to bottom,
-      rgba($bkgDefault, 1) 0%,
-      rgba($bkgDefault, 0.5) 100%
+      rgba($bkgDefault, 0.8) 0%,
+      rgba(#c06000, 0.05) 100%
     )
     no-repeat;
 

@@ -1,8 +1,6 @@
 .productCard {
   display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
 
   background-color: #222823;
   color: #222823;
@@ -15,9 +13,19 @@
 
   transition: all 0.1s;
 
+  .productoInfoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+  }
+
   .itemStock {
     position: relative;
-    transform: rotate(-40deg) translate(-30.5%, -135%);
+    top: 5%;
+    left: -37.5%;
+    transform: rotate(-45deg);
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     text-align: center;
     background-color: #fa9f42;
@@ -33,6 +41,10 @@
   }
 
   .productInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     color: gainsboro;
     text-align: center;
     transform: translateY(-1rem);
@@ -45,6 +57,11 @@
     }
   }
 
+  .normalPrice {
+    margin-top: 0.5rem;
+    color: #ffb56b;
+  }
+
   .lastPrice {
     text-decoration: line-through;
     text-decoration-color: red;
@@ -53,6 +70,7 @@
   }
   .promoPrice {
     color: #fa9f42;
+    animation: 1.5s promoPricePulse infinite;
   }
 }
 
@@ -68,8 +86,7 @@
     min-width: 80%;
 
     .itemStock {
-      top: -2vh;
-      left: -6.5vw;
+      left: -41.5%;
     }
 
     .productInfo {
@@ -84,6 +101,18 @@
         max-height: 15rem !important;
       }
     }
+  }
+}
+
+@keyframes promoPricePulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 

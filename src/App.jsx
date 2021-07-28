@@ -7,8 +7,6 @@ import "./styles/App.scss";
 import Header from "./components/Header/Header";
 import Carousel from "./components/Carousel/Carousel";
 
-import TEST from "./components/QuestionBlock/TEST";
-
 import Cart from "./components/Cart/Cart";
 import ItemPromotedPage from "./components/ItemPromotedPage/ItemPromotedPage";
 import ItemPromoted from "./components/ItemPromotedPage/ItemPromoted/ItemPromoted";
@@ -18,16 +16,14 @@ import Footer from './components/Footer/Footer'
 
 
 function App() {
+
   return (
     <BrowserRouter>
       <CartContext>
         <Header />
 
-        <TEST />
-
-
         <Switch>
-          <Route exact path='/Mania_'>
+          <Route path='/Mania_'>
             <Carousel />
             <ItemPromoted random={true} />
           </Route>

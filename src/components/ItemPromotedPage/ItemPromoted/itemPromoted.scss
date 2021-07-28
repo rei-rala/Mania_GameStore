@@ -6,6 +6,10 @@
 
   margin: 1rem 0;
 
+  .infoItemPromoted {
+    width: 10rem;
+  }
+
   .itemPromotedOffer {
     margin: 1rem;
     text-align: center;
@@ -24,6 +28,11 @@
       .lastPrice {
         text-decoration-color: red;
         text-decoration-thickness: 2px;
+      }
+
+      hr {
+        margin-top: 0.5rem;
+        margin-bottom: 0.75rem;
       }
     }
 

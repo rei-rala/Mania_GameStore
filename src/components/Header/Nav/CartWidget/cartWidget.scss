@@ -1,0 +1,17 @@
+.cartWidget {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  position: absolute;
+  transform: translate(75%, -65%);
+
+  font-size: 0.65rem;
+  border-radius: 50%;
+  width: 1rem !important;
+  height: 1rem;
+  color: hsl(140, 16%, 96%);
+  background-color: black;
+}

@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 
 import './navMenuMobile.scss';
 
-import { categories } from '../../../../data/categories.json'
+import { database } from '../../../../firebase/firebase';
 
-const NavMenuMobile = ({ manageMobileMenu }) => {
+const NavMenuMobile = ({ manageMobileMenu, className }) => {
 
   const [catItems, setCatItems] = useState(null);
   const manageCategories = list => setCatItems(list)
@@ -16,17 +16,23 @@ const NavMenuMobile = ({ manageMobileMenu }) => {
 
   useEffect(() => {
     console.info('Cargado: Categorias en NavMenuMobile')
-    new Promise((resolve, reject) => {
-      resolve(categories)
 
-    })
-      .then(manageCategories)
+    console.info('Fetch de categorias')
+    const categoriesF = database.collection('categories');
+
+    categoriesF.get().then(query =>
+      query.docs.map(doc => {
+        return { ...doc.data(), id: doc.id }
+      }))
+      .then(r => manageCategories([...r]))
+      .catch(console.error)
+
 
     return function cleanup() { }
-  }, [manageMobileMenu])
+  }, [])
 
   return (
-    <div className="mobileMenuActive">
+    <div className={className}>
       <h2 className='menuTitle'>Menu</h2>
       <NavLink className='mainLink' onClick={closeMobileMenu} to='/Mania_' activeClassName="currentPage"> Home</NavLink>
       <NavLink className='mainLink' onClick={closeMobileMenu} to='/productos' activeClassName="currentPage"> Todos los Productos</NavLink>

@@ -12,6 +12,7 @@ import searchImg from './search.png'
 import './nav.scss'
 import './NavCategories/navCategories.scss';
 import { Context } from '../../../context/Context';
+import CartWidget from './CartWidget/CartWidget';
 
 
 const NavItem = ({ children }) => {
@@ -25,7 +26,7 @@ const NavItem = ({ children }) => {
 
 const Nav = () => {
 
-	const { cart } = useContext(Context)
+	const { cart, cartSize } = useContext(Context)
 
 	const [mobileMenu, setMobileMenu] = useState(false);
 	const [mobileSearch, setMobileSearch] = useState(false);
@@ -47,6 +48,9 @@ const Nav = () => {
 		manageMobileMenu(false);
 		manageMobileSearch(false);
 	}
+
+
+	//console.warn(cartSize)
 
 	return (
 		<nav className='nav'>
@@ -75,6 +79,7 @@ const Nav = () => {
 				<NavItem>
 					<NavLink to='/cart' activeClassName='cartActive'>
 						<img className={cart.length === 0 ? 'shoppingCart' : 'shoppingCart cartWithOrder'} src={shoppingCart} onClick={closeAny} alt="Carrito" />
+						{cartSize === '0' || !cartSize ? null : <CartWidget />}
 					</NavLink>
 				</NavItem>
 				<NavItem>
@@ -84,7 +89,7 @@ const Nav = () => {
 				</NavItem>
 
 				{mobileSearch ? <NavSearch /> : null}
-				{mobileMenu ? <NavMenuMobile manageMobileMenu={toggleMobileMenu} /> : null}
+				{mobileMenu ? <NavMenuMobile manageMobileMenu={toggleMobileMenu} className='mobileMenuActive' /> : <NavMenuMobile manageMobileMenu={toggleMobileMenu} className='hideMobileMenu' />}
 
 			</ul>
 		</nav>

@@ -1,44 +1,87 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 import Loading from "../Loading/Loading";
 import ItemList from './ItemList/ItemList'
 import "./itemListContainer.scss";
 
-import { products } from '../../data/products.json'
-import { categories } from '../../data/categories.json'
+import { database } from '../../firebase/firebase';
 
 const ItemListContainer = () => {
-  const { categoryName } = useParams();
+  const { categoryName } = useParams() || null;
   const [displayProducts, setDisplayProducts] = useState(null);
+  const [errorState, setErrorState] = useState(false);
+  const [finishOk, setFinishOK] = useState(false);
 
+  const createError = err => setErrorState(err);
 
   useEffect(() => {
-    console.info('Renderizado: Productos segun seccion')
-
     const handleDisplay = setDisplayProducts;
-    const selectCategory = db => categoryName ? handleDisplay(db.filter(prods => prods.category === categoryName)) : handleDisplay(db);
 
-    // Si no se resuelve en 10 segundos se rechaza, al resolverse se crean las cards de los productos mediante la funcion mappingProducts
-    new Promise((resolve, reject) => {
-      handleDisplay(null)
 
-      if (!(categories.map(c => c.category)).includes(categoryName) && categoryName) { reject('Categoria no encontrada') };
+    handleDisplay(null)
 
+    const categoriesF = database.collection('categories');
+
+
+    try {
       setTimeout(() => {
-        resolve(products)
-      }, 1000);
-      setTimeout(() => {
-        reject('Error al cargar los resultados')
-      }, 10000);
-    })
-      .then(selectCategory)
-      .catch(err => {
-        handleDisplay(err)
-        console.error(`Error: \n${err}`)
+        createError('Se acabo el tiempo de espera, intente nuevamente')
+        if (!finishOk) {
+          setFinishOK(false)
+        }
+      }, 500)
+
+
+      categoriesF.get().then(query => {
+        return query.docs.map(doc => {
+          return { ...doc.data() }
+        })
       })
-      .finally(console.log('Renderizado: ItemListContainer'))
-  }, [categoryName])
+        .catch(error => { console.warn(error); throw error })
+        .then(catFirebase => catFirebase.map(item => item.category))
+        .then(r => {
+          if (categoryName) {
+            if (r.includes(categoryName)) {
+              return r
+            }
+            else {
+              createError('No hay articulos con esta categoria');
+            }
+          }
+          else {
+            return r
+          }
+        })
+        .catch(createError)
+        .then(() => {
+          const productsF = database
+            .collection('products')
+            .where(
+              'category',
+              (categoryName && categoryName !== 'productos' ? '==' : '!='),
+              (categoryName ? categoryName : 'None')
+            );
+
+          productsF.get()
+            .then(r => {
+              return r
+            })
+            .then(query => query.docs.map(doc => {
+              return { ...doc.data(), id: doc.id }
+            }))
+            .then(handleDisplay)
+            .then(r => setFinishOK(true))
+        })
+    }
+    catch (err) {
+      createError(err)
+      setFinishOK(false)
+    }
+
+    console.info('Renderizado: Productos segun seccion')
+  }, [categoryName, finishOk, setFinishOK])
 
 
 
@@ -47,11 +90,13 @@ const ItemListContainer = () => {
       <h2 className='categoryTitle'>{categoryName ? categoryName.toUpperCase() : 'Todos los productos'}</h2>
       <hr />
       <div className="ItemListContainer">
-        {displayProducts
-          ? <>
-            {displayProducts.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={process.env.PUBLIC_URL + prod.image} price={prod.price} promoted={prod.promoted} />)}
-          </>
-          : <Loading sectionName={categoryName || 'productos'} />}
+        {
+          !displayProducts
+            ? <Loading sectionName={categoryName || 'productos'} />
+            : errorState && !finishOk
+              ? <div className="errorScreen"> <p>Error: <br />{errorState}</p> <Link to='/productos'><button>Ver productos</button></Link> </div>
+              : displayProducts.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={process.env.PUBLIC_URL + prod.image} price={prod.price} promoted={prod.promoted} />)
+        }
       </div >
     </>
   )

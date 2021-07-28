@@ -19,12 +19,13 @@
   font-family: "Ubuntu", sans-serif;
 
   p:last-child {
-    margin: auto;
     width: 85%;
+    margin: 0 auto;
   }
   img {
     width: 15rem;
     height: 15rem;
+    margin-bottom: 2rem;
     -webkit-box-reflect: below 0 linear-gradient(transparent 90%, white 100%);
   }
 
