@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
+import SortMenuSelect from "../SortMenu/SortMenuSelect/SortMenuSelect";
 import Loading from "../Loading/Loading";
 import ItemList from './ItemList/ItemList'
 import "./itemListContainer.scss";
@@ -14,11 +15,14 @@ const ItemListContainer = () => {
   const [errorState, setErrorState] = useState(false);
   const [finishOk, setFinishOK] = useState(false);
 
+  const [listChangeToggle, setListChangeToggle] = useState(false)
+  const toggleListChange = () => setListChangeToggle(!listChangeToggle)
+
   const createError = err => setErrorState(err);
 
   useEffect(() => {
-    const handleDisplay = setDisplayProducts;
 
+    const handleDisplay = setDisplayProducts;
 
     handleDisplay(null)
 
@@ -83,12 +87,17 @@ const ItemListContainer = () => {
     console.info('Renderizado: Productos segun seccion')
   }, [categoryName, finishOk, setFinishOK])
 
+  useEffect(() => {
+    setDisplayProducts(displayProducts)
+    console.log(listChangeToggle)
+  }, [displayProducts, listChangeToggle])
 
 
   return (
     <>
       <h2 className='categoryTitle'>{categoryName ? categoryName.toUpperCase() : 'Todos los productos'}</h2>
       <hr />
+      <SortMenuSelect displayFunction={setDisplayProducts} toSort={displayProducts} arraySortingTerms={['price', 'name']} varUseEffect={toggleListChange} />
       <div className="ItemListContainer">
         {
           !displayProducts

@@ -13,7 +13,7 @@ import { database } from '../../../firebase/firebase'
 
 
 const ItemDetailContainer = () => {
-  const { addToCart } = useContext(Context)
+  const { cart, addToCart, removeFromCart, isInCart } = useContext(Context)
   const { id } = useParams();
 
   const [viewItem, setViewItem] = useState({});
@@ -23,7 +23,13 @@ const ItemDetailContainer = () => {
   const [buyState, setBuyState] = useState(false);
 
   const manageItem = item => setViewItem(item);
-  const handleBuyState = () => setBuyState(!buyState);
+  const handleBuyState = e => {
+    if (buyState) {
+      console.log(e.target.attributes['itemvalue'].value['id'])
+      removeFromCart(e.target.attributes['itemvalue'].value)
+    }
+    setBuyState(!buyState)
+  };
 
 
   useEffect(() => {
@@ -77,15 +83,17 @@ const ItemDetailContainer = () => {
               </h4>
               {
                 viewItem.stock
-                  ? buyState
+                  ? buyState || isInCart(viewItem.id)
                     ? <>
-                      <ItemCountConfirm count={count} price={
-                        viewItem.promoted === true
+                      <ItemCountConfirm count={count || (isInCart(viewItem.id) ? cart.map(i => {return { id: i['itemCart'].id, q: i['quantity'] }}).find(e => e['id'] === viewItem.id)['q'] : 0)}
+                      price={viewItem.promoted === true
                           ? (viewItem.price * 0.85)
                           : viewItem.price
                       } />
-                      <button onClick={() => { addToCart(viewItem, count) }}> Confirmar </button>
-                      <button onClick={handleBuyState}> Modificar </button>
+                      {isInCart(viewItem.id)
+                        ? <Link to='/cart'> <button className='goToCart'> Ir a carrito </button> </Link >
+                        : <button onClick={() => { addToCart(viewItem, count) }}> Confirmar </button>}
+                      <button onClick={handleBuyState} itemvalue={viewItem.id}> Modificar </button>
                     </>
                     : <>
                       <ItemCountContainer count={count} setCount={setCount} stock={viewItem.stock} />

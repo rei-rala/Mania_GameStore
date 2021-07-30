@@ -122,7 +122,28 @@
     }
 
     .normalPrice {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       padding-top: 0.5rem;
+
+      .cartModifBtn {
+        border-radius: 50% !important;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding-top: 0.25rem;
+        width: 2rem;
+        height: 2rem;
+
+        box-shadow: none;
+      }
+      .cartModifBtn:hover {
+        transform: none;
+      }
     }
     .priceInfoCart {
       display: flex;

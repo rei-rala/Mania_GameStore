@@ -19,7 +19,9 @@ const NavCategories = () => {
 			query.docs.map(doc => {
 				return { ...doc.data(), id: doc.id }
 			}))
-			.then(r => manageCategoriesList([...r]))
+			// Bueno, pronto lo hago funcionar al ordenamiento alfabetico de las categorias
+			.then(r => r.sort((a, b) => a.category > b.category ? 1 : -1))
+			.then(manageCategoriesList)
 			.catch(console.error)
 	}, [])
 

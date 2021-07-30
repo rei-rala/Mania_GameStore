@@ -5,7 +5,7 @@ import { Context } from '../../context/Context';
 import './cart.scss'
 
 const Cart = () => {
-  const {cartTotal, cart, removeFromCart, clearCart } = useContext(Context)
+  const { cartTotal, cart, removeFromCart, clearCart } = useContext(Context)
 
   return (
     cart.length
@@ -35,11 +35,23 @@ const Cart = () => {
               </div>
               <div className="normalPrice">
                 <span>
-                  {`x${ci.quantity} ${ci.quantity > 1 ? 'unidades' : 'unidad'} = $${ci.itemCart['promoted'] ? `${ci.itemCart['price'] * ci.quantity * 0.85}` : `${ci.itemCart['price'] * ci.quantity}`}`}
+                  {
+                    `x ${ci.quantity}
+                    
+                    ${ci.quantity > 1
+                      ? 'unidades'
+                      : 'unidad'
+                    }
+                    = $
+                    ${ci.itemCart['promoted']
+                      ? `${ci.itemCart['price'] * ci.quantity * 0.85}`
+                      : `${ci.itemCart['price'] * ci.quantity}`
+                    }`
+                  }
                 </span>
               </div>
             </div>
-            <button className='removeCartBtn' onClick={() => removeFromCart(ci.itemCart)}>Quitar</button>
+            <button className='removeCartBtn' onClick={() => removeFromCart(ci.itemCart['id'])}>Quitar</button>
           </div>
           )}
         </div>

@@ -4,9 +4,12 @@
   position: absolute;
   top: 6rem;
 
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
   margin: 0 0.5rem;
   padding: $defaultFontSize 0;
-  max-width: 60%;
 
   background-color: $headerColor;
   color: $defaultBkgGray;
@@ -20,33 +23,17 @@
   opacity: 0.95;
   overflow: hidden;
 
-  /*   opacity: 0;
-  transition: 0.15s; */
-
-  animation: 1s adios ease-in-out 1;
-  display: none;
-
-  .categoriaMenu {
-    border-color: $defaultBkgBlue;
-  }
-  .categoriaMenu:last-child {
-    border: none;
-  }
-
   a:hover {
     color: #5e5ed9;
     text-decoration: none;
   }
 }
 
-// ? esto quedo del modo click con JS, volvera? no se
-/* 
-#activeMenu {
-  font-weight: bold;
-} */
+.catNav {
+  display: none;
+}
 
 .menuItem:first-child {
-  padding: 3rem 2rem;
   &:hover {
     // ! queria afectar todo lo que no fuera el header y el navbar+menu pero no me salio :( Solo afectaba a los elementos hijos de la seleccion
     /* & > :not(.catNav) {
@@ -54,9 +41,15 @@
     } */
 
     .catNav {
-      opacity: 1;
-      display: flex;
-      z-index: -1;
+      display: block;
+      .container {
+        opacity: 1;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        row-gap: 1rem;
+        z-index: 1;
+      }
     }
     label {
       font-weight: bold;
@@ -72,13 +65,9 @@
 }
 
 .categoriaMenu {
-  border-right: $defaultFontSize * 0.3 outset $defaultBkgGray;
-  padding-right: $defaultFontSize;
-}
-
-.categoriaMenu,
-.categoriaOpcion {
-  padding: $defaultFontSize * 1;
+  padding: $defaultFontSize;
+  min-width: fit-content;
+  min-height: fit-content;
 }
 
 .categoriaOpcion {
@@ -92,10 +81,4 @@
 p {
   height: fit-content;
   margin-bottom: $defaultFontSize * 0.2;
-}
-
-@media (max-width: 864px) {
-  .catNav {
-    max-width: 100%;
-  }
 }

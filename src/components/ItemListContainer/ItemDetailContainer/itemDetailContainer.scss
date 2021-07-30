@@ -1,3 +1,9 @@
+.goToCart {
+  animation: 2s promotedCard infinite;
+  background-color: black;
+  color: white;
+}
+
 .noStockMessage {
   margin: 1rem 0;
 }
@@ -67,6 +73,7 @@
       button,
       .prodQuantity .editQuantity {
         padding: 0.25rem;
+        padding-top: 0.125rem;
         font-size: 1rem;
       }
     }

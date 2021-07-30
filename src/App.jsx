@@ -12,7 +12,7 @@ import ItemPromotedPage from "./components/ItemPromotedPage/ItemPromotedPage";
 import ItemPromoted from "./components/ItemPromotedPage/ItemPromoted/ItemPromoted";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemListContainer/ItemDetailContainer/ItemDetailContainer";
-import Footer from './components/Footer/Footer'
+import Footer from './components/Footer/Footer';
 
 
 function App() {

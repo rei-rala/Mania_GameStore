@@ -24,7 +24,8 @@ const NavMenuMobile = ({ manageMobileMenu, className }) => {
       query.docs.map(doc => {
         return { ...doc.data(), id: doc.id }
       }))
-      .then(r => manageCategories([...r]))
+      .then(r => r.sort((a, b) => a.category > b.category ? 1 : -1))
+      .then(manageCategories)
       .catch(console.error)
 
 

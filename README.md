@@ -68,12 +68,13 @@ Carousel en home (/Mania\_)
 Componente de item para articulo/s en promocion (actualmente: Gabinete, "15% off"), disponible en home
 
 26-07-2021:  
-Previews en README.md (ya desactualizadas)
+Previews en README.md (ya desactualizadas)  
 Desktop:  
-[Giphy](https://media.giphy.com/media/35YgWly2BJWACycj7G/giphy.gif)
+[Giphy](https://media.giphy.com/media/35YgWly2BJWACycj7G/giphy.gif)  
+  
 "Mobile":  
-[Giphy](https://media.giphy.com/media/fWYOtZmN67YHghkVF1/giphy.gif)
-
+[Giphy](https://media.giphy.com/media/fWYOtZmN67YHghkVF1/giphy.gif)  
+  
 27-07-2021:
 Home muestra un producto en descuento al azar  
 Productos en descuento (home, promociones) tienen marco con animacion, no activa en caso de estar el producto agotado  
@@ -88,4 +89,9 @@ Se reemplazaron JSON de productos y categorias por Firestore
 CartWidget: Componente para mostrar la cantidad de items en el carrito (suma de todas las cantidades de producto)  
 Cart ahora muestra los productos en carritos 'ordenadamente', tiene ademas una card que totaliza el valor de la compra y tiene las opciones para finalizar o seguir adquiriendo productos  
 CartContext (Context) lleva la administracion de productos en carrito(agrega, quita, vacia), asi como su sumatoria de unidades y precios.  
-El Cart(carrito) es persitente en memoria del navegador!
+El Cart(carrito) es persitente en memoria del navegador!  
+  
+29-07-2021:  
+Creado sin ayudin(?) componente para ordenar lista de productos  
+Categorias en navbar y menu se ordenan alfabeticamente (excepto seccion de promociones que siempre aparece primero)  
+Tras agregar un item al carrito, podremos editar su cantidad/quitarlo del carrito desde la misma pagina del producto
