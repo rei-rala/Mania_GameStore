@@ -7,11 +7,15 @@ import Loading from '../../Loading/Loading'
 import { database } from '../../../firebase/firebase';
 import { Link } from 'react-router-dom';
 
+import SortMenuSelect from '../../SortMenu/SortMenuSelect/SortMenuSelect';
 
 const ItemPromoted = ({ random }) => {
 
   const [showPromo, setShowPromo] = useState(null)
   const manageShowPromo = arrayItems => setShowPromo(arrayItems)
+
+  const [listChangeToggle, setListChangeToggle] = useState(false)
+  const toggleListChange = () => setListChangeToggle(!listChangeToggle)
 
   useEffect(() => {
     database
@@ -34,6 +38,11 @@ const ItemPromoted = ({ random }) => {
   }, [random])
 
 
+  useEffect(() => {
+    setShowPromo(showPromo)
+    //console.log(listChangeToggle)
+  }, [showPromo, listChangeToggle])
+
   return (
     <section className='promotedSection'>
 
@@ -47,12 +56,15 @@ const ItemPromoted = ({ random }) => {
                 : null
             } 🔥
             </h2>
+            {showPromo.length > 1 ? <SortMenuSelect toSort={showPromo} displayFunction={manageShowPromo} arraySortingTerms={['price', 'name', 'category', 'stock']} varUseEffect={toggleListChange} /> : null}
             <div className="listPromoItems">
               {
                 showPromo.map(
                   item => <ItemPromotedStyled styledPropStock={item.stock} className="itemPromotedOffer" key={item.id}>
                     <div className="boxItemPromoted">
-                      <img className='imgItemPromoted' src={process.env.PUBLIC_URL + item.image} alt={item.name} />
+                      <Link to={`/productos/${item.id}`}>
+                        <img className='imgItemPromoted' src={process.env.PUBLIC_URL + item.image} alt={item.name} />
+                      </Link>
                       <div className="infoItemPromoted">
                         <h3>{item.name}</h3>
                         <p>Promo en <Link to={`categorias/${item.category}`}>{item.category}</Link></p>

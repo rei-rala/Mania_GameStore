@@ -1,19 +1,68 @@
+$notActiveCarItemWidth: 7%;
+
+.carItem:not(:hover) {
+  .titleBanner {
+    color: black;
+  }
+}
+
 .carItem {
-  position: absolute;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 100%;
-  width: 100%;
+  position: relative;
 
   overflow: hidden;
+  width: 25%;
+  height: 600px;
 
-  &:not(.active) {
-    display: none;
+  transition: all 1s;
+  overflow: hidden;
+
+  .titleBanner,
+  .linkBanner {
+    position: absolute;
+    bottom: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+
+    transition: all 1.25s;
+    width: 100%;
   }
+  .titleBanner {
+    text-align: center;
+    cursor: default;
+    color: black;
+    bottom: 0%;
+  }
+
   img {
-    object-fit: contain;
+    object-fit: cover;
+    pointer-events: none;
+    width: 100%;
+  }
+}
+
+.carouselContainer:hover {
+  .carItem:hover {
+    width: 100%;
+
+    .titleBanner {
+      transition: all 1s;
+      bottom: 50%;
+      background-color: hsla(0, 0%, 0%, 0.5);
+      color: white;
+    }
+    .linkBanner {
+      bottom: 30%;
+    }
+  }
+  .carItem:not(:hover) {
+    width: $notActiveCarItemWidth;
+    filter: blur(2px);
+
+    .titleBanner {
+      color: rgba(0, 0, 0, 0.01);
+    }
   }
 }

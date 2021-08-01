@@ -1,67 +1,69 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CarouselItem from './CarouselItems/CarouselItem';
 import './carousel.scss'
 
-
-function Car(e) {
-    /*    
-    Esta funcion obtiene:
-    -El parentNode y su valor 'Active'
-    -El valor carvalue del boton (-1 o 1)
-     */
-    const carousel = e.target.parentNode
-    const carouselActual = parseInt(carousel.dataset.active)
-    const elementosCarousel = carousel.childElementCount
-    let pressed = parseInt(e.target.dataset.carvalue)
-
-
-    /* 
-    Con los valores obtenidos,
-    remuevo la clase active para darsela al nuevo elemento del carousel
-     */
-    carousel.children[carouselActual].classList.remove('active')
-    let newValue = 0;
-
-    /* 
-    Estos 2 condicionales responden a cuando nos excedemos por encima y por debajo
-    de los valores iterables del carousel (respectivamente)
-    */
-    if (carouselActual + pressed === elementosCarousel - 1) {
-        newValue = 1;
-    }
-    else if (carouselActual + pressed === 0) {
-        newValue = elementosCarousel - 2;
-    }
-    else {
-        newValue = carouselActual + pressed
-    }
-    carousel.children[newValue].classList.add('active')
-
-    // Le doy el nuevo valor al elemento contenedor para la proxima ejecucion
-    carousel.dataset.active = newValue.toString();
-}
-
-
+import { Link } from 'react-router-dom';
 
 const Carousel = () => {
-    /* EL PRIMER ITEM DEL CAROUSEL DEBE LLEVAR LA CLASE ACTIVE */
-    return (<>
-        <div className="carouselHint">
-            <i >Por ahora, el carousel tiene imagenes stock</i>
-        </div>
-        <section className='carousel' data-active='1'>
-            <button className='carBtn cbBack' data-carvalue='-1' onClick={Car} title='Anterior'>&lt;</button>
+	const [display, setDisplay] = useState(null)
 
-            <CarouselItem className='active'>  <img src='https://picsum.photos/800/600' loading='lazy' width='800px' height='600px' alt='Producto X' /> </CarouselItem>
-            <CarouselItem>  <img src='https://picsum.photos/801/600' loading='lazy' width='800px' height='600px' alt='Producto X' /> </CarouselItem>
-            <CarouselItem>  <img src='https://picsum.photos/802/600' loading='lazy' width='800px' height='600px' alt='Producto X' /> </CarouselItem>
-            <CarouselItem>  <img src='https://picsum.photos/803/600' loading='lazy' width='800px' height='600px' alt='Producto X' /> </CarouselItem>
-            <CarouselItem>  <img src='https://picsum.photos/804/600' loading='lazy' width='800px' height='600px' alt='Producto X' /> </CarouselItem>
+	const manageDisplay = setDisplay;
 
-            <button className='carBtn cbNext' data-carvalue='1' onClick={Car} title='Siguiente'>&gt;</button>
-        </section>
-    </>
-    )
+	useEffect(() => {
+		const CarouselItems = [
+			{
+
+				id: 5,
+				text: "Primer destacado",
+				imgSrc: 'https://picsum.photos/id/100/800/600',
+				link: '/'
+			},
+			{
+				id: 6,
+				text: "Segundo destacado",
+				imgSrc: 'https://picsum.photos/id/200/800/600',
+				link: '/'
+			},
+			{
+				id: 7,
+				text: "Tercer destacado",
+				imgSrc: 'https://picsum.photos/id/300/800/600',
+				link: '/'
+			},
+			{
+				id: 8,
+				text: "Cuarto destacado",
+				imgSrc: 'https://picsum.photos/id/400/800/600',
+				link: '/'
+			},
+
+		]
+		manageDisplay(CarouselItems)
+	}, [manageDisplay])
+
+	return (<>
+		{
+			!display
+				? null
+				: <>
+					<section className='carousel'>
+						<div className="carouselHint">
+						</div>
+						<div className="carouselContainer">
+							{
+								display.map(i => <CarouselItem key={i.id}>
+									{i.text ? <h3 className='titleBanner'><span>{i.text}</span></h3> : null}
+									<img src={i.imgSrc} loading='lazy' width='800px' height='600px' alt='Producto X' />
+									{i.link ? <Link to='/' className='linkBanner'><button> Ir a {i.text}</button></Link> : null}
+								</CarouselItem>)
+							}
+						</div>
+					</section>
+				</>
+
+		}
+	</>
+	)
 }
 
 export default Carousel;

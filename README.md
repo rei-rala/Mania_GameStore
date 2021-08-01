@@ -94,4 +94,12 @@ El Cart(carrito) es persitente en memoria del navegador!
 29-07-2021:  
 Creado sin ayudin(?) componente para ordenar lista de productos  
 Categorias en navbar y menu se ordenan alfabeticamente (excepto seccion de promociones que siempre aparece primero)  
-Tras agregar un item al carrito, podremos editar su cantidad/quitarlo del carrito desde la misma pagina del producto
+Tras agregar un item al carrito, podremos editar su cantidad/quitarlo del carrito desde la misma pagina del producto  
+  
+31-07-2021:  
+Categorias son distribuidas a los componentes mediante un context que realiza el fetch correspondiente.  
+ExhibitParallax: Componente que muestra las categorias con un estilo y formato.  Posee un problema de scroll en mobile.   
+Redefinido componente carousel, ahora no se ni que es pero quedo bonito! Funciona tanto en mobile como desktop.  
+Componente para ordenar distribuido en pagina de promociones y en paginas generales de produtos, siempre y cuando haya mas de un producto para mostrar.  
+Refactorizado codigos de varios componentes.  
+Modificado estilizado en algunos componentes.

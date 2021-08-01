@@ -7,6 +7,7 @@ import './cart.scss'
 const Cart = () => {
   const { cartTotal, cart, removeFromCart, clearCart } = useContext(Context)
 
+
   return (
     cart.length
       ? <>

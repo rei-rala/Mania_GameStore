@@ -16,8 +16,16 @@ export const CartContext = ({ children }) => {
     try {
       localStorage.setItem('Mania_cart', JSON.stringify(whatever))
       if (JSON.parse(localStorage.getItem('Mania_cart')).length !== 0) {
-        localStorage.setItem('Mania_cartSize', (JSON.parse(localStorage.getItem('Mania_cart')).map(i => i.quantity).reduce((acc, curr) => acc + curr)));
-        localStorage.setItem('Mania_cartTotal', (JSON.parse(localStorage.getItem('Mania_cart')).map(item => item.itemCart['promoted'] ? item.itemCart['price'] * 0.85 * item.quantity : item.itemCart['price'] * item.quantity).reduce((a, c) => a + c)));
+        const localManiaCart = JSON.parse(localStorage.getItem('Mania_cart'))
+
+        localStorage.setItem('Mania_cartSize', localManiaCart.reduce((totalQuantity, { quantity }) => {
+          return totalQuantity + quantity
+        }, 0));
+
+        localStorage.setItem('Mania_cartTotal', localManiaCart.reduce((totalBill, { quantity, itemCart }) => {
+          return totalBill + quantity * (itemCart.promoted ? itemCart.price * 0.85 : itemCart.price)
+        }, 0))
+
 
         setCartSize(localStorage.getItem('Mania_cartSize'))
         setCartTotal(localStorage.getItem('Mania_cartTotal'))
@@ -96,3 +104,9 @@ export const CartContext = ({ children }) => {
 
   return <Context.Provider value={{ cart, isInCart, addToCart, removeFromCart, clearCart, cartSize, cartTotal }}> {children} </Context.Provider>;
 }
+
+
+
+
+
+

@@ -8,6 +8,9 @@
 }
 
 .loadingContainer {
+  * {
+    cursor: default;
+  }
   // Credits: https://codepen.io/timothyguo/pen/KdzJrY
   /* To modify the animation, change either $primaryClr or $ballSize for a different color and a different size. */
   width: 100vw;

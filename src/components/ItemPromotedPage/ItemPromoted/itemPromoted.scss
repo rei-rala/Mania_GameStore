@@ -10,6 +10,11 @@
     width: 10rem;
   }
 
+  p,
+  h2 {
+    cursor: default;
+  }
+
   .itemPromotedOffer {
     margin: 1rem;
     text-align: center;

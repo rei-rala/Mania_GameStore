@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // ! rei - https://github.com/rei-rala
 
+import './sortMenuSelect.scss'
 /* 
 Props recibidos:
 
@@ -22,14 +23,14 @@ const SortMenuSelect = ({ toSort, displayFunction, arraySortingTerms, varUseEffe
       // Compruebo si existe lo que vamos a hacer sort
       // Comprobacion de que NO este ordenado de forma ascendente y por la razon del sort
       // ? notar que vamos a ejecutar la actualizacion del state que haga managment con manageSortState de la lista de productos
-      if (sortableThingy && sortType[0] !== 'asc' && sortType[1] === sortBy) {
+      if (sortableThingy && sortType[0] !== 'descendente' && sortType[1] === sortBy) {
         //  si se cumple, deducimos que esta ordenado descendentemente o NO ordenado, entonces lo ordenamos ascendente
-        manageDisplay(sortableThingy.sort((a, b) => a[sortBy] > b[sortBy] ? 1 : -1))
-        manageSortState(['asc', sortBy])
+        manageDisplay(sortableThingy.sort((a, b) => b[sortBy] > a[sortBy] ? 1 : -1))
+        manageSortState(['descendente', sortBy])
       } else {
         // En caso contrario, seguro este ordenado ascendentemente, entonces lo ordenamos descendentemente
-        manageDisplay(sortableThingy.sort((a, b) => b[sortBy] > a[sortBy] ? 1 : -1))
-        manageSortState(['desc', sortBy])
+        manageDisplay(sortableThingy.sort((a, b) => a[sortBy] > b[sortBy] ? 1 : -1))
+        manageSortState(['ascendente', sortBy])
       }
     }
     // Si falla, entendemos que lo que le pasamos no es ordenable o fallo algo en la FN, lo imprimimos en consola
@@ -40,30 +41,35 @@ const SortMenuSelect = ({ toSort, displayFunction, arraySortingTerms, varUseEffe
   }
 
 
-  return <>
-    <i>Actualmente ordenado: {sortType[0] === 'none' ? 'ningun criterio' : `${sortType[1]}, ${sortType[0]}`}</i>
-    <div className="seccBtnSort">
-      {
-        // ? arraySortingTerms es un PROP, y debe ser el array que queremos ordenar, en lo posible administrado para su visibilizacion en el DOM 
-        arraySortingTerms.map(sortingTerm => <button
-          key={sortingTerm}
-          onClick={() => {
-            toggleSort(toSort, displayFunction, sortingTerm)
+  return (
+    !toSort || toSort.length < 2
+      // Si le damos algo con menos de 2 items, no apareceran las opciones para ordenar
+      ? <></>
+      : <div className="seccBtnSort">
+        {/* <span>Actualmente ordenado: <i>{sortType[0] === 'none' ? 'ningun criterio' : `${sortType[1]}, ${sortType[0]}`}</i></span> */}
+        <div className='sortBtnSection'>
+          {
+            // ? arraySortingTerms es un PROP, y debe ser el array que queremos ordenar, en lo posible administrado para su visibilizacion en el DOM 
+            arraySortingTerms.map(sortingTerm => <button
+              className={sortType[1] === sortingTerm ? 'currentSort' : null}
+              key={sortingTerm}
+              onClick={() => {
+                toggleSort(toSort, displayFunction, sortingTerm)
 
-            // ! Dado que algo debio cambiar, activamos la variable que escucha el useEffect
-            varUseEffect()
+                // ! Dado que algo debio cambiar, activamos la variable que escucha el useEffect
+                varUseEffect()
+              }
+              }
+            >
+              { // ? Esta comprobacion es para alterar el contenido del boton de orden entre si ordenaremos asc o desc al tocarlo
+                (sortType[1] !== sortingTerm ? null : sortType[0] !== 'ascendente' && sortType[1] === sortingTerm ? '↓' : '↑')
+              } {sortingTerm}
+            </button>
+            )
           }
-          }
-        >
-          { // ? Esta comprobacion es para alterar el contenido del boton de orden entre si ordenaremos asc o desc al tocarlo
-            (sortType[0] !== 'asc' && sortType[1] === sortingTerm) ? '↓' : '↑'
-          } {sortingTerm}
-        </button>
-        )
-      }
-    </div>
-  </>
-
+        </div>
+      </div >
+  )
 }
 
 export default SortMenuSelect;

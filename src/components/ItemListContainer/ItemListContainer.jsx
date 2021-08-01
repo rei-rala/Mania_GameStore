@@ -89,7 +89,7 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     setDisplayProducts(displayProducts)
-    console.log(listChangeToggle)
+    //console.log(listChangeToggle)
   }, [displayProducts, listChangeToggle])
 
 
@@ -97,7 +97,7 @@ const ItemListContainer = () => {
     <>
       <h2 className='categoryTitle'>{categoryName ? categoryName.toUpperCase() : 'Todos los productos'}</h2>
       <hr />
-      <SortMenuSelect displayFunction={setDisplayProducts} toSort={displayProducts} arraySortingTerms={['price', 'name']} varUseEffect={toggleListChange} />
+      <SortMenuSelect displayFunction={setDisplayProducts} toSort={displayProducts} arraySortingTerms={['price', 'name', 'stock']} varUseEffect={toggleListChange} />
       <div className="ItemListContainer">
         {
           !displayProducts

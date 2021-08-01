@@ -2,4 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  p, h2, h3 {
+    cursor: default;
+  }
 }
