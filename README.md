@@ -70,36 +70,40 @@ Componente de item para articulo/s en promocion (actualmente: Gabinete, "15% off
 26-07-2021:  
 Previews en README.md (ya desactualizadas)  
 Desktop:  
-[Giphy](https://media.giphy.com/media/35YgWly2BJWACycj7G/giphy.gif)  
-  
+[Giphy](https://media.giphy.com/media/35YgWly2BJWACycj7G/giphy.gif)
+
 "Mobile":  
-[Giphy](https://media.giphy.com/media/fWYOtZmN67YHghkVF1/giphy.gif)  
-  
+[Giphy](https://media.giphy.com/media/fWYOtZmN67YHghkVF1/giphy.gif)
+
 27-07-2021:
 Home muestra un producto en descuento al azar  
 Productos en descuento (home, promociones) tienen marco con animacion, no activa en caso de estar el producto agotado  
 Seccion de productos en descuento (promociones): todo producto con esta condicion aparecera alli  
 Seccion Cart: tiene mensaje para redireccionar a una posible compra en caso de estar vacio, muestra los productos en caso de tener añadidos y la posibilidad de quitarlos del mismo  
 NavBar: Cart animado, estilo para cart activo, secciones activas con estilo especifico, mejorado menu mobile, reducido box de categorias en desktop  
-+Refactorizado codigo en componentes varios.  
-  
++Refactorizado codigo en componentes varios.
+
 28-07-2021:  
 Algunos componentes fueron refactorizados  
 Se reemplazaron JSON de productos y categorias por Firestore  
 CartWidget: Componente para mostrar la cantidad de items en el carrito (suma de todas las cantidades de producto)  
 Cart ahora muestra los productos en carritos 'ordenadamente', tiene ademas una card que totaliza el valor de la compra y tiene las opciones para finalizar o seguir adquiriendo productos  
 CartContext (Context) lleva la administracion de productos en carrito(agrega, quita, vacia), asi como su sumatoria de unidades y precios.  
-El Cart(carrito) es persitente en memoria del navegador!  
-  
+El Cart(carrito) es persitente en memoria del navegador!
+
 29-07-2021:  
-Creado sin ayudin(?) componente para ordenar lista de productos  
+Creado componente para ordenar lista de productos  
 Categorias en navbar y menu se ordenan alfabeticamente (excepto seccion de promociones que siempre aparece primero)  
-Tras agregar un item al carrito, podremos editar su cantidad/quitarlo del carrito desde la misma pagina del producto  
-  
+Tras agregar un item al carrito, podremos editar su cantidad/quitarlo del carrito desde la misma pagina del producto
+
 31-07-2021:  
 Categorias son distribuidas a los componentes mediante un context que realiza el fetch correspondiente.  
-ExhibitParallax: Componente que muestra las categorias con un estilo y formato.  Posee un problema de scroll en mobile.   
+ExhibitParallax: Componente que muestra las categorias con un estilo y formato. Posee un problema de scroll en mobile.  
 Redefinido componente carousel, ahora no se ni que es pero quedo bonito! Funciona tanto en mobile como desktop.  
 Componente para ordenar distribuido en pagina de promociones y en paginas generales de produtos, siempre y cuando haya mas de un producto para mostrar.  
 Refactorizado codigos de varios componentes.  
-Modificado estilizado en algunos componentes.
+Modificado estilizado en algunos componentes.  
+
+01-08-2021:  
+
+

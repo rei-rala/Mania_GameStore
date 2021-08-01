@@ -4,7 +4,7 @@
   align-items: center;
   text-align: center;
 
-  row-gap: 0.5rem;
+  row-gap: 1rem;
 }
 
 .categoryTitle {
@@ -30,7 +30,7 @@ hr {
   font-family: "Ubuntu", sans-serif;
 
   padding: 1rem;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
   padding: 1%;
 
@@ -40,5 +40,33 @@ hr {
     width: 100%;
     background: black;
     $primaryClr: red;
+  }
+}
+
+.previewFromHover {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: auto;
+  height: auto;
+  z-index: 2;
+
+  img {
+    max-height: 30vw;
+    max-width: 40vw;
+    object-fit: contain;
+    border: 2px outset red;
+    border-radius: 1rem;
+  }
+}
+
+@media (max-width: 864px) and (orientation: portrait) {
+  .previewFromHover {
+    img {
+      max-height: 60vw;
+      max-width: 80vw;
+    }
   }
 }

@@ -17,6 +17,7 @@ $notActiveCarItemWidth: 7%;
   overflow: hidden;
 
   .titleBanner,
+  .textBanner,
   .linkBanner {
     position: absolute;
     bottom: -50%;
@@ -26,14 +27,20 @@ $notActiveCarItemWidth: 7%;
     display: flex;
     justify-content: center;
 
+    text-align: center;
     transition: all 1.25s;
     width: 100%;
   }
   .titleBanner {
-    text-align: center;
     cursor: default;
     color: black;
     bottom: 0%;
+  }
+
+  .textBanner {
+    width: 80%;
+    padding: 0.5rem;
+    border-radius: 1rem;
   }
 
   img {
@@ -47,14 +54,18 @@ $notActiveCarItemWidth: 7%;
   .carItem:hover {
     width: 100%;
 
-    .titleBanner {
+    .titleBanner,
+    .textBanner {
       transition: all 1s;
-      bottom: 50%;
+      bottom: 75%;
       background-color: hsla(0, 0%, 0%, 0.5);
       color: white;
     }
+    .textBanner {
+      bottom: 50%;
+    }
     .linkBanner {
-      bottom: 30%;
+      bottom: 25%;
     }
   }
   .carItem:not(:hover) {
@@ -62,7 +73,17 @@ $notActiveCarItemWidth: 7%;
     filter: blur(2px);
 
     .titleBanner {
-      color: rgba(0, 0, 0, 0.01);
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 864px) {
+  .carouselContainer:hover {
+    .carItem:hover {
+      .textBanner {
+        bottom: 40%;
+      }
     }
   }
 }

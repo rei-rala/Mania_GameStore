@@ -15,9 +15,7 @@ export const CategoriesContext = ({ children }) => {
       query.docs.map(doc => {
         return { ...doc.data(), id: doc.id }
       }))
-      .then(categories => {
-        setCategoriesData(categories)
-      })
+      .then(setCategoriesData)
       .catch(console.error)
   }, [])
 

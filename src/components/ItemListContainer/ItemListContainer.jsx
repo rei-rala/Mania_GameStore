@@ -15,8 +15,15 @@ const ItemListContainer = () => {
   const [errorState, setErrorState] = useState(false);
   const [finishOk, setFinishOK] = useState(false);
 
+  const [productImgPreview, setProductImgPreview] = useState(null);
+
   const [listChangeToggle, setListChangeToggle] = useState(false)
   const toggleListChange = () => setListChangeToggle(!listChangeToggle)
+  const manageProductImgPreview = product => {
+    console.info('Renderizado preview')
+    product.type === 'mouseenter' ? setProductImgPreview({ src: product.target.src, alt: product.target.alt }) : setProductImgPreview(null);
+    //setProductImgPreview(product)
+  };
 
   const createError = err => setErrorState(err);
 
@@ -104,9 +111,17 @@ const ItemListContainer = () => {
             ? <Loading sectionName={categoryName || 'productos'} />
             : errorState && !finishOk
               ? <div className="errorScreen"> <p>Error: <br />{errorState}</p> <Link to='/productos'><button>Ver productos</button></Link> </div>
-              : displayProducts.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={process.env.PUBLIC_URL + prod.image} price={prod.price} promoted={prod.promoted} />)
+              : displayProducts.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={(prod.image).charAt(0) === '/' ? process.env.PUBLIC_URL + prod.image : prod.image} price={prod.price} promoted={prod.promoted} preview={manageProductImgPreview} />)
         }
       </div >
+
+      {
+        !productImgPreview
+          ? null
+          : <div className="previewFromHover">
+            <img src={productImgPreview.src} alt={productImgPreview.alt} />
+          </div>
+      }
     </>
   )
 }
