@@ -5,7 +5,8 @@ import { database } from '../firebase/firebase';
 export const Categories = createContext();
 
 export const CategoriesContext = ({ children }) => {
-  const [categoriesData, setCategoriesData] = useState(null)
+  const [categoriesFirebase, setCategoriesFirebase] = useState(null)
+  const manageCategoriesFirebase = categories => setCategoriesFirebase(categories);
 
   useEffect(() => {
     console.info('Fetch de categorias')
@@ -15,10 +16,10 @@ export const CategoriesContext = ({ children }) => {
       query.docs.map(doc => {
         return { ...doc.data(), id: doc.id }
       }))
-      .then(setCategoriesData)
+      .then(manageCategoriesFirebase)
       .catch(console.error)
   }, [])
 
 
-  return <Categories.Provider value={{ categoriesData }}> {children} </Categories.Provider>;
+  return <Categories.Provider value={{ categoriesFirebase }}> {children} </Categories.Provider>;
 }

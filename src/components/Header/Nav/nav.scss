@@ -170,13 +170,13 @@
 }
 
 .cartWithOrder {
-  animation: 1.5s bounce infinite ease-in;
-  -webkit-animation: 1.5s bounce infinite ease-in;
+  animation: 1.5s shake infinite ease-in;
+  -webkit-animation: 1.5s shake infinite ease-in;
   animation-duration: 1s;
   animation-fill-mode: both;
 }
 
-@keyframes bounce {
+@keyframes shake {
   0% {
     transform: rotate(0deg);
   }
@@ -193,7 +193,7 @@
     transform: rotate(0);
   }
 }
-@-webkit-keyframes bounce {
+@-webkit-keyframes shake {
   0% {
     transform: rotate(0deg);
   }

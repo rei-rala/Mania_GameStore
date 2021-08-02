@@ -15,7 +15,7 @@ const Carousel = () => {
 
 				id: 5,
 				title: "Nostalgia",
-				text: 'Visita nuestra seccion de nostalgia, en la que tendremos consolas y accesorios para tu consola',
+				text: 'Visita esta seccion en la que tendremos consolas retro y accesorios para tu consola mas moderna!',
 				imgSrc: 'https://firebasestorage.googleapis.com/v0/b/mania-gamestore.appspot.com/o/oldDoom.png?alt=media&token=a0b8b9ba-8939-46d7-a918-d05da1b126f7',
 				link: '/'
 			},
@@ -30,14 +30,14 @@ const Carousel = () => {
 				id: 7,
 				title: "Destacado 3",
 				text: 'Visita nuestra seccion',
-				imgSrc: 'https://picsum.photos/id/300/800/600',
+				imgSrc: 'https://picsum.photos/id/201/800/600',
 				link: '/'
 			},
 			{
 				id: 8,
 				title: "Ultimo",
 				text: 'Visita nuestra seccion',
-				imgSrc: 'https://picsum.photos/id/400/800/600',
+				imgSrc: 'https://picsum.photos/id/202/800/600',
 				link: '/'
 			},
 
@@ -56,10 +56,12 @@ const Carousel = () => {
 						<div className="carouselContainer">
 							{
 								display.map(i => <CarouselItem key={i.id}>
-									{i.title ? <h3 className='titleBanner'><span>{i.title}</span></h3> : null}
-									{i.text ? <p className='textBanner'><span>{i.text}</span></p> : null}
 									<img src={(i.imgSrc).charAt(0) === '/' ? (process.env.PUBLIC_URL + i.imgSrc) : i.imgSrc} loading='lazy' width='800px' height='600px' alt='Producto X' />
-									{i.link ? <Link to='/' className='linkBanner'><button> Ir a {i.title}</button></Link> : null}
+									<div className="detailContainer">
+										{i.title ? <h3 className='titleBanner'><span>{i.title}</span></h3> : null}
+										{i.text ? <p className='textBanner'><span>{i.text}</span></p> : null}
+										{i.link ? <Link to='/' className='linkBanner'><button> Ir a {i.title}</button></Link> : null}
+									</div>
 								</CarouselItem>)
 							}
 						</div>

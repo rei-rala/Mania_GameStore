@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import './navMenuMobile.scss';
 
-import { database } from '../../../../firebase/firebase';
+import { Categories } from '../../../../context/CategoriesContext';
 
 const NavMenuMobile = ({ manageMobileMenu, className }) => {
+  const { categoriesFirebase } = useContext(Categories)
 
   const [catItems, setCatItems] = useState(null);
   const manageCategories = list => setCatItems(list)
@@ -15,22 +16,16 @@ const NavMenuMobile = ({ manageMobileMenu, className }) => {
   console.info('Renderizado: NavMenuMobile')
 
   useEffect(() => {
-    console.info('Cargado: Categorias en NavMenuMobile')
 
-    console.info('Fetch de categorias')
-    const categoriesF = database.collection('categories');
+    if (categoriesFirebase) {
+      console.info('Cargado: Categorias en NavMenuMobile')
 
-    categoriesF.get().then(query =>
-      query.docs.map(doc => {
-        return { ...doc.data(), id: doc.id }
-      }))
-      .then(r => r.sort((a, b) => a.category > b.category ? 1 : -1))
-      .then(manageCategories)
-      .catch(console.error)
-
+      console.info('Fetch de categorias')
+      manageCategories(categoriesFirebase.sort((a, b) => a.category > b.category ? 1 : -1))
+    }
 
     return function cleanup() { }
-  }, [])
+  }, [categoriesFirebase])
 
   return (
     <div className={className}>

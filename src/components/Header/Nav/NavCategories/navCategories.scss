@@ -5,8 +5,8 @@
   top: 6rem;
 
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
 
   margin: 0 0.5rem;
   padding: $defaultFontSize 0;
@@ -23,9 +23,18 @@
   opacity: 0.95;
   overflow: hidden;
 
+  hr {
+    margin: 0.5rem 0;
+    border-color: #5e5ed9;
+  }
   a:hover {
     color: #5e5ed9;
     text-decoration: none;
+  }
+  .categoriesList {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
   }
 }
 

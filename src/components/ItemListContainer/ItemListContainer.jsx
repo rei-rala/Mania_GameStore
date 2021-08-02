@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
@@ -8,91 +8,67 @@ import ItemList from './ItemList/ItemList'
 import "./itemListContainer.scss";
 
 import { database } from '../../firebase/firebase';
+import { Categories } from "../../context/CategoriesContext";
 
 const ItemListContainer = () => {
+  const { categoriesFirebase } = useContext(Categories)
+
   const { categoryName } = useParams() || null;
   const [displayProducts, setDisplayProducts] = useState(null);
-  const [errorState, setErrorState] = useState(false);
-  const [finishOk, setFinishOK] = useState(false);
 
-  const [productImgPreview, setProductImgPreview] = useState(null);
+  const [errorState, setErrorState] = useState(false);
+
+  // ? todo lo relacionado a productImgPreview esta en fase experimental
+  //const [productImgPreview, setProductImgPreview] = useState(null);
 
   const [listChangeToggle, setListChangeToggle] = useState(false)
   const toggleListChange = () => setListChangeToggle(!listChangeToggle)
-  const manageProductImgPreview = product => {
+  /* const manageProductImgPreview = e => {
     console.info('Renderizado preview')
-    product.type === 'mouseenter' ? setProductImgPreview({ src: product.target.src, alt: product.target.alt }) : setProductImgPreview(null);
-    //setProductImgPreview(product)
-  };
+    e.type === 'mouseenter' ? setProductImgPreview({ src: e.target.src, alt: e.target.alt }) : setProductImgPreview(null);
+    console.info(e)
+    e.preventDefault()
+  }; */
 
   const createError = err => setErrorState(err);
 
   useEffect(() => {
 
     const handleDisplay = setDisplayProducts;
-
     handleDisplay(null)
 
-    const categoriesF = database.collection('categories');
-
-
     try {
-      setTimeout(() => {
-        createError('Se acabo el tiempo de espera, intente nuevamente')
-        if (!finishOk) {
-          setFinishOK(false)
+      console.warn(categoryName)
+      if (categoryName && categoriesFirebase) {
+        const allCategories = categoriesFirebase.map(obj => obj.category)
+
+        if (!allCategories.includes(categoryName)) {
+          createError('No hay articulos con esta categoria');
+          return console.warn('No hay errores con esta categoria')
         }
-      }, 500)
+      }
 
-
-      categoriesF.get().then(query => {
-        return query.docs.map(doc => {
-          return { ...doc.data() }
+      database
+        .collection('products')
+        .where(
+          'category',
+          (categoryName ? '==' : '!='),
+          (categoryName ? categoryName : 'None')
+        )
+        .get()
+        .then(query => {
+          return query.docs.map(doc => {
+            return { ...doc.data(), id: doc.id }
+          })
         })
-      })
-        .catch(error => { console.warn(error); throw error })
-        .then(catFirebase => catFirebase.map(item => item.category))
-        .then(r => {
-          if (categoryName) {
-            if (r.includes(categoryName)) {
-              return r
-            }
-            else {
-              createError('No hay articulos con esta categoria');
-            }
-          }
-          else {
-            return r
-          }
-        })
-        .catch(createError)
-        .then(() => {
-          const productsF = database
-            .collection('products')
-            .where(
-              'category',
-              (categoryName && categoryName !== 'productos' ? '==' : '!='),
-              (categoryName ? categoryName : 'None')
-            );
-
-          productsF.get()
-            .then(r => {
-              return r
-            })
-            .then(query => query.docs.map(doc => {
-              return { ...doc.data(), id: doc.id }
-            }))
-            .then(handleDisplay)
-            .then(r => setFinishOK(true))
-        })
+        .then(handleDisplay)
     }
     catch (err) {
       createError(err)
-      setFinishOK(false)
     }
 
     console.info('Renderizado: Productos segun seccion')
-  }, [categoryName, finishOk, setFinishOK])
+  }, [categoriesFirebase, categoryName])
 
   useEffect(() => {
     setDisplayProducts(displayProducts)
@@ -109,19 +85,19 @@ const ItemListContainer = () => {
         {
           !displayProducts
             ? <Loading sectionName={categoryName || 'productos'} />
-            : errorState && !finishOk
+            : errorState
               ? <div className="errorScreen"> <p>Error: <br />{errorState}</p> <Link to='/productos'><button>Ver productos</button></Link> </div>
-              : displayProducts.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={(prod.image).charAt(0) === '/' ? process.env.PUBLIC_URL + prod.image : prod.image} price={prod.price} promoted={prod.promoted} preview={manageProductImgPreview} />)
+              : displayProducts.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={(prod.image).charAt(0) === '/' ? process.env.PUBLIC_URL + prod.image : prod.image} price={prod.price} promoted={prod.promoted} /* preview={manageProductImgPreview} */ />)
         }
       </div >
 
-      {
+{/*       {
         !productImgPreview
           ? null
           : <div className="previewFromHover">
-            <img src={productImgPreview.src} alt={productImgPreview.alt} />
+            <img onMouseEnter={manageProductImgPreview} onMouseLeave={manageProductImgPreview} src={productImgPreview.src} alt={productImgPreview.alt} />
           </div>
-      }
+      } */}
     </>
   )
 }

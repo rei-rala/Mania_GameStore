@@ -4,4 +4,16 @@
   justify-content: space-between;
 
   width: 100%;
+  animation: 3s carAparecer ease !important;
+  overflow: hidden;
+}
+
+@keyframes carAparecer {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: fit-content;
+  }
 }

@@ -5,16 +5,16 @@ import { Categories } from '../../context/CategoriesContext';
 import './exhibitParallax.scss'
 
 const ExhibitParallax = () => {
-  const { categoriesData } = useContext(Categories)
+  const { categoriesFirebase } = useContext(Categories)
   const [catParallaxItems, setCatParallaxItems] = useState(null)
 
 
   useEffect(() => {
-    if (categoriesData) {
-      setCatParallaxItems(categoriesData.sort((a, b) => a.category > b.category ? 1 : -1))
-      //console.warn(categoriesData)
+    if (categoriesFirebase) {
+      setCatParallaxItems(categoriesFirebase.sort((a, b) => a.category > b.category ? 1 : -1))
+      //console.warn(categoriesFirebase)
     }
-  }, [categoriesData])
+  }, [categoriesFirebase])
 
   return (
     <div className="exhibitParallaxContainer">

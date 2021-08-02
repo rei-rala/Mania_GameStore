@@ -27,13 +27,13 @@ function App() {
           <Header />
 
           <Switch>
-            <Route path='/Mania_'>
+            <Route exact path='/'>
               <Carousel />
               <ItemPromoted random={true} />
               <ExhibitParallax />
             </Route>
-            <Route exact path='/'>
-              <Redirect to='/Mania_' />
+            <Route path='/Mania_'>
+              <Redirect to='/' />
             </Route>
 
 

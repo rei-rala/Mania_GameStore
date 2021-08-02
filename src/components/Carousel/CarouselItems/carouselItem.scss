@@ -16,37 +16,48 @@ $notActiveCarItemWidth: 7%;
   transition: all 1s;
   overflow: hidden;
 
-  .titleBanner,
-  .textBanner,
-  .linkBanner {
-    position: absolute;
-    bottom: -50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    justify-content: center;
-
-    text-align: center;
-    transition: all 1.25s;
-    width: 100%;
-  }
-  .titleBanner {
-    cursor: default;
-    color: black;
-    bottom: 0%;
-  }
-
-  .textBanner {
-    width: 80%;
-    padding: 0.5rem;
-    border-radius: 1rem;
-  }
-
   img {
+    position: absolute;
     object-fit: cover;
     pointer-events: none;
     width: 100%;
+  }
+
+  .detailContainer {
+    position: absolute;
+    top: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10%;
+
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+    transition: all 1s;
+
+    .titleBanner,
+    .textBanner {
+      cursor: default;
+
+      background-color: hsla(0, 0%, 0%, 0.85);
+      color: rgba(255, 255, 255, 0.75);
+
+      width: 100%;
+      transition: all 1s;
+    }
+    .titleBanner {
+      position: absolute;
+      top: -10%;
+    }
+    .textBanner {
+      width: 80%;
+      padding: 0.5rem;
+      border-radius: 1rem;
+    }
   }
 }
 
@@ -54,25 +65,29 @@ $notActiveCarItemWidth: 7%;
   .carItem:hover {
     width: 100%;
 
-    .titleBanner,
-    .textBanner {
-      transition: all 1s;
-      bottom: 75%;
-      background-color: hsla(0, 0%, 0%, 0.5);
-      color: white;
-    }
-    .textBanner {
-      bottom: 50%;
-    }
-    .linkBanner {
-      bottom: 25%;
+    .detailContainer {
+      top: 10%;
+      .titleBanner,
+      .textBanner {
+        background-color: hsla(0, 0%, 0%, 0.75);
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .titleBanner {
+        position: absolute;
+        top: 20%;
+      }
+      button {
+        background-color: rgba(255, 255, 255, 0.85);
+        color: hsla(0, 0%, 0%, 0.85);
+      }
     }
   }
   .carItem:not(:hover) {
     width: $notActiveCarItemWidth;
     filter: blur(2px);
 
-    .titleBanner {
+    .detailContainer {
       opacity: 0;
     }
   }

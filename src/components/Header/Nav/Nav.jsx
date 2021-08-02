@@ -58,8 +58,8 @@ const Nav = () => {
 
 				<NavItem>
 					<Link to='/productos'>
-						<label htmlFor='navCategories' className='showCatNav' /* onMouseEnter={dropdown} */>
-							Categor&iacute;as
+						<label htmlFor='navCategories' className='showCatNav' title='Ver todos los productos' >
+							Productos
 						</label>
 					</Link>
 					<NavCategories className='catNav' />
@@ -92,7 +92,7 @@ const Nav = () => {
 				{mobileMenu ? <NavMenuMobile manageMobileMenu={toggleMobileMenu} className='mobileMenuActive' /> : <NavMenuMobile manageMobileMenu={toggleMobileMenu} className='hideMobileMenu' />}
 
 			</ul>
-		</nav>
+		</nav >
 
 	)
 }

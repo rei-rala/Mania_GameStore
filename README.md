@@ -102,8 +102,17 @@ ExhibitParallax: Componente que muestra las categorias con un estilo y formato. 
 Redefinido componente carousel, ahora no se ni que es pero quedo bonito! Funciona tanto en mobile como desktop.  
 Componente para ordenar distribuido en pagina de promociones y en paginas generales de produtos, siempre y cuando haya mas de un producto para mostrar.  
 Refactorizado codigos de varios componentes.  
-Modificado estilizado en algunos componentes.  
+Modificado el estilo en algunos componentes.  
 
 01-08-2021:  
-
-
+Correcion en package.json  
+Redefinido 'ex carousel' en landing page  
+Funcion experimental: al hacer hover en la imagen de un producto, se mostraria la misma en mayor resolucion en alguna zona disponible del viewport  
+Modificado el estilo en algunos componentes
+  
+02-08-2021:  
+Landing en path '/' en lugar de '/Mania'  
+Renombradas variables de context de categorias para mejor semantica  
+Todos los componentes que utilizan categorias ahora obtienen el dato del context creado.  
+Pequeño rework a opcion de categorias en NavBar.  
+Ex carousel reestilizado tiene desempeño mas fluido
