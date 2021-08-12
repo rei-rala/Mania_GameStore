@@ -1,9 +1,6 @@
 .exhibitParallaxContainer {
-  position: relative;
-
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   gap: 1rem;
 
   background-color: hsl(30, 95%, 62%);
@@ -13,9 +10,11 @@
   padding: 0.5rem;
   width: 100%;
 
-  overflow: auto;
+  overflow-x: auto;
 
   .parallaxBox {
+    position: relative;
+
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -23,6 +22,7 @@
 
     min-width: 6rem;
     max-width: 8rem;
+
     overflow: hidden;
 
     text-align: center;
@@ -69,7 +69,8 @@
     }
   }
 
-  .parallaxBox:hover {
+  .parallaxBox:hover,
+  .parallaxBox:active {
     .catTitle {
       position: absolute;
       top: 50%;

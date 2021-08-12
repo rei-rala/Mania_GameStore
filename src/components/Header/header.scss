@@ -29,10 +29,6 @@
     }
   }
   &__bottom {
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -76,5 +72,19 @@
   .Mania_:hover {
     // por alguna razon no funciona en active o hover, por lo que lo subi al estado normal
     animation: $rainbow;
+  }
+}
+
+@media screen and(max-height:500px) {
+  .header {
+    top: -1px !important;
+    .header__top {
+      display: none;
+    }
+    .header__bottom {
+      position: sticky;
+      width: 100%;
+      top: -5px !important;
+    }
   }
 }

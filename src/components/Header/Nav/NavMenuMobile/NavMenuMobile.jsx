@@ -30,9 +30,11 @@ const NavMenuMobile = ({ manageMobileMenu, className }) => {
   return (
     <div className={className}>
       <h2 className='menuTitle'>Menu</h2>
-      <NavLink className='mainLink' onClick={closeMobileMenu} to='/Mania_' activeClassName="currentPage"> Home</NavLink>
-      <NavLink className='mainLink' onClick={closeMobileMenu} to='/productos' activeClassName="currentPage"> Todos los Productos</NavLink>
-      <NavLink className='mainLink' onClick={closeMobileMenu} to='/cart' activeClassName="currentPage"> Mi carrito</NavLink>
+      <div className="topGroup">
+        <NavLink className='mainLink' onClick={closeMobileMenu} to='/Mania_' activeClassName="currentPage"> Home</NavLink>
+        <NavLink className='mainLink' onClick={closeMobileMenu} to='/productos' activeClassName="currentPage"> Todos los Productos</NavLink>
+        <NavLink className='mainLink' onClick={closeMobileMenu} to='/cart' activeClassName="currentPage"> Mi carrito</NavLink>
+      </div>
       <hr />
       <h3 className='menuSubTitle'>Categorias</h3>
 

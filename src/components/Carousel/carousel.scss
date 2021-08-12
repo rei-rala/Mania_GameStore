@@ -3,8 +3,10 @@
   align-items: center;
   justify-content: space-between;
 
+  max-height: calc(100vh - 10rem);
   width: 100%;
-  animation: 3s carAparecer ease !important;
+  border-bottom: 3px ridge #5e5ed7;
+
   overflow: hidden;
 }
 
@@ -15,5 +17,11 @@
 
   to {
     height: fit-content;
+  }
+}
+
+@media (orientation: landscape) {
+  .carouselContainer {
+    max-height: calc(100vh - 2rem);
   }
 }

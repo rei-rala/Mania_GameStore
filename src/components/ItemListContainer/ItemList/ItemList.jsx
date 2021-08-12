@@ -18,16 +18,18 @@ const ItemList = ({ id, name, image, stock, price, promoted/* , preview */ }) =>
       <div className="productoInfoContainer">
         <div className="productInfo">
           <img src={image} alt={name} draggable='false' /* onMouseEnter={preview} onMouseLeave={preview} */ />
-          <span>{name}</span>
-          {
-            !promoted
-              ? <p className='normalPrice'>{`$${price}`}</p>
-              : <>
-                <p className='lastPrice'>${price}</p>
+          <div className="data">
+            <span>{name}</span>
+            {
+              !promoted
+                ? <p className='normalPrice'>{`$${price}`}</p>
+                : <>
+                  <p className='lastPrice'>${price}</p>
 
-                <p className='promoPrice'>Oferta! ${price * .85} </p>
-              </>
-          }
+                  <p className='promoPrice'>Oferta! ${price * .85} </p>
+                </>
+            }
+          </div>
         </div>
         <Link to={`/productos/${id}`} >
           <button className='yellowBtn'>Mas informacion</button>

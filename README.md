@@ -115,4 +115,7 @@ Landing en path '/' en lugar de '/Mania'
 Renombradas variables de context de categorias para mejor semantica  
 Todos los componentes que utilizan categorias ahora obtienen el dato del context creado.  
 Pequeño rework a opcion de categorias en NavBar.  
-Ex carousel reestilizado tiene desempeño mas fluido
+Ex carousel reestilizado tiene desempeño mas fluido  
+  
+12-08-2021:  
+Se modifico el estilo de varios componentes.

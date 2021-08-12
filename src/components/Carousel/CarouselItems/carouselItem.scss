@@ -11,7 +11,9 @@ $notActiveCarItemWidth: 7%;
 
   overflow: hidden;
   width: 25%;
-  height: 600px;
+
+  height: 100vh;
+  max-height: 600px;
 
   transition: all 1s;
   overflow: hidden;
@@ -89,6 +91,11 @@ $notActiveCarItemWidth: 7%;
 
     .detailContainer {
       opacity: 0;
+    }
+
+    .titleBanner {
+      position: absolute;
+      top: 30%;
     }
   }
 }
