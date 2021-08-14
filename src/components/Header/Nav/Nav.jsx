@@ -58,7 +58,7 @@ const Nav = () => {
 
 
 				<NavItem>
-					<NavLink to='/ordenes'>
+					<NavLink to='/ordenes' activeClassName='currentPage'>
 						Ordenes
 					</NavLink>
 				</NavItem>

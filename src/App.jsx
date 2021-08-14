@@ -10,10 +10,12 @@ import Carousel from "./components/Carousel/Carousel";
 import ExhibitParallax from "./components/ExhibitParallax/ExhibitParallax";
 
 import Cart from "./components/Cart/Cart";
+import Orders from "./components/Orders/Orders";
 import ItemPromotedPage from "./components/ItemPromotedPage/ItemPromotedPage";
 import ItemPromoted from "./components/ItemPromotedPage/ItemPromoted/ItemPromoted";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemListContainer/ItemDetailContainer/ItemDetailContainer";
+
 import Footer from './components/Footer/Footer';
 import { CategoriesContext } from "./context/CategoriesContext";
 
@@ -63,6 +65,10 @@ function App() {
             </Route>
             <Route path='/ofertas'>
               <Redirect to='./promociones' />
+            </Route>
+
+            <Route path='/ordenes'>
+              <Orders />
             </Route>
 
           </Switch>

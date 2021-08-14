@@ -127,4 +127,6 @@ Modificado estilo de algunos componentes.
 14-08-2021:  
 Proceso de compra 'completo'.  
 Tras verificar stocks de las ordenes, se crea registro de la orden a nombre del comprador ingresado.  
-Tras confirmar compra, saldra un cartel con el ID de la orden.
+Tras confirmar compra, saldra un cartel con el ID de la orden.  
++Nuevo path _/ordenes_ en donde se realizaran consultas a ordenes.  
++Componente Orders encargado de mostrar las ordenes en caso de una consulta correcta.

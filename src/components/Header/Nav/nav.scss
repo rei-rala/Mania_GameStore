@@ -1,12 +1,12 @@
 @import "../../../styles/variables.scss";
 
-.currentPage,
-.currentPage:hover {
+.currentPage {
   text-decoration: underline !important;
   font-weight: bold;
 }
 
 .menuItem {
+  font-weight: normal;
   display: flex;
   align-items: center;
   justify-content: center;
