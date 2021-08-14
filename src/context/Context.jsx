@@ -18,14 +18,8 @@ export const CartContext = ({ children }) => {
       if (JSON.parse(localStorage.getItem('Mania_cart')).length !== 0) {
         const localManiaCart = JSON.parse(localStorage.getItem('Mania_cart'))
 
-        localStorage.setItem('Mania_cartSize', localManiaCart.reduce((totalQuantity, { quantity }) => {
-          return totalQuantity + quantity
-        }, 0));
-
-        localStorage.setItem('Mania_cartTotal', localManiaCart.reduce((totalBill, { quantity, itemCart }) => {
-          return totalBill + quantity * (itemCart.promoted ? itemCart.price * 0.85 : itemCart.price)
-        }, 0))
-
+        localStorage.setItem('Mania_cartSize', localManiaCart.reduce((totalQuantity, { quantity }) => totalQuantity + quantity, 0));
+        localStorage.setItem('Mania_cartTotal', localManiaCart.reduce((totalBill, { quantity, itemCart }) => totalBill + quantity * (itemCart.promoted ? itemCart.price * 0.85 : itemCart.price), 0))
 
         setCartSize(localStorage.getItem('Mania_cartSize'))
         setCartTotal(localStorage.getItem('Mania_cartTotal'))
@@ -61,7 +55,6 @@ export const CartContext = ({ children }) => {
   const removeFromCart = id => {
     try {
       if (isInCart(id)) {
-        //alert(`Intento de eliminar ${item['name']} - id de producto: ${item['id']}`)
         const filtered = cart.filter(obj => obj.itemCart['id'] !== id)
         manageCart(filtered);
       }
@@ -92,7 +85,6 @@ export const CartContext = ({ children }) => {
       clearCart()
     }
   })
-
 
 
   return <Context.Provider value={{ cart, isInCart, addToCart, removeFromCart, clearCart, cartSize, cartTotal }}> {children} </Context.Provider>;
