@@ -118,4 +118,8 @@ Pequeño rework a opcion de categorias en NavBar.
 Ex carousel reestilizado tiene desempeño mas fluido  
   
 12-08-2021:  
-Se modifico el estilo de varios componentes.
+Se modifico el estilo de varios componentes.  
+  
+13-08-2021:  
+Formulario de datos sobre comprador.  
+Modificado estilo de algunos componentes.

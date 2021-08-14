@@ -38,38 +38,33 @@
   }
 }
 
-.catNav {
-  display: none;
-}
+.menuItem {
+  .catNav {
+    display: none;
+    .container {
+      opacity: 1;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      row-gap: 1rem;
+      z-index: 1;
+    }
+  }
 
-.menuItem:first-child {
   &:hover {
-    // ! queria afectar todo lo que no fuera el header y el navbar+menu pero no me salio :( Solo afectaba a los elementos hijos de la seleccion
-    /* & > :not(.catNav) {
-      filter: brightness(0.5);
-    } */
-
     .catNav {
-      display: block;
-      .container {
-        opacity: 1;
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-around;
-        row-gap: 1rem;
-        z-index: 1;
-      }
+      display: flex;
     }
-    label {
-      font-weight: bold;
-    }
-    & p {
-      cursor: pointer;
-    }
-    & p:hover {
-      color: $defaultBkgBlue;
-      transform: scale(1.1);
-    }
+  }
+  label {
+    font-weight: bold;
+  }
+  & p {
+    cursor: pointer;
+  }
+  & p:hover {
+    color: $defaultBkgBlue;
+    transform: scale(1.1);
   }
 }
 
@@ -91,4 +86,3 @@ p {
   height: fit-content;
   margin-bottom: $defaultFontSize * 0.2;
 }
-

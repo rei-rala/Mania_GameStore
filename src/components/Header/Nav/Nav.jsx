@@ -56,6 +56,14 @@ const Nav = () => {
 		<nav className='nav'>
 			<ul className='nav__ul'>
 
+
+				<NavItem>
+					<NavLink to='/ordenes'>
+						Ordenes
+					</NavLink>
+				</NavItem>
+
+
 				<NavItem>
 					<Link to='/productos'>
 						<label htmlFor='navCategories' className='showCatNav' title='Ver todos los productos' >
@@ -82,6 +90,7 @@ const Nav = () => {
 						{cartSize === '0' || !cartSize ? null : <CartWidget />}
 					</NavLink>
 				</NavItem>
+
 				<NavItem>
 					<div onClick={toggleMobileMenu}>
 						<NavMenuMobileButton className={mobileMenu ? 'menuMobile menuBtnContainerActive' : 'menuMobile'} />
