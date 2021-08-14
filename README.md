@@ -122,4 +122,9 @@ Se modifico el estilo de varios componentes.
   
 13-08-2021:  
 Formulario de datos sobre comprador.  
-Modificado estilo de algunos componentes.
+Modificado estilo de algunos componentes.  
+  
+14-08-2021:  
+Proceso de compra 'completo'.  
+Tras verificar stocks de las ordenes, se crea registro de la orden a nombre del comprador ingresado.  
+Tras confirmar compra, saldra un cartel con el ID de la orden.

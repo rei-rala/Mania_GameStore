@@ -1,3 +1,16 @@
+.loadingContainer {
+  z-index: 10;
+  color: white;
+
+  .customCont {
+    position: fixed;
+    left: -50%;
+    height: 100vh;
+    width: 150%;
+    background-color: hsla(130, 8%, 15%, 0.5);
+  }
+}
+
 section.finish {
   font-family: "Ubuntu", sans-serif;
   text-align: center;
@@ -12,19 +25,29 @@ section.finish {
     row-gap: 0.25rem;
     padding: 0.5rem 2rem;
     text-align: center;
-    font-family: "Ubuntu", sans-serif;
   }
 
   form {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    background-color: hsl(30, 95%, 62%);
+    background-color: #ff8811;
+    color: #6060df;
+    border: 1.5px solid #222823;
     padding: 1rem;
     border-radius: 1rem;
     max-width: 80%;
     margin: auto;
+
+    button:not(.removeItemForm) {
+      background-color: hsla(0, 0%, 100%, 0.75);
+      opacity: 1;
+      font-weight: bold;
+      border-color: #6060df;
+      padding: 0.25rem;
+    }
   }
+
   .separator {
     margin: 0.5rem auto;
     border-top: 3px solid gray;
@@ -35,6 +58,12 @@ section.finish {
     border-top-width: 2px;
     width: 12rem;
     max-width: 50%;
+  }
+}
+
+.groupFormX {
+  p {
+    font-weight: bold;
   }
 }
 
@@ -57,6 +86,7 @@ section.finish {
 
     text-align: center;
     cursor: pointer;
+    font-weight: bold;
 
     z-index: 9;
     opacity: 0;
@@ -72,7 +102,7 @@ section.finish {
   }
   input:hover,
   input:focus {
-    border-color: hsl(30, 95%, 62%);
+    border-color: hsl(240, 62%, 61%);
   }
 
   input:focus {
