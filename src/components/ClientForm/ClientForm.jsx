@@ -52,7 +52,6 @@ const ClientForm = ({ manageFinishBuy, manageOrderCreated }) => {
       }
       else {
         stockInsuficiente.push({ ...doc.data(), id: doc.id })
-        console.table(stockInsuficiente)
       }
     })
 
@@ -72,7 +71,6 @@ const ClientForm = ({ manageFinishBuy, manageOrderCreated }) => {
       .then(() => database.collection('orders').add(newOrder))
       .then(order => {
         manageOrderCreated(order.id)
-        console.warn(`ID de orden ${order.id}`)
       })
       .catch(err => console.info(`Se producto el siguiente error:\n${err}`))
       .finally(() => {

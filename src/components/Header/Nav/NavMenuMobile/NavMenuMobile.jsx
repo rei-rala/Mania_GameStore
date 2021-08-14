@@ -13,14 +13,10 @@ const NavMenuMobile = ({ manageMobileMenu, className }) => {
   const manageCategories = list => setCatItems(list)
 
   const closeMobileMenu = () => manageMobileMenu()
-  console.info('Renderizado: NavMenuMobile')
 
   useEffect(() => {
 
     if (categoriesFirebase) {
-      console.info('Cargado: Categorias en NavMenuMobile')
-
-      console.info('Fetch de categorias')
       manageCategories(categoriesFirebase.sort((a, b) => a.category > b.category ? 1 : -1))
     }
 

@@ -18,17 +18,8 @@ const ItemListContainer = () => {
 
   const [errorState, setErrorState] = useState(false);
 
-  // ? todo lo relacionado a productImgPreview esta en fase experimental
-  //const [productImgPreview, setProductImgPreview] = useState(null);
-
   const [listChangeToggle, setListChangeToggle] = useState(false)
   const toggleListChange = () => setListChangeToggle(!listChangeToggle)
-  /* const manageProductImgPreview = e => {
-    console.info('Renderizado preview')
-    e.type === 'mouseenter' ? setProductImgPreview({ src: e.target.src, alt: e.target.alt }) : setProductImgPreview(null);
-    console.info(e)
-    e.preventDefault()
-  }; */
 
   const createError = err => setErrorState(err);
 
@@ -38,13 +29,11 @@ const ItemListContainer = () => {
     handleDisplay(null)
 
     try {
-      console.warn(categoryName)
       if (categoryName && categoriesFirebase) {
         const allCategories = categoriesFirebase.map(obj => obj.category)
 
         if (!allCategories.includes(categoryName)) {
           createError('No hay articulos con esta categoria');
-          return console.warn('No hay errores con esta categoria')
         }
       }
 
@@ -67,12 +56,10 @@ const ItemListContainer = () => {
       createError(err)
     }
 
-    console.info('Renderizado: Productos segun seccion')
   }, [categoriesFirebase, categoryName])
 
   useEffect(() => {
     setDisplayProducts(displayProducts)
-    //console.log(listChangeToggle)
   }, [displayProducts, listChangeToggle])
 
 

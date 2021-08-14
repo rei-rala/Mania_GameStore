@@ -12,7 +12,6 @@ const ExhibitParallax = () => {
   useEffect(() => {
     if (categoriesFirebase) {
       setCatParallaxItems(categoriesFirebase.sort((a, b) => a.category > b.category ? 1 : -1))
-      //console.warn(categoriesFirebase)
     }
   }, [categoriesFirebase])
 

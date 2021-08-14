@@ -31,7 +31,6 @@ const Orders = () => {
         .then(doc => {
           if (doc.exists) {
             manageOrder({ o: doc.data(), id: doc.id })
-            console.table({ o: doc.data(), id: doc.id })
           }
           else {
             manageOrder(404)

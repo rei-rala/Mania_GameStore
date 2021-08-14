@@ -6,18 +6,12 @@ const ItemCountContainer = ({ count, stock, setCount }) => {
 
   const manageQuantity = (e) => {
     if (e.target.innerText === '↑') {
-      count >= stock
-        ? console.info(`No puedes comprar mas que el stock de ${stock}`)
-        : setCount(count + 1);
+      if ((count >= stock) === false) { setCount(count + 1) };
     }
     else if (e.target.innerText === '↓') {
-      !count || count === 0
-        ? console.info('No puedes comprar menos que 0')
-        : setCount(count - 1)
+      if (count || count !== 0) { setCount(count - 1) }
     };
   }
-
-  console.log('Renderizado: ItemCountContainer')
 
 
   return (

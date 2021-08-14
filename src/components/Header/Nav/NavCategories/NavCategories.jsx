@@ -14,7 +14,6 @@ const NavCategories = () => {
 
 
 	useEffect(() => {
-		console.info('Fetch de categorias')
 
 		if (categoriesFirebase) {
 			// Bueno, pronto lo hago funcionar al ordenamiento alfabetico de las categorias

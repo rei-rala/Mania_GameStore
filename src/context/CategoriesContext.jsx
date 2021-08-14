@@ -9,7 +9,6 @@ export const CategoriesContext = ({ children }) => {
   const manageCategoriesFirebase = categories => setCategoriesFirebase(categories);
 
   useEffect(() => {
-    console.info('Fetch de categorias')
     const categoriesF = database.collection('categories');
 
     categoriesF.get().then(query =>

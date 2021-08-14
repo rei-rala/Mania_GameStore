@@ -25,7 +25,6 @@ const ItemDetailContainer = () => {
   const manageItem = item => setViewItem(item);
   const handleBuyState = e => {
     if (buyState) {
-      console.log(e.target.attributes['itemvalue'].value['id'])
       removeFromCart(e.target.attributes['itemvalue'].value)
     }
     setBuyState(!buyState)

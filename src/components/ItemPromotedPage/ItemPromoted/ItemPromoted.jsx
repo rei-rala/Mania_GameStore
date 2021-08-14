@@ -40,7 +40,6 @@ const ItemPromoted = ({ random }) => {
 
   useEffect(() => {
     setShowPromo(showPromo)
-    //console.log(listChangeToggle)
   }, [showPromo, listChangeToggle])
 
   return (

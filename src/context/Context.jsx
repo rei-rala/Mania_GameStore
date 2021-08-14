@@ -36,7 +36,6 @@ export const CartContext = ({ children }) => {
       }
     }
     catch (err) {
-      console.warn(`Se produjo un error en el carrito\n${err}`)
       clearCart()
     }
   };
@@ -48,7 +47,6 @@ export const CartContext = ({ children }) => {
 
   const addToCart = (item, count) => {
     try {
-      //console.warn(`Esta en carrito? ${isInCart(item['id'])}`)
       if (isInCart(item['id'])) {
         alert(`${item.name} ya se encuentra en el carrito!`)
       } else {
@@ -56,7 +54,6 @@ export const CartContext = ({ children }) => {
       }
     }
     catch (err) {
-      console.warn(`Se produjo un error en el carrito\n${err}`)
       clearCart()
     }
   }
@@ -69,11 +66,9 @@ export const CartContext = ({ children }) => {
         manageCart(filtered);
       }
       else {
-        console.warn(`No hay id: ${id} en carrito`)
       }
     }
     catch (err) {
-      console.warn(`Se produjo un error en el carrito\n${err}`)
       clearCart()
     }
   }
@@ -88,14 +83,12 @@ export const CartContext = ({ children }) => {
       if (firstExecution) {
         if (cart.length) { localStorage.setItem('Mania_cart', JSON.stringify(cart)) }
         else if (localStorage.getItem('Mania_cart')) {
-          //console.warn(JSON.parse(localStorage.getItem('Mania_cart')))
           manageCart(JSON.parse(localStorage.getItem('Mania_cart')))
         }
       }
       firstExec()
     }
     catch (err) {
-      console.warn(`Se produjo un error en el carrito\n${err}`)
       clearCart()
     }
   })

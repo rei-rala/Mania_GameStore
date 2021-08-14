@@ -49,9 +49,6 @@ const Nav = () => {
 		manageMobileSearch(false);
 	}
 
-
-	//console.warn(cartSize)
-
 	return (
 		<nav className='nav'>
 			<ul className='nav__ul'>
