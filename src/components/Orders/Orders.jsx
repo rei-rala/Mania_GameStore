@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './orders.scss'
 
 import { database } from '../../firebase/firebase';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Loading from '../Loading/Loading'
 
 const Orders = () => {
+  const history = useHistory();
+
   const [order, setOrder] = useState(null)
   const manageOrder = order => setOrder(order)
 
@@ -17,7 +19,12 @@ const Orders = () => {
 
   const checkOrder = (ev) => {
     ev.preventDefault();
-    manageOrderInput(ev.target.inputOrder.value)
+    const orderInput = ev.target.inputOrder.value
+    const re = new RegExp(/[a-zA-Z0-9]{20}/gm)
+
+    if (re.test(orderInput)) {
+      manageOrderInput(orderInput)
+    }
   }
 
   useEffect(() => {
@@ -64,7 +71,17 @@ const Orders = () => {
               <p>Creada el
                 {
                   `
-                  ${new Date(order.o.date).toLocaleDateString('es-AR')} a las ${new Date(order.o.date).getHours() < 9 ? '0' + new Date(order.o.date).getHours() : new Date(order.o.date).getHours()}:${new Date(order.o.date).getMinutes()}
+                  ${new Date(order.o.date).toLocaleDateString('es-AR')}
+                  a las
+                  ${new Date(order.o.date).getHours() < 10
+                    ? '0' + new Date(order.o.date).getHours()
+                    : new Date(order.o.date).getHours()
+                  }
+                  :
+                  ${new Date(order.o.date).getMinutes() < 10
+                    ? '0' + new Date(order.o.date).getMinutes()
+                    : new Date(order.o.date).getMinutes()
+                  }
                   
                   a nombre de `}
                 <strong>{order.o.buyer.name}</strong>
@@ -131,7 +148,7 @@ const Orders = () => {
               </div>
               <div className="orderOptions">
                 <button >Consultar</button>
-                <button type='reset'>Cerrar</button>
+                <button type='reset' onClick={() => history.goBack()}>Volver atras</button>
               </div>
             </form>
           </>

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import { database } from '../../firebase/firebase';
 import { Context } from '../../context/Context';
 
@@ -11,32 +11,34 @@ import './clientForm.scss'
 
 
 const ClientForm = ({ manageFinishBuy, manageOrderCreated }) => {
-
-
-  const { cartTotal, cart, removeFromCart, clearCart } = useContext(Context)
-
+  const { cart, cartTotal, removeFromCart, clearCart } = useContext(Context)
 
   const [busy, setBusy] = useState(false)
   const manageBusyState = (bool) => setBusy(bool);
 
   const confirmarCompra = async (ev) => {
     ev.preventDefault();
+    manageBusyState(true)
+
+
+    const buyerName = ev.target.buyerName.value
+    const buyerTel = ev.target.buyerTel.value
+    const buyerEmail = ev.target.buyerEmail.value
 
     const orderItems = cart.map(i => ({ id: i.itemCart.id, name: i.itemCart.name, price: (i.itemCart.promoted ? i.itemCart.price * 0.85 : i.itemCart.price), quantity: i.quantity }));
 
+
     const newOrder = {
       buyer: {
-        name: ev.target.buyerName.value,
-        tel: ev.target.buyerTel.value,
-        email: ev.target.buyerEmail.value
+        name: buyerName,
+        tel: buyerTel,
+        email: buyerEmail
       },
       date: new Date().toString(),
       items: orderItems,
       total: cartTotal
     }
 
-
-    manageBusyState(true)
     const itemsToUpdate = database.collection('products')
       .where(firebase.firestore.FieldPath.documentId(), 'in', cart.map(i => i.itemCart.id))
 
@@ -72,7 +74,7 @@ const ClientForm = ({ manageFinishBuy, manageOrderCreated }) => {
       .then(order => {
         manageOrderCreated(order.id)
       })
-      .catch(err => console.info(`Se producto el siguiente error:\n${err}`))
+      .catch(err => console.warn(`Se producto el siguiente error:\n${err}`))
       .finally(() => {
         manageBusyState(false)
         clearCart()
@@ -82,6 +84,16 @@ const ClientForm = ({ manageFinishBuy, manageOrderCreated }) => {
   return (
 
     <section className='finish'>
+
+      {
+        busy
+          ? <div className='loadingContainer'>
+            <div className="customCont"></div>
+            <Loading />
+          </div>
+          : null
+      }
+
       <div className="cartTitleSection">
         <h2 className='cartTitle'>Confirmar compra</h2>
         <p className='cartHint'>Ingrese sus datos en el siguiente formulario y luego <strong>confirme</strong> su compra o <strong>canc&eacute;lela</strong> para añadir mas productos </p>
@@ -110,16 +122,18 @@ const ClientForm = ({ manageFinishBuy, manageOrderCreated }) => {
         <div className="groupFormX">
           <p>Productos</p>
           <div className="productsForm">
-            {cart.map((i, index) => <div key={index} className='prodForm'>
-              <Link to={`productos/${i.itemCart.id}`} title={`Ver item ${i.itemCart.name}`}>
-                {`${i.quantity}x ${(i.itemCart.name).length > 10 ? `${(i.itemCart.name).substr(0, 10)}...` : i.itemCart.name} = $${i.quantity * (i.itemCart.promoted ? i.itemCart.price * .85 : i.itemCart.price)}`}
-              </Link>
-              <button className='removeItemForm' onClick={() => removeFromCart(i.itemCart['id'])} title={`Click para quitar ${i.itemCart.name}`}>
-                <div></div>
-                <div></div>
-              </button>
-            </div>
-            )}
+            {
+              cart.map((i, index) => <div key={index} className='prodForm'>
+                <Link to={`productos/${i.itemCart.id}`} title={`Ver item ${i.itemCart.name}`}>
+                  {`${i.quantity}x ${(i.itemCart.name).length > 10 ? `${(i.itemCart.name).substr(0, 10)}...` : i.itemCart.name} = $${i.quantity * (i.itemCart.promoted ? i.itemCart.price * .85 : i.itemCart.price)}`}
+                </Link>
+                <button className='removeItemForm' onClick={() => removeFromCart(i.itemCart['id'])} title={`Click para quitar ${i.itemCart.name}`}>
+                  <div></div>
+                  <div></div>
+                </button>
+              </div>
+              )
+            }
           </div>
         </div>
         <div className="separator subSeparator"></div>
@@ -131,15 +145,6 @@ const ClientForm = ({ manageFinishBuy, manageOrderCreated }) => {
           <button onClick={() => manageFinishBuy(false)}>Volver atras</button>
         </div>
       </form>
-
-      {
-        busy
-          ? <div className='loadingContainer'>
-            <div className="customCont"></div>
-            <Loading />
-          </div>
-          : null
-      }
     </section >
 
   )

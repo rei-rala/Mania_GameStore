@@ -37,6 +37,7 @@ section.finish {
     padding: 1rem;
     border-radius: 1rem;
     max-width: 80%;
+    width: fit-content;
     margin: auto;
 
     button:not(.removeItemForm) {
@@ -162,6 +163,22 @@ section.finish {
     border-color: red;
     div {
       border-color: red;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .groupForm {
+    label {
+      display: none;
+    }
+
+    input {
+      transform: translateX(0);
+    }
+    input:hover,
+    input:focus {
+      transform: translateX(0);
     }
   }
 }

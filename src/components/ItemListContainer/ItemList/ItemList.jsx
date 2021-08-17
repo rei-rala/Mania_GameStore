@@ -17,15 +17,21 @@ const ItemList = ({ id, name, image, stock, price, promoted/* , preview */ }) =>
       <span className={stock ? 'itemStock' : 'itemStock noStock'}>{stock ? `Stock ${stock}` : 'Sin stock'}</span>
       <div className="productoInfoContainer">
         <div className="productInfo">
-          <img src={image} alt={name} draggable='false' /* onMouseEnter={preview} onMouseLeave={preview} */ />
+          <img src={image} alt={name} draggable='false' />
           <div className="data">
-            <span>{name}</span>
+            <span>
+              {
+                // Si el nombre es muy largo, lo acortamos a manopla
+                name.length > 20
+                  ? name.substr(0, 20) + '...'
+                  : name
+              }
+            </span>
             {
               !promoted
                 ? <p className='normalPrice'>{`$${price}`}</p>
                 : <>
                   <p className='lastPrice'>${price}</p>
-
                   <p className='promoPrice'>Oferta! ${price * .85} </p>
                 </>
             }

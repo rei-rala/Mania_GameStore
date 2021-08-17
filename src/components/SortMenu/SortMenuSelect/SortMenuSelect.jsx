@@ -61,8 +61,13 @@ const SortMenuSelect = ({ toSort, displayFunction, arraySortingTerms, varUseEffe
               }
               }
             >
-              { // ? Esta comprobacion es para alterar el contenido del boton de orden entre si ordenaremos asc o desc al tocarlo
-                (sortType[1] !== sortingTerm ? null : sortType[0] !== 'ascendente' && sortType[1] === sortingTerm ? '↓' : '↑')
+              {
+                // ? Esta comprobacion es para alternar el contenido del boton a modo indicativo del ordenamiento activado
+                sortType[1] !== sortingTerm
+                  ? null
+                  : sortType[0] !== 'ascendente' && sortType[1] === sortingTerm
+                    ? '↓'
+                    : '↑'
               } {sortingTerm}
             </button>
             )

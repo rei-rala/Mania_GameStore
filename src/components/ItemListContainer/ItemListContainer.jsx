@@ -11,6 +11,8 @@ import { database } from '../../firebase/firebase';
 import { Categories } from "../../context/CategoriesContext";
 
 const ItemListContainer = () => {
+
+
   const { categoriesFirebase } = useContext(Categories)
 
   const { categoryName } = useParams() || null;
@@ -74,17 +76,9 @@ const ItemListContainer = () => {
             ? <Loading sectionName={categoryName || 'productos'} />
             : errorState
               ? <div className="errorScreen"> <p>Error: <br />{errorState}</p> <Link to='/productos'><button>Ver productos</button></Link> </div>
-              : displayProducts.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={(prod.image).charAt(0) === '/' ? process.env.PUBLIC_URL + prod.image : prod.image} price={prod.price} promoted={prod.promoted} /* preview={manageProductImgPreview} */ />)
+              : displayProducts.map(prod => <ItemList key={prod.id} id={prod.id} name={prod.name} stock={prod.stock} image={(prod.image).charAt(0) === '/' ? process.env.PUBLIC_URL + prod.image : prod.image} price={prod.price} promoted={prod.promoted} />)
         }
       </div >
-
-{/*       {
-        !productImgPreview
-          ? null
-          : <div className="previewFromHover">
-            <img onMouseEnter={manageProductImgPreview} onMouseLeave={manageProductImgPreview} src={productImgPreview.src} alt={productImgPreview.alt} />
-          </div>
-      } */}
     </>
   )
 }

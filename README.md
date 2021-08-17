@@ -1,8 +1,7 @@
 Mania\_ Store (ReactJS)
 
 Preview ultima version:  
-Mobile:  
-![Giphy](https://media.giphy.com/media/zVQy7yn06jcmHMTRy0/giphy.gif)
+![Giphy](https://media.giphy.com/media/LbmiZo8QHRvs2V5ZjH/giphy.gif) 
 
 Mania\_ es un e-commerce de articulos de computacion y videojuegos, el nombre surge de un pequeño local 'de la infancia' que alquilaba cartuchos de consolas como Sega y NES.
 
@@ -81,8 +80,9 @@ Productos en descuento (home, promociones) tienen marco con animacion, no activa
 Seccion de productos en descuento (promociones): todo producto con esta condicion aparecera alli  
 Seccion Cart: tiene mensaje para redireccionar a una posible compra en caso de estar vacio, muestra los productos en caso de tener añadidos y la posibilidad de quitarlos del mismo  
 NavBar: Cart animado, estilo para cart activo, secciones activas con estilo especifico, mejorado menu mobile, reducido box de categorias en desktop  
-+Refactorizado codigo en componentes varios.
-
++Refactorizado codigo en componentes varios.  
+[Giphy](https://media.giphy.com/media/zVQy7yn06jcmHMTRy0/giphy.gif)  
+  
 28-07-2021:  
 Algunos componentes fueron refactorizados  
 Se reemplazaron JSON de productos y categorias por Firestore  
@@ -129,4 +129,11 @@ Proceso de compra 'completo'.
 Tras verificar stocks de las ordenes, se crea registro de la orden a nombre del comprador ingresado.  
 Tras confirmar compra, saldra un cartel con el ID de la orden.  
 +Nuevo path _/ordenes_ en donde se realizaran consultas a ordenes.  
-+Componente Orders encargado de mostrar las ordenes en caso de una consulta correcta.
++Componente Orders encargado de mostrar las ordenes en caso de una consulta correcta.  
+  
+17-08-2021:  
+Se mostrara siempre el scroll del eje Y para evitar cambios de estilo repentinos por stretch.  
+Implementado 'volver atras' de ReactRouter en donde aplicara.  
+Pequeña verificacion mediante regex en consulta a ordenes.  
+Algunos componentes fueron levemente refactorizados.  
+Algunos estilos fueron levemente modificados.

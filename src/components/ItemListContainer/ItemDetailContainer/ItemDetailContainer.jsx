@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../../context/Context";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import './itemDetailContainer.scss'
 
@@ -15,6 +15,8 @@ import { database } from '../../../firebase/firebase'
 const ItemDetailContainer = () => {
   const { cart, addToCart, removeFromCart, isInCart } = useContext(Context)
   const { id } = useParams();
+
+  const history = useHistory();
 
   const [viewItem, setViewItem] = useState({});
   const [isSuccess, setIsSuccess] = useState(false);
@@ -84,11 +86,11 @@ const ItemDetailContainer = () => {
                 viewItem.stock
                   ? buyState || isInCart(viewItem.id)
                     ? <>
-                      <ItemCountConfirm count={count || (isInCart(viewItem.id) ? cart.map(i => {return { id: i['itemCart'].id, q: i['quantity'] }}).find(e => e['id'] === viewItem.id)['q'] : 0)}
-                      price={viewItem.promoted === true
+                      <ItemCountConfirm count={count || (isInCart(viewItem.id) ? cart.map(i => { return { id: i['itemCart'].id, q: i['quantity'] } }).find(e => e['id'] === viewItem.id)['q'] : 0)}
+                        price={viewItem.promoted === true
                           ? (viewItem.price * 0.85)
                           : viewItem.price
-                      } />
+                        } />
                       {isInCart(viewItem.id)
                         ? <Link to='/cart'> <button className='goToCart'> Ir a carrito </button> </Link >
                         : <button onClick={() => { addToCart(viewItem, count) }}> Confirmar </button>}
@@ -102,7 +104,7 @@ const ItemDetailContainer = () => {
 
                   : <>
                     <p className='noStockMessage'>Por favor, consulte en otro momento</p>
-                    <Link to='/' className="commands"> <button >Volver</button> </Link>
+                    <button onClick={() => history.goBack()}>Volver</button>
                   </>
               }
 
