@@ -1,8 +1,11 @@
 Mania\_ Store (ReactJS)
 
-Preview ultima version:  
-![Giphy](https://media.giphy.com/media/LbmiZo8QHRvs2V5ZjH/giphy.gif) 
-
+Preview ultima version (baja calidad):  
+![Giphy](https://media.giphy.com/media/LbmiZo8QHRvs2V5ZjH/giphy-downsized.gif)  
+Ver en mayor calidad:
+[Giphy](https://media.giphy.com/media/LbmiZo8QHRvs2V5ZjH/giphy.gif)  
+  
+  
 Mania\_ es un e-commerce de articulos de computacion y videojuegos, el nombre surge de un pequeño local 'de la infancia' que alquilaba cartuchos de consolas como Sega y NES.
 
 Dependencias del proyecto:  
@@ -136,4 +139,5 @@ Se mostrara siempre el scroll del eje Y para evitar cambios de estilo repentinos
 Implementado 'volver atras' de ReactRouter en donde aplicara.  
 Pequeña verificacion mediante regex en consulta a ordenes.  
 Algunos componentes fueron levemente refactorizados.  
-Algunos estilos fueron levemente modificados.
+Algunos estilos fueron levemente modificados.  
++README.md fix
