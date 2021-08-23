@@ -38,7 +38,8 @@ Preview ultima version (baja calidad):
 1. Tener [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) y [NPM](https://www.npmjs.com/) instalados en tu maquina.
 2. Ir a una ruta deseada con su terminal de preferencia y utilizar el comando `git clone https://github.com/rei-rala/Mania_GameStore`.
 3. Dirigirse al nuevo directorio creado.
-4. Correr el comando `npm start` para iniciar el modo development.
+4. Instalar las dependencias mediante el comando `npm i`
+5. Correr el comando `npm start` para iniciar el modo development.
 
 ---
 
