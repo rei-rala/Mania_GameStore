@@ -19,7 +19,7 @@ Preview ultima version (baja calidad):
   
 
 ---
-##### Features:  
+### Features:  
 * Aceptable diseño responsive en dos presentaciones Mobile(Portrait) & Desktop.
 * Destacados en landing page.
 * Landing page y navbar con categorias dinamicas.
@@ -33,7 +33,7 @@ Preview ultima version (baja calidad):
 * Panel de ordenes `/ordenes` funciona consultando una ID de compra o mediante URL `/ordenes/{idOrden}`  
 * Rapido ordenamiento de productos mediante botones, de acuerdo a diferentes caracteristicas
 ---
-##### Como probar este proyecto
+### Como probar este proyecto
 
 1. Tener [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) y [NPM](https://www.npmjs.com/) instalados en tu maquina.
 2. Ir a una ruta deseada con su terminal de preferencia y utilizar el comando `git clone https://github.com/rei-rala/Mania_GameStore`.
@@ -42,7 +42,7 @@ Preview ultima version (baja calidad):
 
 ---
 
-##### Changelog:
+#### Changelog:
 
 06-07-2021:  
 -Definidos header con Navbar, redes sociales, buscador y carrito  
