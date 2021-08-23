@@ -20,7 +20,7 @@ Preview ultima version (baja calidad):
 
 ---
 ##### Features:  
-* Aceptable diseño responsibe en dos presentaciones Mobile(Portrait) & Desktop.
+* Aceptable diseño responsive en dos presentaciones Mobile(Portrait) & Desktop.
 * Destacados en landing page.
 * Landing page y navbar con categorias dinamicas.
 * Seccion promociones, con un destacado en landing page y catalogo completo en URL propia `/promociones`.
