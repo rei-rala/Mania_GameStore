@@ -67,7 +67,11 @@ function App() {
               <Redirect to='./promociones' />
             </Route>
 
-            <Route path='/ordenes'>
+            <Route exact path='/ordenes'>
+              <Orders />
+            </Route>
+
+            <Route path='/ordenes/:orderId'>
               <Orders />
             </Route>
 
@@ -76,9 +80,9 @@ function App() {
 
 
         </CartContext>
-      </CategoriesContext>
+      </CategoriesContext >
       <Footer />
-    </BrowserRouter>
+    </BrowserRouter >
   );
 }
 

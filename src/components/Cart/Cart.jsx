@@ -26,7 +26,7 @@ const Cart = () => {
               <div className="cartTitleSection">
                 <h2 className='cartTitle'>Mi carrito</h2>
                 <i className='cartHint'>Click en imagen de producto o categoria para ir a la determinada seccion</i>
-                <p>Para vaciar el carrito, clickea <span className='clearCart' onClick={clearCart}>aqui</span></p>
+                <p>Click <span className='clearCart' onClick={clearCart}>aqui</span> para vaciar rapidamente el carrito</p>
               </div>
               <hr />
               {cart.map(ci => <div key={ci.itemCart['id']} className='itemCart'>
@@ -63,7 +63,12 @@ const Cart = () => {
                     </span>
                   </div>
                 </div>
-                <button className='removeCartBtn' onClick={() => removeFromCart(ci.itemCart['id'])}>Quitar</button>
+                <div className="options">
+                  <Link to={`productos/${ci.itemCart['id']}`}>
+                    <button className='removeCartBtn'>Editar</button>
+                  </Link>
+                  <button className='removeCartBtn' onClick={() => removeFromCart(ci.itemCart['id'])}>Quitar</button>
+                </div>
               </div>
               )}
             </div>

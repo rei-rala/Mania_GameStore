@@ -1,23 +1,45 @@
-Mania\_ Store (ReactJS)
+# Mania\_ Store (ReactJS)
+---
+
+  
+**Mania\_** es un e-commerce de articulos de computacion y videojuegos, el nombre surge de un pequeño local 'de la infancia' que alquilaba cartuchos de consolas como Sega y NES.
+
+-Dependencias del proyecto:  
+* React  
+* React-router  
+* styled-components: Formato 'condicional' a componentes especificos que lo requieran  
+* node-sass: Compilacion y archivos css con fuente en SCSS  
+* Firebase para almacentar algunos produtos y categorias en Firestore
 
 Preview ultima version (baja calidad):  
-![Giphy](https://media.giphy.com/media/LbmiZo8QHRvs2V5ZjH/giphy-downsized.gif)  
-Ver en mayor calidad:
-[Giphy](https://media.giphy.com/media/LbmiZo8QHRvs2V5ZjH/giphy.gif)  
+![Giphy](https://media.giphy.com/media/3Hn1SQLF87UEVNrWJv/giphy-downsized.gif)
+Gif en maxima calidad calidad:
+![Giphy](https://media.giphy.com/media/3Hn1SQLF87UEVNrWJv/source.gif)
   
-  
-Mania\_ es un e-commerce de articulos de computacion y videojuegos, el nombre surge de un pequeño local 'de la infancia' que alquilaba cartuchos de consolas como Sega y NES.
 
-Dependencias del proyecto:  
-*React  
-*React-router  
-*styled-components: Formato 'condicional' a componentes especificos que lo requieran  
-*node-sass: Compilacion y archivos css con fuente en SCSS  
-\*Firebase para almacentar algunos produtos y categorias en Firestore
+---
+##### Features:
+* Destacados en landing page.
+* Landing page y navbar con categorias dinamicas.
+* Seccion promociones, con un destacado en landing page y catalogo completo en URL propia `/promociones`.
+* Acceso y navegacion rapida dentro de la pagina
+* Paginas para todos los productos `/productos/{idProducto}` y segmentados por categorias  `categorias/{categoria}`.
+* Pagina para ver producto completo dinamica en funcion al estado en carrito.
+* Carrito persistente en localStorage
+* Formulario con datos de comprador, datos se guardan en orden de compra.
+* Rapida provision de ID de compra tras concretarse, asi como al acceso al panel de ordenes
+* Panel de ordenes `/ordenes` funciona consultando una ID de compra o mediante URL `/ordenes/{idOrden}`
+---
+##### Como probar este proyecto
+
+1. Tener [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) y [NPM](https://www.npmjs.com/) instalados en tu maquina.
+2. Ir a una ruta deseada con su terminal de preferencia y utilizar el comando `git clone https://github.com/rei-rala/Mania_GameStore`.
+3. Dirigirse al nuevo directorio creado.
+4. Correr el comando `npm start` para iniciar el modo development.
 
 ---
 
-Changelog:
+##### Changelog:
 
 06-07-2021:  
 -Definidos header con Navbar, redes sociales, buscador y carrito  
@@ -66,11 +88,11 @@ Componente ItemCountConfirm: Confirmacion de cantidad de producto seleccionado
 Mejorado NavBar para 'mobile' (width<864px): Iconos, busqueda, menu  
 Mejorado NavBar desktop: menu categorias  
 NavBars con redirects a categorias mapeadas  
-Carousel en home (/Mania\_)
+Carousel en home  
 Componente de item para articulo/s en promocion (actualmente: Gabinete, "15% off"), disponible en home
 
 26-07-2021:  
-Previews en README.md (ya desactualizadas)  
+Previews en README
 Desktop:  
 [Giphy](https://media.giphy.com/media/35YgWly2BJWACycj7G/giphy.gif)
 
@@ -114,7 +136,7 @@ Funcion experimental: al hacer hover en la imagen de un producto, se mostraria l
 Modificado el estilo en algunos componentes
   
 02-08-2021:  
-Landing en path '/' en lugar de '/Mania'  
+Landing en path `/` en lugar de `/Mania`  
 Renombradas variables de context de categorias para mejor semantica  
 Todos los componentes que utilizan categorias ahora obtienen el dato del context creado.  
 Pequeño rework a opcion de categorias en NavBar.  
@@ -131,7 +153,7 @@ Modificado estilo de algunos componentes.
 Proceso de compra 'completo'.  
 Tras verificar stocks de las ordenes, se crea registro de la orden a nombre del comprador ingresado.  
 Tras confirmar compra, saldra un cartel con el ID de la orden.  
-+Nuevo path _/ordenes_ en donde se realizaran consultas a ordenes.  
++Nuevo path `/ordenes` en donde se realizaran consultas a ordenes.  
 +Componente Orders encargado de mostrar las ordenes en caso de una consulta correcta.  
   
 17-08-2021:  
@@ -140,4 +162,9 @@ Implementado 'volver atras' de ReactRouter en donde aplicara.
 Pequeña verificacion mediante regex en consulta a ordenes.  
 Algunos componentes fueron levemente refactorizados.  
 Algunos estilos fueron levemente modificados.  
-+README.md fix
++README fix  
+  
+23-08-2021:  
+Retoques leves en componentes  
+Ahora puede accederse a las ordenes de forma directa en path mediante url `/ordenes/{idOrden}`  
+Se incluye una gif de muestra en el mismo repositorio

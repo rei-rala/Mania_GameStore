@@ -4,9 +4,11 @@ import './orders.scss'
 import { database } from '../../firebase/firebase';
 import { Link, useHistory } from 'react-router-dom';
 import Loading from '../Loading/Loading'
+import { useParams } from "react-router"
 
 const Orders = () => {
   const history = useHistory();
+  const { orderId } = useParams();
 
   const [order, setOrder] = useState(null)
   const manageOrder = order => setOrder(order)
@@ -17,18 +19,36 @@ const Orders = () => {
   const [busyState, setBusyState] = useState(false)
   const manageBusyState = bool => setBusyState(bool)
 
-  const checkOrder = (ev) => {
-    ev.preventDefault();
-    const orderInput = ev.target.inputOrder.value
+  const reTest = (msg) => {
     const re = new RegExp(/[a-zA-Z0-9]{20}/gm)
-
-    if (re.test(orderInput)) {
-      manageOrderInput(orderInput)
+    if (re.test(msg)) {
+      manageOrderInput(msg)
+    }
+    else {
+      manageOrderInput('404')
     }
   }
 
-  useEffect(() => {
+  const checkOrder = (ev) => {
+    const orderInput = ev.target.inputOrder.value
+    ev.preventDefault();
 
+    reTest(orderInput)
+  }
+
+  const checkOrderByPath = () => {
+    const orderInput = orderId
+    reTest(orderInput)
+  }
+
+
+  useEffect(() => {
+    if (orderId) {
+      checkOrderByPath(orderId)
+    }
+  })
+
+  useEffect(() => {
     const fetchOrder = async (order) => {
       manageBusyState(true)
       const orderF = database.collection('orders').doc(order)
@@ -60,10 +80,12 @@ const Orders = () => {
           ? order === 404
             ? <div className="order404">
               <h3>No existe la orden ingresada</h3>
-              <button onClick={() => {
-                manageOrder(null)
-                manageOrderInput(null)
-              }}>Nueva consulta</button>
+              <Link to='/ordenes'>
+                <button onClick={() => {
+                  manageOrder(null)
+                  manageOrderInput(null)
+                }}>Nueva consulta</button>
+              </Link>
             </div>
 
             : <div className="orderFound">
@@ -124,10 +146,13 @@ const Orders = () => {
               <span>Total orden: ${order.o.total}</span>
 
               <div className="getNewOrder">
-                <button onClick={() => {
-                  manageOrder(null)
-                  manageOrderInput(null)
-                }}>Nueva consulta</button>
+
+                <Link to='/ordenes'>
+                  <button onClick={() => {
+                    manageOrder(null)
+                    manageOrderInput(null)
+                  }}>Nueva consulta</button>
+                </Link>
 
                 <Link to='/'>
                   <button>Ir a Home</button>
