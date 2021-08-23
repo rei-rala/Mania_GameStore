@@ -19,7 +19,8 @@ Preview ultima version (baja calidad):
   
 
 ---
-##### Features:
+##### Features:  
+* Aceptable diseño responsibe en dos presentaciones Mobile(Portrait) & Desktop.
 * Destacados en landing page.
 * Landing page y navbar con categorias dinamicas.
 * Seccion promociones, con un destacado en landing page y catalogo completo en URL propia `/promociones`.
@@ -29,7 +30,8 @@ Preview ultima version (baja calidad):
 * Carrito persistente en localStorage
 * Formulario con datos de comprador, datos se guardan en orden de compra.
 * Rapida provision de ID de compra tras concretarse, asi como al acceso al panel de ordenes
-* Panel de ordenes `/ordenes` funciona consultando una ID de compra o mediante URL `/ordenes/{idOrden}`
+* Panel de ordenes `/ordenes` funciona consultando una ID de compra o mediante URL `/ordenes/{idOrden}`  
+* Rapido ordenamiento de productos mediante botones, de acuerdo a diferentes caracteristicas
 ---
 ##### Como probar este proyecto
 
@@ -169,4 +171,5 @@ Algunos estilos fueron levemente modificados.
 Retoques leves en componentes  
 Ahora puede accederse a las ordenes de forma directa en path mediante url `/ordenes/{idOrden}`  
 Se incluye una gif de muestra en el mismo repositorio
-+README fix
++README fix  
+++Feature faltantes en README fix
