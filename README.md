@@ -11,10 +11,11 @@
 * node-sass: Compilacion y archivos css con fuente en SCSS  
 * Firebase para almacentar algunos produtos y categorias en Firestore
 
+
+Gif en maxima calidad:
+![Github](https://github.com/rei-rala/Mania_GameStore/blob/0b7790d88361a5057e7d7730fdc7cbb1f93241a6/maniaStore.gif)
 Preview ultima version (baja calidad):  
-![Giphy](https://media.giphy.com/media/3Hn1SQLF87UEVNrWJv/giphy-downsized.gif)
-Gif en maxima calidad calidad:
-![Giphy](https://media.giphy.com/media/3Hn1SQLF87UEVNrWJv/source.gif)
+![Giphy](https://media.giphy.com/media/3Hn1SQLF87UEVNrWJv/giphy-downsized.gif)  
   
 
 ---
@@ -168,3 +169,4 @@ Algunos estilos fueron levemente modificados.
 Retoques leves en componentes  
 Ahora puede accederse a las ordenes de forma directa en path mediante url `/ordenes/{idOrden}`  
 Se incluye una gif de muestra en el mismo repositorio
++README fix
